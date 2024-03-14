@@ -1,4 +1,5 @@
 package listasProfSandroResolucao;
+
 import java.util.Scanner;
 
 public class Lista02 {

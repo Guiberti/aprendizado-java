@@ -10,8 +10,15 @@ public class Aula06EstruturasDeRepeticao02 {
             }
         }
         System.out.println("\n");
-        for (int i = 0; i <= 100; i+=2) {
-                System.out.print(i + ",");
+        for (int i = 0; i <= 100; i += 2) {
+            System.out.print(i + ",");
         }
+        System.out.println("\n");
+
+        System.out.println("\n");
+        for (int i = 0; i <= 100; i += 2) {
+            System.out.print("i".concat(String.valueOf(i)).concat("N"));
+        }
+
     }
 }
