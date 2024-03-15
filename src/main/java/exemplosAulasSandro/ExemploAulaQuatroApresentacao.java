@@ -35,7 +35,7 @@ public class ExemploAulaQuatroApresentacao {
         linha = 0;
         coluna = 0;
 
-        // com for
+        // com for / podemos utilizar i e j ao inves de linha e coluna
         for (linha = 0; linha < multArray2.length; linha++) {
             for (coluna = 0; coluna < multArray2[linha].length; coluna++) {
                 System.out

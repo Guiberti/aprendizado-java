@@ -1,6 +1,6 @@
 package exemplosAulasSandro;
 
-public class ExFicacaoMatriz {
+public class ExexercicioFicacaoMatriz {
     public static void main(String[] args) {
 
         int[][] multArray1 = { // modelo 1 de matriz
