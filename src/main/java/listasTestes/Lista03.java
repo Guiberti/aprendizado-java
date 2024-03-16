@@ -15,7 +15,7 @@ public class Lista03 {
                 case 1 -> calcularPrecoTotal();
                 case 2 -> calcularTroco();
                 case 3 -> exibirTotalVenda();
-                case 4 -> salvarMes();
+                case 4 -> salvarDiaMes();
                 case 5 -> exibirVendaDiaEscolhido();
                 default -> System.out.println("Opção inválida!");
             }
@@ -24,15 +24,16 @@ public class Lista03 {
 
     private static void impressaoConsole() {
         System.out.println("|----------------------------------------------|");
-        System.out.println("|-------- CALCULADORA DONA GABRIELINHA --------|");
+        System.out.println("|          CALCULADORA DONA GABRIELINHA        |");
         System.out.println("|----------------------------------------------|");
-        System.out.println("| Escolha uma das opções abaixo: --------------|");
-        System.out.println("| [1] - Calcular Preço Total. -----------------|");
-        System.out.println("| [2] - Calcular Troco. -----------------------|");
-        System.out.println("| [3] - Exibir Vendas Do Dia Atual ------------|");
-        System.out.println("| [4] - Registrar Venda Total Diária ----------|");
-        System.out.println("| [5] - Verificar Venda - Selecionar Dia/Mês --|");
-        System.out.println("| [0] - Sair. ---------------------------------|");
+        System.out.println("| Escolha uma das opções abaixo:               |");
+        System.out.println("|----------------------------------------------|");
+        System.out.println("| [1] - Calcular Preço Total.                  |");
+        System.out.println("| [2] - Calcular Troco.                        |");
+        System.out.println("| [3] - Exibir Vendas Do Dia Atual             |");
+        System.out.println("| [4] - Registrar Venda - Selecionar Dia/Mês   |");
+        System.out.println("| [5] - Verificar Vendas - Selecionar Dia/Mês  |");
+        System.out.println("| [0] - Sair.                                  |");
         System.out.println("|----------------------------------------------|");
         System.out.print("Insira a opção: ");
     }
@@ -43,7 +44,6 @@ public class Lista03 {
         System.out.print("Preço por item:");
         double preco = new Scanner(System.in).nextDouble();
         double precoTotal = CalculadoraFuncoes.calcularPrecoTotal(quantidade, preco);
-        CalculadoraFuncoes.salvar(precoTotal);
         System.out.println("Preço total: R$" + precoTotal);
     }
 
@@ -60,7 +60,7 @@ public class Lista03 {
         CalculadoraFuncoes.exibirTotalVenda();
     }
 
-    private static void salvarMes() {
+    private static void salvarDiaMes() {
         System.out.print("Qual dia?: ");
         int dia = new Scanner(System.in).nextInt();
         System.out.print("Qual mês?: ");
@@ -69,15 +69,17 @@ public class Lista03 {
             System.out.println("Dia ou mês inválido. Tente novamente.");
             return;
         }
-        System.out.print("Qual o valor da venda?: ");
+        System.out.print("Qual o valor total da venda?: ");
         double valorDeVenda = new Scanner(System.in).nextDouble();
-        CalculadoraFuncoes.salvarMes(dia, mes, valorDeVenda);
+        CalculadoraFuncoes.salvarDiaMes(dia, mes, valorDeVenda);
         System.out.println("Valor da venda salvo para o dia " + dia + " do mês " + mes + ".");
     }
 
     private static void exibirVendaDiaEscolhido() {
         System.out.println("Digite o dia e o mês para obter o valor da venda (dia mês):");
+        System.out.print("Qual dia?: ");
         int diaEsc = new Scanner(System.in).nextInt();
+        System.out.print("Qual mês?: ");
         int mesEsc = new Scanner(System.in).nextInt();
         CalculadoraFuncoes.exibirVendaDiaEscolhido(diaEsc, mesEsc);
     }
@@ -98,19 +100,22 @@ public class Lista03 {
         }
 
         private static double calcularDescontoEspecial(int quantidade, double preco) {
+            double total;
             if (quantidade > 10) {
-                return (quantidade * preco) * 0.95;
+                total = (quantidade * preco) * 0.95;
             } else {
-                return quantidade * preco;
+                total = quantidade * preco;
             }
+            salvar(total);
+            return total;
         }
 
         public static double calcularTroco(double recebido, double total) {
             if (recebido <= 0 || total <= 0) {
-                System.out.println("O valor total da compra deve ser maior que zero, e o que você repassar também!");
+                System.out.println("Os valores deve ser maior que zero!");
                 return Double.NaN;
             } else if (recebido < total) {
-                System.out.println("O valor que você der de dinheiro, deve ser igual ou maior que o total da compra!");
+                System.out.println("O valor que você repassar, deve ser igual ou maior que o valor total da compra!");
                 return Double.NaN;
             }
             return recebido - total;
@@ -130,7 +135,7 @@ public class Lista03 {
             }
         }
 
-        public static void salvarMes(int dia, int mes, double valorDeVenda) {
+        public static void salvarDiaMes(int dia, int mes, double valorDeVenda) {
             LISTA_MENSAL[dia - 1][mes - 1] = valorDeVenda;
             valorTotalDeVenda = 0;
             for (int i = size; i >= 0; i--) {
