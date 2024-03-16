@@ -1,8 +1,10 @@
 package listasTestes;
 
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Lista03 {
+    private static final NumberFormat CURRENCY_FORMAT = NumberFormat.getCurrencyInstance();
     public static void main(String[] args) {
         while (true) {
             impressaoConsole();
@@ -44,7 +46,7 @@ public class Lista03 {
         System.out.print("Preço por item:");
         double preco = new Scanner(System.in).nextDouble();
         double precoTotal = CalculadoraFuncoes.calcularPrecoTotal(quantidade, preco);
-        System.out.println("Preço total: R$" + precoTotal);
+        System.out.println("Preço total: " + CURRENCY_FORMAT.format(precoTotal));
     }
 
     private static void calcularTroco() {
@@ -53,7 +55,7 @@ public class Lista03 {
         System.out.print("Valor recebido: ");
         double recebido = new Scanner(System.in).nextDouble();
         double troco = CalculadoraFuncoes.calcularTroco(recebido, total);
-        System.out.println("Troco a ser entregue para o cliente é: R$ " + troco);
+        System.out.println("Troco a ser entregue para o cliente é: " + CURRENCY_FORMAT.format(troco));
     }
 
     private static void exibirTotalVenda() {
@@ -85,7 +87,6 @@ public class Lista03 {
     }
 
     private static class CalculadoraFuncoes {
-
         private static final double[] LISTA_VENDAS = new double[100];
         private static int size = 0;
         private static double valorTotalDeVenda = 0;
@@ -128,10 +129,10 @@ public class Lista03 {
 
         public static void exibirTotalVenda() {
             System.out.println("Total de Vendas: " + size);
-            System.out.println("Valor Total de Vendas: " + valorTotalDeVenda);
+            System.out.println("Valor Total de Vendas: " + CURRENCY_FORMAT.format(valorTotalDeVenda));
             System.out.print("Vendas: ");
             for (int i = 0; i < size; i++) {
-                System.out.print(LISTA_VENDAS[i] + ", ");
+                System.out.print(CURRENCY_FORMAT.format(LISTA_VENDAS[i]) + ", ");
             }
         }
 
@@ -149,7 +150,7 @@ public class Lista03 {
                 System.out.println("Dia ou mês inválido. Tente novamente.");
                 return;
             }
-            System.out.println("O total de vendas para o dia escolhido foi dê: " + LISTA_MENSAL[diaEsc - 1][mesEsc - 1]);
+            System.out.println("O valor total de vendas para o dia escolhido foi dê: " + CURRENCY_FORMAT.format(LISTA_MENSAL[diaEsc - 1][mesEsc - 1]));
         }
     }
 }
