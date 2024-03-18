@@ -1,6 +1,6 @@
 package exemplosAulasSandro;
 
-public class ExexercicioFicacaoMatriz {
+public class ExercicioFicacaoMatriz {
     public static void main(String[] args) {
 
         int[][] multArray1 = { // modelo 1 de matriz
@@ -32,6 +32,17 @@ public class ExexercicioFicacaoMatriz {
         System.out.println("\nEx de fixaçao, printar no console os valores 95 e 14:\n");
         System.out.println("Posição 1 e 2 da primeira matriz: " + multArray1[1][2]);
         System.out.println("Posição 2 e 0 da segunda matriz: " + multArray2[2][0]);
+
+        System.out.println("----------------------------------");
+
+        for (int[] arrBase: multArray1){
+            for (int num: arrBase){
+                System.out.print(num + "  ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("----------------------------------");
 
     }
 
