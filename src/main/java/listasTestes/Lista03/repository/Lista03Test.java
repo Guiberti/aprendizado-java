@@ -1,4 +1,4 @@
-package listasTestes;
+package listasTestes.Lista03.repository;
 
 import java.text.NumberFormat;
 import java.util.Scanner;
@@ -39,7 +39,7 @@ public class Lista03Test {
         System.out.print("Insira a opção: ");
     }
 
-    private static class CalculadoraFuncoes {
+    private static class CalcularFuncoes {
         public static double calcularPrecoTotal(int quantidade, double preco) {
             double total;
             if (quantidade > 10) {
@@ -66,7 +66,7 @@ public class Lista03Test {
                 System.out.print("Os valores devem ser maiores que zero!");
                 return;
             }
-            double precoTotal = CalculadoraFuncoes.calcularPrecoTotal(quantidade, preco);
+            double precoTotal = CalcularFuncoes.calcularPrecoTotal(quantidade, preco);
             System.out.println("Preço total: " + CURRENCY_FORMAT.format(precoTotal));
         }
         private static void exibirTroco() {
@@ -81,7 +81,7 @@ public class Lista03Test {
                 System.out.print("O valor que você repassar, deve ser igual ou maior que o valor total da compra!");
                 return;
             }
-            double troco = CalculadoraFuncoes.calcularTroco(recebido, total);
+            double troco = CalcularFuncoes.calcularTroco(recebido, total);
             System.out.println("Troco a ser entregue para o cliente é: " + CURRENCY_FORMAT.format(troco));
         }
         public static void exibirTotalVenda() {

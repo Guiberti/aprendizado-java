@@ -1,4 +1,4 @@
-package listasTestes;
+package listasTestes.Lista02;
 
 import java.util.Scanner;
 
