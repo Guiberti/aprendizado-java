@@ -1,6 +1,6 @@
-package academy.devdojo.maratonajava.javacore.introductionclasses.test;
+package academy.devdojo.maratonajava.javacore.Aintroductionclasses.test;
 
-import academy.devdojo.maratonajava.javacore.introductionclasses.domain.Estudante;
+import academy.devdojo.maratonajava.javacore.Aintroductionclasses.domain.Estudante;
 //Sempre vai ter o PSVM, pois será para teste
 public class EstudanteTest01 {
     public static void main(String[] args) {
