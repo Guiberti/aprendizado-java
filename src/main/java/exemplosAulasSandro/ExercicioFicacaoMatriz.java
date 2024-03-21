@@ -1,4 +1,4 @@
-package exemplosAulasSandro;
+package GUILHERME_DUDU_BERTI.ExemplosAulasSandro.codigos;
 
 public class ExercicioFicacaoMatriz {
     public static void main(String[] args) {
@@ -35,8 +35,8 @@ public class ExercicioFicacaoMatriz {
 
         System.out.println("----------------------------------");
 
-        for (int[] arrBase: multArray1){
-            for (int num: arrBase){
+        for (int[] arrBase : multArray1) {
+            for (int num : arrBase) {
                 System.out.print(num + "  ");
             }
             System.out.println();

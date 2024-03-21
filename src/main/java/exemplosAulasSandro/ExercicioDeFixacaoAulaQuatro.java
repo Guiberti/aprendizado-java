@@ -1,4 +1,4 @@
-package exemplosAulasSandro;
+package GUILHERME_DUDU_BERTI.ExemplosAulasSandro.codigos;
 
 public class ExercicioDeFixacaoAulaQuatro {
     public static void main(String[] args) {
