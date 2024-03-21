@@ -1,4 +1,4 @@
-package GUILHERME_DUDU_BERTI.ExemplosAulasSandro.codigos;
+package exemplosAulasSandro.codigos;
 
 public class ExercicioFicacaoMatriz {
     public static void main(String[] args) {

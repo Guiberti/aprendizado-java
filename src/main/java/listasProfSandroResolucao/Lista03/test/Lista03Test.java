@@ -1,7 +1,7 @@
-package listasTestes.Lista03.test;
+package listasProfSandroResolucao.Lista03.test;
 
-import listasTestes.Lista03.domain.ExibirFuncoes;
-import listasTestes.Lista03.domain.SalvarFuncoes;
+import listasProfSandroResolucao.Lista03.domain.ExibirFuncoes;
+import listasProfSandroResolucao.Lista03.domain.SalvarFuncoes;
 
 import java.util.Scanner;
 
@@ -25,6 +25,7 @@ public class Lista03Test {
             }
         }
     }
+
     private static void impressaoConsole() {
         System.out.println("|----------------------------------------------|");
         System.out.println("|          CALCULADORA DONA GABRIELINHA        |");

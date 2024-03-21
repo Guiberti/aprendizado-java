@@ -1,4 +1,4 @@
-package listasTestes.Lista03.domain;
+package listasProfSandroResolucao.Lista03.domain;
 
 import java.text.NumberFormat;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package listasTestes.Lista03.domain;
+package listasProfSandroResolucao.Lista03.domain;
 
 public class CalcularFuncoes {
     public static double calcularPrecoTotal(int quantidade, double preco) {

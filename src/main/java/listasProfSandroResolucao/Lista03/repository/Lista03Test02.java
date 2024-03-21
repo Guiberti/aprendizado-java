@@ -1,6 +1,6 @@
-package listasTestes.Lista03.repository;
+package listasProfSandroResolucao.Lista03.repository;
 
-import listasTestes.Lista03.domain.SalvarFuncoes;
+import listasProfSandroResolucao.Lista03.domain.SalvarFuncoes;
 
 import java.text.NumberFormat;
 import java.util.Scanner;
