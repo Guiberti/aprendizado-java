@@ -1,4 +1,4 @@
-package exemplosAulasSandro;
+package exemplosAulasSandro.codigos;
 
 public class ExemploAulaQuatro {
     public static void main(String[] args) {

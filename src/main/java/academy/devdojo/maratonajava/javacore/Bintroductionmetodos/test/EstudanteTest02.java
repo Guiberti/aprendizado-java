@@ -1,13 +1,11 @@
 package academy.devdojo.maratonajava.javacore.Bintroductionmetodos.test;
 
 import academy.devdojo.maratonajava.javacore.Bintroductionmetodos.domain.Estudantes;
-import academy.devdojo.maratonajava.javacore.Bintroductionmetodos.domain.ImpressoraEstudantes;
 
-public class EstudanteTest01 {
+public class EstudanteTest02 {
     public static void main(String[] args) {
         Estudantes estudante01 = new Estudantes();
         Estudantes estudante02 = new Estudantes();
-        ImpressoraEstudantes impressora = new ImpressoraEstudantes();
 
         estudante01.nome = "Midorya";
         estudante01.idade = 15;
@@ -17,13 +15,7 @@ public class EstudanteTest01 {
         estudante02.idade = 16;
         estudante02.sexo = 'F';
 
-        impressora.imprime(estudante01);
-        impressora.imprime(estudante02);
-
-        System.out.println("######################");
-
-        impressora.imprime(estudante01);
-        impressora.imprime(estudante02);
+        estudante01.imprime();
+        estudante02.imprime();
     }
 }
-//Prox Aula playlisst 51 - aula 50

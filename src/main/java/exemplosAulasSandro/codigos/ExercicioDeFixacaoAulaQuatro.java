@@ -1,4 +1,4 @@
-package exemplosAulasSandro;
+package exemplosAulasSandro.codigos;
 
 public class ExercicioDeFixacaoAulaQuatro {
     public static void main(String[] args) {

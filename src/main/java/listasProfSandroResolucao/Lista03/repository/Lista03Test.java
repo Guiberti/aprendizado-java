@@ -1,4 +1,4 @@
-package listasTestes.Lista03.repository;
+package listasProfSandroResolucao.Lista03.repository;
 
 import java.text.NumberFormat;
 import java.util.Scanner;

@@ -1,8 +1,8 @@
-package listasProfSandroResolucao;
+package listasProfSandroResolucao.Lista02;
 
 import java.util.Scanner;
 
-public class Lista02 {
+public class Lista02Certo {
     public static void main(String[] args) {
 
         while (true) {
