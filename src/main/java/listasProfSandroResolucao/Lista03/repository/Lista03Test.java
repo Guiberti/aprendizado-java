@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Lista03Test {
     private static final NumberFormat CURRENCY_FORMAT = NumberFormat.getCurrencyInstance();
+
     public static void main(String[] args) {
         while (true) {
             impressaoConsole();
@@ -23,6 +24,7 @@ public class Lista03Test {
             }
         }
     }
+
     private static void impressaoConsole() {
         System.out.println("|----------------------------------------------|");
         System.out.println("|          CALCULADORA DONA GABRIELINHA        |");
@@ -51,6 +53,7 @@ public class Lista03Test {
             return total;
 
         }
+
         public static double calcularTroco(double recebido, double total) {
             return recebido - total;
         }
@@ -62,13 +65,14 @@ public class Lista03Test {
             int quantidade = new Scanner(System.in).nextInt();
             System.out.print("Preço por item:");
             double preco = new Scanner(System.in).nextDouble();
-            if (quantidade <= 0 || preco <= 0)  {
+            if (quantidade <= 0 || preco <= 0) {
                 System.out.print("Os valores devem ser maiores que zero!");
                 return;
             }
             double precoTotal = CalcularFuncoes.calcularPrecoTotal(quantidade, preco);
             System.out.println("Preço total: " + CURRENCY_FORMAT.format(precoTotal));
         }
+
         private static void exibirTroco() {
             System.out.print("Valor Total da Compra: ");
             double total = new Scanner(System.in).nextDouble();
@@ -84,9 +88,11 @@ public class Lista03Test {
             double troco = CalcularFuncoes.calcularTroco(recebido, total);
             System.out.println("Troco a ser entregue para o cliente é: " + CURRENCY_FORMAT.format(troco));
         }
+
         public static void exibirTotalVenda() {
             SalvarFuncoes.salvarTotalVenda();
         }
+
         private static void exibirVendaDiaEscolhido() {
             System.out.println("Digite o dia e o mês para obter o valor da venda (dia mês):");
             System.out.print("Qual dia?: ");
@@ -111,6 +117,7 @@ public class Lista03Test {
             LISTA_VENDAS[size++] = valorVenda;
             valorTotalDeVenda += valorVenda;
         }
+
         public static void salvarTotalVenda() {
             System.out.println("Total de Vendas: " + size);
             System.out.println("Valor Total de Vendas: " + CURRENCY_FORMAT.format(valorTotalDeVenda));
@@ -119,6 +126,7 @@ public class Lista03Test {
                 System.out.print(CURRENCY_FORMAT.format(LISTA_VENDAS[i]) + ", ");
             }
         }
+
         private static void salvarDiaMes() {
             System.out.print("Qual dia?: ");
             int dia = new Scanner(System.in).nextInt();
@@ -133,6 +141,7 @@ public class Lista03Test {
             salvarDiaMes(dia, mes, valorDeVenda);
             System.out.println("Valor da venda " + CURRENCY_FORMAT.format(valorDeVenda) + " salvo para o dia " + dia + " do mês " + mes + ".");
         }
+
         public static void salvarDiaMes(int dia, int mes, double valorDeVenda) {
             LISTA_MENSAL[dia - 1][mes - 1] = valorDeVenda;
             //Aqui ele vai zerar as váriaveis (como se tivesse inicializado novo dia)
