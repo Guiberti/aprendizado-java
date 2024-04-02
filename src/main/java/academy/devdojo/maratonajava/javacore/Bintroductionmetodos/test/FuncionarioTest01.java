@@ -8,18 +8,27 @@ public class FuncionarioTest01 {
     public static void main(String[] args) {
         Funcionario funcionario = new Funcionario();
 
-        lerDados();
+        System.out.print("Insira o seu nome: ");
+        String nome = new Scanner(System.in).nextLine();
+        System.out.print("Insira sua idade:");
+        int idade = new Scanner(System.in).nextInt();
 
-        funcionario.nome = "Sanji";
-        funcionario.idade = 26;
-        funcionario.salarios = (new double[]{1580, 987, 352});
+        double[] salarios = lerSalarios();
 
+        funcionario.nome = nome;
+        funcionario.idade = idade;
+        funcionario.salarios = salarios;
+
+        System.out.println("-------------------------------------------");
 
         funcionario.imprimir();
     }
-
-    private static void lerDados() {
-        System.out.printf("Insira o seu nome: ");
-        String nome = new Scanner(System.in).nextLine();
+    private static double[] lerSalarios() {
+        double[] salarios = new double[3];
+        for (int i = 0; i < salarios.length; i++) {
+            System.out.printf("Digite o salário %d: ", i + 1);
+            salarios[i] = new Scanner(System.in).nextDouble();
+        }
+        return salarios;
     }
 }
