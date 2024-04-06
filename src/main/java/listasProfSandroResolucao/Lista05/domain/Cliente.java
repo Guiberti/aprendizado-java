@@ -1,7 +1,7 @@
 package listasProfSandroResolucao.Lista05.domain;
 
 public class Cliente extends Pessoa {
-    private Cliente(String nomePessoa, String cidade, String bairro, String rua, Integer idade) {
+    public Cliente(String nomePessoa, String cidade, String bairro, String rua, Integer idade) {
         super(nomePessoa, cidade, bairro, rua, idade);
     }
 
