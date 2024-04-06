@@ -17,4 +17,25 @@ public class VendedorTest {
         assertEquals(resultadoEsperado, resultadoAtual);
     }
 
+    @Test
+    public void testarSalarioBonus() {
+        Vendedor vendedor = new Vendedor("João", 30, null, "Santa Lúcia", "Centro", "Rua A", 1800, new double[]{1500,1800,1900});
+
+        double resultadoEsperado = 360;
+        double resultadoAtual = vendedor.calcularBonus();
+
+        assertEquals(resultadoEsperado, resultadoAtual, 0.02);
+    }
+
+    @Test
+    public void testarMediaSalarial() {
+        Vendedor vendedor = new Vendedor("João", 30, null, "Santa Lúcia", "Centro", "Rua A", 1800, new double[]{1500,1800,1900});
+
+        double resultadoEsperado = 1733.33;
+        double resultadoAtual = vendedor.calcularMedia();
+
+        assertEquals(resultadoEsperado, resultadoAtual, 3);
+
+    }
+
 }

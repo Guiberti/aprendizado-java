@@ -27,14 +27,16 @@ public class Vendedor extends Pessoa {
     //Met add
     @Override
     public String apresentarse() {
-        System.out.println("Meu nome é: "
+        String resultado = ("Meu nome é: "
                 .concat(nomePessoa)
                 .concat(", minha idade é: ")
                 .concat(String.valueOf(idade))
                 .concat(", minha loja é: ")
-                .concat(String.valueOf(loja) + ".")
+                .concat((loja == null) ? "null" : loja.getNomeFantasia())
+                .concat(".")
         );
-        return null;
+        System.out.println(resultado);
+        return resultado;
     }
 
     public double calcularMedia() {
