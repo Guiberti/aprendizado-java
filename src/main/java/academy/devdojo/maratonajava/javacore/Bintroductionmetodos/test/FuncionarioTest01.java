@@ -15,9 +15,9 @@ public class FuncionarioTest01 {
 
         double[] salarios = lerSalarios();
 
-        funcionario.nome = nome;
-        funcionario.idade = idade;
-        funcionario.salarios = salarios;
+        funcionario.setNome(nome);
+        funcionario.setIdade(idade);
+        funcionario.setSalarios(salarios);
 
         System.out.println("-------------------------------------------");
 
@@ -32,3 +32,4 @@ public class FuncionarioTest01 {
         return salarios;
     }
 }
+//prox aula 57 - Orientacao objetos - sobrecarga de metodos
