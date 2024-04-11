@@ -8,12 +8,10 @@ public class Cliente extends Pessoa {
     //Met add
     @Override
     public String apresentarse() {
-        String resultado = ("Meu nome é: "
+        return ("Meu nome é: "
                 .concat(nomePessoa)
                 .concat(", minha idade é: ")
                 .concat(idade + ".")
         );
-        System.out.println(resultado);
-        return resultado;
     }
 }

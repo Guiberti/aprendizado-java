@@ -5,7 +5,7 @@ public class Vendedor extends Pessoa {
     double salarioBase;
     double[] salarioRecebido = new double[3];
 
-    public Vendedor(String nomePessoa, Integer idade, Loja loja, String cidade, String bairro, String rua, double salarioBase, double[]salarioRecebido) {
+    public Vendedor(String nomePessoa, Integer idade, Loja loja, String cidade, String bairro, String rua, double salarioBase, double[] salarioRecebido) {
         super(nomePessoa, cidade, bairro, rua, idade);
         this.loja = loja;
         this.salarioBase = salarioBase;
@@ -14,6 +14,18 @@ public class Vendedor extends Pessoa {
 
     public Loja getLoja() {
         return loja;
+    }
+
+    public void setLoja(Loja loja) {
+        this.loja = loja;
+    }
+
+    public void setSalarioBase(double salarioBase) {
+        this.salarioBase = salarioBase;
+    }
+
+    public void setSalarioRecebido(double[] salarioRecebido) {
+        this.salarioRecebido = salarioRecebido;
     }
 
     public double getSalarioBase() {
@@ -27,7 +39,7 @@ public class Vendedor extends Pessoa {
     //Met add
     @Override
     public String apresentarse() {
-        String resultado = ("Meu nome é: "
+        return ("Meu nome é: "
                 .concat(nomePessoa)
                 .concat(", minha idade é: ")
                 .concat(String.valueOf(idade))
@@ -35,8 +47,6 @@ public class Vendedor extends Pessoa {
                 .concat((loja == null) ? "null" : loja.getNomeFantasia())
                 .concat(".")
         );
-        System.out.println(resultado);
-        return resultado;
     }
 
     public double calcularMedia() {
