@@ -46,9 +46,17 @@ public class ListaCincoTest {
                 .Rua("Av Brasil")
                 .build();
 
+        Loja loja = Loja.LojaBuilder.builder()
+                .Cidade("Santa Lúcia")
+                .Bairro("Centro")
+                .Rua("Avenida OLZ")
+                .NomeFantasia("Loja's Guilherme")
+                .RazaoSocial("Gdberti")
+                .Cnpj("77.777.777/7777-77")
+                .Vendedores(new Vendedor[] {vendedor1, vendedor2})
+                .Clientes(new Cliente[]{cliente1, cliente2})
+                .build();
 
-        Loja loja = new Loja("Santa Lúcia", "Centro", "Aveniada OLZ",
-                "Loja's Guilherme", "Gdberti", "77.777.777/7777-77", new Vendedor[]{vendedor1, vendedor2}, new Cliente[]{cliente1, cliente2});
 
         vendedor1.setLoja(loja);
         vendedor2.setLoja(loja);

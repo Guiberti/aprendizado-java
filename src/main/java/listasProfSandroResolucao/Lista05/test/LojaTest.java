@@ -10,9 +10,16 @@ import static org.junit.Assert.assertEquals;
 public class LojaTest {
     @Test
     public void testarConstrutor() {
-        Loja loja = new Loja("Santa Lúcia", "Centro",
-                "Av. O. L. Z.", "Vandir Rech", "Magazine Móveis",
-                "17235604000110", null, null);
+        Loja loja = Loja.LojaBuilder.builder()
+                .Cidade("Santa Lúcia")
+                .Bairro("Centro")
+                .Rua("Av. O. L. Z.")
+                .NomeFantasia("Vandir Rech")
+                .RazaoSocial("Magazine Móveis")
+                .Cnpj("17235604000110")
+                .Vendedores(null)
+                .Clientes(null)
+                .build();
         // Asserções para verificar os atributos da loja
         assertEquals("Santa Lúcia", loja.getCidade());
         assertEquals("Centro", loja.getBairro());
@@ -45,7 +52,17 @@ public class LojaTest {
                 .SalarioBase(1900)
                 .SalarioRecebido(new double[]{1600, 1300, 1200})
                 .build();
-        Loja loja = new Loja("Salu", "Centro", "AVLZ", "Magazine ST", "Vandir", "17235604000110", new Vendedor[]{vendedor1, vendedor2}, new Cliente[]{});
+        Loja loja = Loja.LojaBuilder.builder()
+                .Cidade("Salu")
+                .Bairro("Centro")
+                .Rua("AVLZ")
+                .NomeFantasia("Magazine ST")
+                .RazaoSocial("Vandir")
+                .Cnpj("17235604000110")
+                .Vendedores(new Vendedor[]{vendedor1, vendedor2})
+                .Clientes(new Cliente[]{})
+                .build();
+
 
         int numeroVendedoresEsperado = 2;
         int numeroVendedoresAtual = loja.contarVendedores();
@@ -69,8 +86,16 @@ public class LojaTest {
                 .Bairro("Centro")
                 .Rua("Av Brasil")
                 .build();
-        Loja loja = new Loja("Salu", "Centro", "AVLZ", "Magazine ST", "Vandir", "17235604000110", new Vendedor[]{}, new Cliente[]{cliente1, cliente2});
-
+        Loja loja = Loja.LojaBuilder.builder()
+                .Cidade("Salu")
+                .Bairro("Centro")
+                .Rua("AVLZ")
+                .NomeFantasia("Magazine ST")
+                .RazaoSocial("Vandir")
+                .Cnpj("17235604000110")
+                .Vendedores(new Vendedor[]{})
+                .Clientes(new Cliente[]{cliente1, cliente2})
+                .build();
         int numeroClientesEsperado = 2;
         int numeroClientesAtual = loja.contarClientes();
 

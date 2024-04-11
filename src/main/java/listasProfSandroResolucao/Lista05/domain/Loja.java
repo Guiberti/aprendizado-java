@@ -10,7 +10,7 @@ public class Loja {
     Vendedor[] vendedores;
     Cliente[] clientes;
 
-    public Loja(String cidade, String bairro, String rua, String nomeFantasia, String razaoSocial, String cnpj, Vendedor[] vendedores, Cliente[] clientes) {
+    private Loja(String cidade, String bairro, String rua, String nomeFantasia, String razaoSocial, String cnpj, Vendedor[] vendedores, Cliente[] clientes) {
         this.cidade = cidade;
         this.bairro = bairro;
         this.rua = rua;
@@ -101,4 +101,67 @@ public class Loja {
         System.out.println("  Bairro: " + bairro);
         System.out.println("  Rua: " + rua);
     }
+
+    public static final class LojaBuilder {
+        private String cidade;
+        private String bairro;
+        private String rua;
+        private String nomeFantasia;
+        private String razaoSocial;
+        private String cnpj;
+        private Vendedor[] vendedores;
+        private Cliente[] clientes;
+
+        private LojaBuilder() {
+        }
+
+        public static LojaBuilder builder() {
+            return new LojaBuilder();
+        }
+
+        public LojaBuilder Cidade(String cidade) {
+            this.cidade = cidade;
+            return this;
+        }
+
+        public LojaBuilder Bairro(String bairro) {
+            this.bairro = bairro;
+            return this;
+        }
+
+        public LojaBuilder Rua(String rua) {
+            this.rua = rua;
+            return this;
+        }
+
+        public LojaBuilder NomeFantasia(String nomeFantasia) {
+            this.nomeFantasia = nomeFantasia;
+            return this;
+        }
+
+        public LojaBuilder RazaoSocial(String razaoSocial) {
+            this.razaoSocial = razaoSocial;
+            return this;
+        }
+
+        public LojaBuilder Cnpj(String cnpj) {
+            this.cnpj = cnpj;
+            return this;
+        }
+
+        public LojaBuilder Vendedores(Vendedor[] vendedores) {
+            this.vendedores = vendedores;
+            return this;
+        }
+
+        public LojaBuilder  Clientes(Cliente[] clientes) {
+            this.clientes = clientes;
+            return this;
+        }
+
+        public Loja build() {
+            return new Loja(cidade, bairro, rua, nomeFantasia, razaoSocial, cnpj, vendedores, clientes);
+        }
+    }
+
 }
