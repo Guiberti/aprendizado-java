@@ -8,11 +8,43 @@ import java.util.List;
 
 public class ListaCincoTest {
     public static void main(String[] args) {
-        Vendedor vendedor1 = new Vendedor("João", 30, null, "Santa Lúcia", "Centro", "Rua A", 1800, new double[]{1500,1800,1900});
-        Vendedor vendedor2 = new Vendedor("Maria", 45, null, "Santa Lúcia", "Centro", "Rua B", 1900, new double[]{1600,1300,1200});
 
-        Cliente cliente1 = new Cliente("Joao", "CLM", "centro", "dos geranios", 35);
-        Cliente cliente2 = new Cliente("Jorge", "CLM", "casinhas", "manjerituba", 75);
+        Vendedor vendedor1 = Vendedor.VendedorBuilder.builder()
+                .NomePessoa("Joao")
+                .Idade(30)
+                .Loja(null)
+                .Cidade("Sta Lucia")
+                .Bairro("Centro")
+                .Rua("Av OLZ")
+                .SalarioBase(1800)
+                .SalarioRecebido(new double[]{1500, 1800, 1900})
+                .build();
+
+        Vendedor vendedor2 = Vendedor.VendedorBuilder.builder()
+                .NomePessoa("Maria")
+                .Idade(45)
+                .Loja(null)
+                .Cidade("Sta Lucia")
+                .Bairro("Centro")
+                .Rua("Rua B")
+                .SalarioBase(1900)
+                .SalarioRecebido(new double[]{1600, 1300, 1200})
+                .build();
+
+        Cliente cliente1 = Cliente.ClienteBuilder.builder()
+                .NomePessoa("Jorge")
+                .Idade(45)
+                .Cidade("Sta Lucia")
+                .Bairro("Centro")
+                .Rua("Av OLZ")
+                .build();
+        Cliente cliente2 = Cliente.ClienteBuilder.builder()
+                .NomePessoa("Mario")
+                .Idade(50)
+                .Cidade("Sta Lucia")
+                .Bairro("Centro")
+                .Rua("Av Brasil")
+                .build();
 
 
         Loja loja = new Loja("Santa Lúcia", "Centro", "Aveniada OLZ",

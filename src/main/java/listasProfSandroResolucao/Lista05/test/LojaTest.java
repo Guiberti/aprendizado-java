@@ -24,10 +24,27 @@ public class LojaTest {
 
     @Test
     public void testarContarVendedores() {
-        Vendedor vendedor1 = new Vendedor("Guilherme", 18, null, "Salu",
-                "Centro", "AVLZ", 1802, new double[]{1502, 2500, 2600});
-        Vendedor vendedor2 = new Vendedor("Talita", 23, null, "Salu",
-                "Centro", "AVLZ", 1820, new double[]{2000, 1500, 1200});
+        Vendedor vendedor1 = Vendedor.VendedorBuilder.builder()
+                .NomePessoa("Joao")
+                .Idade(30)
+                .Loja(null)
+                .Cidade("Sta Lucia")
+                .Bairro("Centro")
+                .Rua("Av OLZ")
+                .SalarioBase(1800)
+                .SalarioRecebido(new double[]{1500, 1800, 1900})
+                .build();
+
+        Vendedor vendedor2 = Vendedor.VendedorBuilder.builder()
+                .NomePessoa("Maria")
+                .Idade(45)
+                .Loja(null)
+                .Cidade("Sta Lucia")
+                .Bairro("Centro")
+                .Rua("Rua B")
+                .SalarioBase(1900)
+                .SalarioRecebido(new double[]{1600, 1300, 1200})
+                .build();
         Loja loja = new Loja("Salu", "Centro", "AVLZ", "Magazine ST", "Vandir", "17235604000110", new Vendedor[]{vendedor1, vendedor2}, new Cliente[]{});
 
         int numeroVendedoresEsperado = 2;
@@ -38,8 +55,20 @@ public class LojaTest {
 
     @Test
     public void testarContarClientes() {
-        Cliente cliente1 = new Cliente("Joao", "CLM", "centro", "dos geranios", 35);
-        Cliente cliente2 = new Cliente("Maria", "Lindoeste", "centro", "da iguacu", 44);
+        Cliente cliente1 = Cliente.ClienteBuilder.builder()
+                .NomePessoa("Jorge")
+                .Idade(45)
+                .Cidade("Sta Lucia")
+                .Bairro("Centro")
+                .Rua("Av OLZ")
+                .build();
+        Cliente cliente2 = Cliente.ClienteBuilder.builder()
+                .NomePessoa("Mario")
+                .Idade(50)
+                .Cidade("Sta Lucia")
+                .Bairro("Centro")
+                .Rua("Av Brasil")
+                .build();
         Loja loja = new Loja("Salu", "Centro", "AVLZ", "Magazine ST", "Vandir", "17235604000110", new Vendedor[]{}, new Cliente[]{cliente1, cliente2});
 
         int numeroClientesEsperado = 2;
