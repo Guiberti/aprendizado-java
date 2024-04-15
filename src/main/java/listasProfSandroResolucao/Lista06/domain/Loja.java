@@ -65,8 +65,10 @@ public class Loja {
                 .concat(cidade)
                 .concat(", Bairro: ")
                 .concat(bairro)
-                .concat(", Rua")
-                .concat(rua));
+                .concat(", Rua: ")
+                .concat(rua)
+                .concat(".")
+        );
     }
 
     public static final class LojaBuilder {
@@ -112,7 +114,7 @@ public class Loja {
         }
 
         public LojaBuilder cnpj(Long cnpj) {
-            this.cnpj = Long.valueOf(String.valueOf(cnpj));
+            this.cnpj = cnpj;
             return this;
         }
 

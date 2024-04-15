@@ -1,17 +1,14 @@
 package listasProfSandroResolucao.Lista06.domain;
 
-public abstract class Pessoa {
+public abstract class Pessoa extends Endereco {
     String nomePessoa;
     Integer idade;
-    String cidade;
-    String bairro;
-    String rua;
+    Endereco endereco;
 
-    public Pessoa(String nomePessoa, String cidade, String bairro, String rua, Integer idade) {
+    public Pessoa(String nomePessoa, Integer idade, Endereco endereco) {
+        super(endereco.estado, endereco.cidade, endereco.bairro, endereco.rua, endereco.numero,
+                endereco.complemento);
         this.nomePessoa = nomePessoa;
-        this.cidade = cidade;
-        this.bairro = bairro;
-        this.rua = rua;
         this.idade = idade;
     }
 

@@ -5,9 +5,9 @@ public class Vendedor extends Pessoa {
     double salarioBase;
     double[] salarioRecebido = new double[3];
 
-    private Vendedor(String nomePessoa, Integer idade, Loja loja, String cidade, String bairro, String rua,
-                     double salarioBase, double[] salarioRecebido) {
-        super(nomePessoa, cidade, bairro, rua, idade);
+    private Vendedor(String nomePessoa, Integer idade, Endereco endereco,
+                     Loja loja ,double salarioBase, double[] salarioRecebido) {
+        super(nomePessoa, idade, endereco.estado, endereco.);
         this.loja = loja;
         this.salarioBase = salarioBase;
         this.salarioRecebido = salarioRecebido;
@@ -24,7 +24,7 @@ public class Vendedor extends Pessoa {
                 .concat(nomePessoa)
                 .concat(", minha idade é: ")
                 .concat(String.valueOf(idade))
-                .concat(", minha loja é: ")
+                .concat(", sou vendedor da loja: ")
                 .concat((loja == null) ? "null" : loja.getNomeFantasia())
                 .concat("."));
     }

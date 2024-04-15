@@ -20,7 +20,7 @@ public class VendedorTest {
                 .salarioBase(1800)
                 .salarioRecebido(new double[]{1500, 1800, 1900})
                 .build();
-        String resultadoEsperado = "Meu nome é: João, minha idade é: 30, minha loja é: null.";
+        String resultadoEsperado = "Meu nome é: João, minha idade é: 30, sou vendedor da loja: null.";
         String resultadoAtual = vendedor.apresentarse();
 
         assertEquals(resultadoEsperado, resultadoAtual);

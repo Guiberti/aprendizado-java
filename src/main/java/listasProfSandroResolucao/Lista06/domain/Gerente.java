@@ -16,13 +16,14 @@ public class Gerente extends Pessoa {
     public void setLoja(Loja loja) {
         this.loja = loja;
     }
+
     @Override
     public String apresentarse() {
         return ("Meu nome é: "
                 .concat(nomePessoa)
-                .concat(", minha idade é: ")
+                .concat(", tenho idade é: ")
                 .concat(String.valueOf(idade))
-                .concat(", minha loja é: ")
+                .concat(", sou gerente da loja: ")
                 .concat((loja == null) ? "null" : loja.getNomeFantasia())
                 .concat("."));
     }

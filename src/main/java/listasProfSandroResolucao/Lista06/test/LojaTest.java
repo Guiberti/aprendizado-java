@@ -17,7 +17,7 @@ public class LojaTest {
                 .rua("Av. O. L. Z.")
                 .nomeFantasia("Vandir Rech")
                 .razaoSocial("Magazine Móveis")
-                .cnpj("17235604000110")
+                .cnpj(17235604000110L)
                 .vendedores(null)
                 .clientes(null)
                 .build();
@@ -27,7 +27,7 @@ public class LojaTest {
         assertEquals("Av. O. L. Z.", loja.getRua());
         assertEquals("Vandir Rech", loja.getNomeFantasia());
         assertEquals("Magazine Móveis", loja.getRazaoSocial());
-        assertEquals("17235604000110", loja.getCnpj());
+        assertEquals(17235604000110L, loja.getCnpj());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class LojaTest {
                 .bairro("Centro")
                 .rua("Av OLZ")
                 .salarioBase(1800)
-                .salarioRecebido(new double[] { 1500, 1800, 1900 })
+                .salarioRecebido(new double[]{1500, 1800, 1900})
                 .build();
 
         Vendedor vendedor2 = Vendedor.VendedorBuilder.builder()
@@ -51,7 +51,7 @@ public class LojaTest {
                 .bairro("Centro")
                 .rua("Rua B")
                 .salarioBase(1900)
-                .salarioRecebido(new double[] { 1600, 1300, 1200 })
+                .salarioRecebido(new double[]{1600, 1300, 1200})
                 .build();
         Loja loja = Loja.LojaBuilder.builder()
                 .cidade("Salu")
@@ -59,9 +59,9 @@ public class LojaTest {
                 .rua("AVLZ")
                 .nomeFantasia("Magazine ST")
                 .razaoSocial("Vandir")
-                .cnpj("17235604000110")
-                .vendedores(new Vendedor[] { vendedor1, vendedor2 })
-                .clientes(new Cliente[] {})
+                .cnpj(17235604000110L)
+                .vendedores(new Vendedor[]{vendedor1, vendedor2})
+                .clientes(new Cliente[]{})
                 .build();
 
         int numeroVendedoresEsperado = 2;
@@ -92,9 +92,9 @@ public class LojaTest {
                 .rua("AVLZ")
                 .nomeFantasia("Magazine ST")
                 .razaoSocial("Vandir")
-                .cnpj("17235604000110")
-                .vendedores(new Vendedor[] {})
-                .clientes(new Cliente[] { cliente1, cliente2 })
+                .cnpj(17235604000110L)
+                .vendedores(new Vendedor[]{})
+                .clientes(new Cliente[]{cliente1, cliente2})
                 .build();
         int numeroClientesEsperado = 2;
         int numeroClientesAtual = loja.contarClientes();

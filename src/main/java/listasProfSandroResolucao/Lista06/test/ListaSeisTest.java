@@ -17,7 +17,7 @@ public class ListaSeisTest {
                 .rua("Avenida OLZ")
                 .loja(null)
                 .salarioBase(2200)
-                .salarioRecebido(new double[] {5000, 3900, 8100})
+                .salarioRecebido(new double[]{5000, 3900, 8100})
                 .build();
 
         Vendedor vendedor1 = Vendedor.VendedorBuilder.builder()
@@ -63,7 +63,7 @@ public class ListaSeisTest {
                 .rua("Avenida OLZ")
                 .nomeFantasia("Magazine Luiza")
                 .razaoSocial("magalu")
-                .cnpj(7L)
+                .cnpj(17235604000110L)
                 .vendedores(new Vendedor[]{vendedor1, vendedor2})
                 .clientes(new Cliente[]{cliente1, cliente2})
                 .build();
@@ -74,31 +74,36 @@ public class ListaSeisTest {
 
         System.out.println("------");
 
+        System.out.println("Gerente: ");
         System.out.println(gerente.apresentarse());
-        System.out.println(gerente.calcularMedia());
-        System.out.println(gerente.calcularBonus());
+        System.out.println("Minha média salárial: " + gerente.calcularMedia());
+        System.out.println("Meu bônus salarial: " + gerente.calcularBonus());
 
         System.out.println("------");
 
+        System.out.println("Vendedor 1: ");
         System.out.println(vendedor1.apresentarse());
-        System.out.println(vendedor1.calcularMedia());
-        System.out.println(vendedor1.calcularBonus());
+        System.out.println("Minha média salárial: " + vendedor1.calcularMedia());
+        System.out.println("Meu bônus salarial: " + vendedor1.calcularBonus());
 
         System.out.println("------");
 
+        System.out.println("Vendedor 2: ");
         System.out.println(vendedor2.apresentarse());
-        System.out.println(vendedor2.calcularMedia());
-        System.out.println(vendedor2.calcularBonus());
+        System.out.println("Minha média salárial: " + vendedor2.calcularMedia());
+        System.out.println("Meu bônus salarial: " + vendedor2.calcularBonus());
 
         System.out.println("------");
 
+        System.out.println("Clientes : ");
         System.out.println(cliente1.apresentarse());
         System.out.println(cliente2.apresentarse());
 
         System.out.println("------");
 
-        System.out.println(loja.contarClientes());
-        System.out.println(loja.contarVendedores());
+        System.out.println("Loja: ");
         System.out.println(loja.apresentarse());
+        System.out.println("Quantidade de clientes: " + loja.contarClientes());
+        System.out.println("Quantidade de vendedores: " + loja.contarVendedores());
     }
 }

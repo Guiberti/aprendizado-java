@@ -21,6 +21,5 @@ public class ClienteTest {
         String resultadoAtual = cliente.apresentarse();
 
         assertEquals(resultadoEsperado, resultadoAtual);
-
     }
 }
