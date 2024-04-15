@@ -3,22 +3,23 @@ package listasProfSandroResolucao.Lista05.test;
 import listasProfSandroResolucao.Lista05.domain.Cliente;
 import listasProfSandroResolucao.Lista05.domain.Loja;
 import listasProfSandroResolucao.Lista05.domain.Vendedor;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class LojaTest {
     @Test
     public void testarConstrutor() {
         Loja loja = Loja.LojaBuilder.builder()
-                .Cidade("Santa Lúcia")
-                .Bairro("Centro")
-                .Rua("Av. O. L. Z.")
-                .NomeFantasia("Vandir Rech")
-                .RazaoSocial("Magazine Móveis")
-                .Cnpj("17235604000110")
-                .Vendedores(null)
-                .Clientes(null)
+                .cidade("Santa Lúcia")
+                .bairro("Centro")
+                .rua("Av. O. L. Z.")
+                .nomeFantasia("Vandir Rech")
+                .razaoSocial("Magazine Móveis")
+                .cnpj("17235604000110")
+                .vendedores(null)
+                .clientes(null)
                 .build();
         // Asserções para verificar os atributos da loja
         assertEquals("Santa Lúcia", loja.getCidade());
@@ -32,37 +33,36 @@ public class LojaTest {
     @Test
     public void testarContarVendedores() {
         Vendedor vendedor1 = Vendedor.VendedorBuilder.builder()
-                .NomePessoa("Joao")
-                .Idade(30)
-                .Loja(null)
-                .Cidade("Sta Lucia")
-                .Bairro("Centro")
-                .Rua("Av OLZ")
-                .SalarioBase(1800)
-                .SalarioRecebido(new double[]{1500, 1800, 1900})
+                .nomePessoa("Joao")
+                .idade(30)
+                .loja(null)
+                .cidade("Sta Lucia")
+                .bairro("Centro")
+                .rua("Av OLZ")
+                .salarioBase(1800)
+                .salarioRecebido(new double[] { 1500, 1800, 1900 })
                 .build();
 
         Vendedor vendedor2 = Vendedor.VendedorBuilder.builder()
-                .NomePessoa("Maria")
-                .Idade(45)
-                .Loja(null)
-                .Cidade("Sta Lucia")
-                .Bairro("Centro")
-                .Rua("Rua B")
-                .SalarioBase(1900)
-                .SalarioRecebido(new double[]{1600, 1300, 1200})
+                .nomePessoa("Maria")
+                .idade(45)
+                .loja(null)
+                .cidade("Sta Lucia")
+                .bairro("Centro")
+                .rua("Rua B")
+                .salarioBase(1900)
+                .salarioRecebido(new double[] { 1600, 1300, 1200 })
                 .build();
         Loja loja = Loja.LojaBuilder.builder()
-                .Cidade("Salu")
-                .Bairro("Centro")
-                .Rua("AVLZ")
-                .NomeFantasia("Magazine ST")
-                .RazaoSocial("Vandir")
-                .Cnpj("17235604000110")
-                .Vendedores(new Vendedor[]{vendedor1, vendedor2})
-                .Clientes(new Cliente[]{})
+                .cidade("Salu")
+                .bairro("Centro")
+                .rua("AVLZ")
+                .nomeFantasia("Magazine ST")
+                .razaoSocial("Vandir")
+                .cnpj("17235604000110")
+                .vendedores(new Vendedor[] { vendedor1, vendedor2 })
+                .clientes(new Cliente[] {})
                 .build();
-
 
         int numeroVendedoresEsperado = 2;
         int numeroVendedoresAtual = loja.contarVendedores();
@@ -73,28 +73,28 @@ public class LojaTest {
     @Test
     public void testarContarClientes() {
         Cliente cliente1 = Cliente.ClienteBuilder.builder()
-                .NomePessoa("Jorge")
-                .Idade(45)
-                .Cidade("Sta Lucia")
-                .Bairro("Centro")
-                .Rua("Av OLZ")
+                .nomePessoa("Jorge")
+                .idade(45)
+                .cidade("Sta Lucia")
+                .bairro("Centro")
+                .rua("Av OLZ")
                 .build();
         Cliente cliente2 = Cliente.ClienteBuilder.builder()
-                .NomePessoa("Mario")
-                .Idade(50)
-                .Cidade("Sta Lucia")
-                .Bairro("Centro")
-                .Rua("Av Brasil")
+                .nomePessoa("Mario")
+                .idade(50)
+                .cidade("Sta Lucia")
+                .bairro("Centro")
+                .rua("Av Brasil")
                 .build();
         Loja loja = Loja.LojaBuilder.builder()
-                .Cidade("Salu")
-                .Bairro("Centro")
-                .Rua("AVLZ")
-                .NomeFantasia("Magazine ST")
-                .RazaoSocial("Vandir")
-                .Cnpj("17235604000110")
-                .Vendedores(new Vendedor[]{})
-                .Clientes(new Cliente[]{cliente1, cliente2})
+                .cidade("Salu")
+                .bairro("Centro")
+                .rua("AVLZ")
+                .nomeFantasia("Magazine ST")
+                .razaoSocial("Vandir")
+                .cnpj("17235604000110")
+                .vendedores(new Vendedor[] {})
+                .clientes(new Cliente[] { cliente1, cliente2 })
                 .build();
         int numeroClientesEsperado = 2;
         int numeroClientesAtual = loja.contarClientes();

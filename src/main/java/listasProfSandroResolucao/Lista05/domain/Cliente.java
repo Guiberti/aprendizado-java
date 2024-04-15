@@ -6,14 +6,13 @@ public class Cliente extends Pessoa {
         super(nomePessoa, cidade, bairro, rua, idade);
     }
 
-    //Met add
+    // Met add
     @Override
     public String apresentarse() {
         return ("Meu nome é: "
                 .concat(nomePessoa)
                 .concat(", minha idade é: ")
-                .concat(idade + ".")
-        );
+                .concat(idade + "."));
     }
 
     public static final class ClienteBuilder {
@@ -30,27 +29,27 @@ public class Cliente extends Pessoa {
             return new ClienteBuilder();
         }
 
-        public ClienteBuilder NomePessoa(String nomePessoa) {
+        public ClienteBuilder nomePessoa(String nomePessoa) {
             this.nomePessoa = nomePessoa;
             return this;
         }
 
-        public ClienteBuilder Cidade(String cidade) {
+        public ClienteBuilder cidade(String cidade) {
             this.cidade = cidade;
             return this;
         }
 
-        public ClienteBuilder Bairro(String bairro) {
+        public ClienteBuilder bairro(String bairro) {
             this.bairro = bairro;
             return this;
         }
 
-        public ClienteBuilder Rua(String rua) {
+        public ClienteBuilder rua(String rua) {
             this.rua = rua;
             return this;
         }
 
-        public ClienteBuilder Idade(Integer idade) {
+        public ClienteBuilder idade(Integer idade) {
             this.idade = idade;
             return this;
         }

@@ -10,7 +10,8 @@ public class Loja {
     Vendedor[] vendedores;
     Cliente[] clientes;
 
-    private Loja(String cidade, String bairro, String rua, String nomeFantasia, String razaoSocial, String cnpj, Vendedor[] vendedores, Cliente[] clientes) {
+    private Loja(String cidade, String bairro, String rua, String nomeFantasia, String razaoSocial, String cnpj,
+                 Vendedor[] vendedores, Cliente[] clientes) {
         this.cidade = cidade;
         this.bairro = bairro;
         this.rua = rua;
@@ -25,67 +26,27 @@ public class Loja {
         return nomeFantasia;
     }
 
-    public void setNomeFantasia(String nomeFantasia) {
-        this.nomeFantasia = nomeFantasia;
-    }
-
     public String getRazaoSocial() {
         return razaoSocial;
-    }
-
-    public void setRazaoSocial(String razaoSocial) {
-        this.razaoSocial = razaoSocial;
     }
 
     public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
     public String getCidade() {
         return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
     }
 
     public String getBairro() {
         return bairro;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
     public String getRua() {
         return rua;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public Vendedor[] getVendedores() {
-        return vendedores;
-    }
-
-    public void setVendedores(Vendedor[] vendedores) {
-        this.vendedores = vendedores;
-    }
-
-    public Cliente[] getClientes() {
-        return clientes;
-    }
-
-    public void setClientes(Cliente[] clientes) {
-        this.clientes = clientes;
-    }
-
-    //met add
+    // met add
     public int contarClientes() {
         return clientes.length;
     }
@@ -93,13 +54,19 @@ public class Loja {
     public int contarVendedores() {
         return vendedores.length;
     }
-    public void apresentarse() {
-        System.out.println("Nome Fantasia: " + nomeFantasia);
-        System.out.println("CNPJ: " + cnpj);
-        System.out.println("Endereço:");
-        System.out.println("  Cidade: " + cidade);
-        System.out.println("  Bairro: " + bairro);
-        System.out.println("  Rua: " + rua);
+
+    public String apresentarse() {
+        return ("Nome Fantasia: "
+                .concat(nomeFantasia)
+                .concat(" CNPJ: ")
+                .concat(cnpj)
+                .concat(" Endereço: ")
+                .concat(" Cidade: ")
+                .concat(cidade)
+                .concat(" Bairro: ")
+                .concat(bairro)
+                .concat(" Rua")
+                .concat(rua));
     }
 
     public static final class LojaBuilder {
@@ -119,42 +86,42 @@ public class Loja {
             return new LojaBuilder();
         }
 
-        public LojaBuilder Cidade(String cidade) {
+        public LojaBuilder cidade(String cidade) {
             this.cidade = cidade;
             return this;
         }
 
-        public LojaBuilder Bairro(String bairro) {
+        public LojaBuilder bairro(String bairro) {
             this.bairro = bairro;
             return this;
         }
 
-        public LojaBuilder Rua(String rua) {
+        public LojaBuilder rua(String rua) {
             this.rua = rua;
             return this;
         }
 
-        public LojaBuilder NomeFantasia(String nomeFantasia) {
+        public LojaBuilder nomeFantasia(String nomeFantasia) {
             this.nomeFantasia = nomeFantasia;
             return this;
         }
 
-        public LojaBuilder RazaoSocial(String razaoSocial) {
+        public LojaBuilder razaoSocial(String razaoSocial) {
             this.razaoSocial = razaoSocial;
             return this;
         }
 
-        public LojaBuilder Cnpj(String cnpj) {
+        public LojaBuilder cnpj(String cnpj) {
             this.cnpj = cnpj;
             return this;
         }
 
-        public LojaBuilder Vendedores(Vendedor[] vendedores) {
+        public LojaBuilder vendedores(Vendedor[] vendedores) {
             this.vendedores = vendedores;
             return this;
         }
 
-        public LojaBuilder  Clientes(Cliente[] clientes) {
+        public LojaBuilder clientes(Cliente[] clientes) {
             this.clientes = clientes;
             return this;
         }

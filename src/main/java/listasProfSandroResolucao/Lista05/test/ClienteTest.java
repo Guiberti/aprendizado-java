@@ -1,20 +1,20 @@
 package listasProfSandroResolucao.Lista05.test;
 
 import listasProfSandroResolucao.Lista05.domain.Cliente;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ClienteTest {
 
     @Test
-    public void testarApresentarse(){
+    public void testarApresentarse() {
         Cliente cliente = Cliente.ClienteBuilder.builder()
-                .NomePessoa("Joao")
-                .Idade(35)
-                .Cidade("Sta Lucia")
-                .Bairro("Centro")
-                .Rua("Av OLZ")
+                .nomePessoa("Joao")
+                .idade(35)
+                .cidade("Sta Lucia")
+                .bairro("Centro")
+                .rua("Av OLZ")
                 .build();
 
         String resultadoEsperado = "Meu nome é: Joao, minha idade é: 35.";
