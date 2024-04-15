@@ -69,4 +69,65 @@ public class Loja {
                 .concat(rua));
     }
 
+    public static final class LojaBuilder {
+        private String cidade;
+        private String bairro;
+        private String rua;
+        private String nomeFantasia;
+        private String razaoSocial;
+        private String cnpj;
+        private Vendedor[] vendedores;
+        private Cliente[] clientes;
+
+        private LojaBuilder() {
+        }
+
+        public static LojaBuilder builder() {
+            return new LojaBuilder();
+        }
+
+        public LojaBuilder cidade(String cidade) {
+            this.cidade = cidade;
+            return this;
+        }
+
+        public LojaBuilder bairro(String bairro) {
+            this.bairro = bairro;
+            return this;
+        }
+
+        public LojaBuilder rua(String rua) {
+            this.rua = rua;
+            return this;
+        }
+
+        public LojaBuilder nomeFantasia(String nomeFantasia) {
+            this.nomeFantasia = nomeFantasia;
+            return this;
+        }
+
+        public LojaBuilder razaoSocial(String razaoSocial) {
+            this.razaoSocial = razaoSocial;
+            return this;
+        }
+
+        public LojaBuilder cnpj(String cnpj) {
+            this.cnpj = cnpj;
+            return this;
+        }
+
+        public LojaBuilder vendedores(Vendedor[] vendedores) {
+            this.vendedores = vendedores;
+            return this;
+        }
+
+        public LojaBuilder clientes(Cliente[] clientes) {
+            this.clientes = clientes;
+            return this;
+        }
+
+        public Loja build() {
+            return new Loja(cidade, bairro, rua, nomeFantasia, razaoSocial, cnpj, vendedores, clientes);
+        }
+    }
 }
