@@ -1,20 +1,15 @@
 package listasProfSandroResolucao.Lista06.domain;
 
-public class Loja {
-    String cidade;
-    String bairro;
-    String rua;
-    String nomeFantasia;
-    String razaoSocial;
-    Long cnpj;
-    Vendedor[] vendedores;
-    Cliente[] clientes;
+public class Loja extends Endereco {
+    private String nomeFantasia;
+    private String razaoSocial;
+    private Long cnpj;
+    private Vendedor[] vendedores;
+    private Cliente[] clientes;
 
-    private Loja(String cidade, String bairro, String rua, String nomeFantasia, String razaoSocial, Long cnpj,
-                 Vendedor[] vendedores, Cliente[] clientes) {
-        this.cidade = cidade;
-        this.bairro = bairro;
-        this.rua = rua;
+    private Loja(String estado, String cidade, String bairro, String rua, Integer numero, String complemento,
+                 String nomeFantasia, String razaoSocial, Long cnpj, Vendedor[] vendedores, Cliente[] clientes) {
+        super(estado, cidade, bairro, rua, numero, complemento);
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
@@ -69,68 +64,6 @@ public class Loja {
                 .concat(rua)
                 .concat(".")
         );
-    }
-
-    public static final class LojaBuilder {
-        private String cidade;
-        private String bairro;
-        private String rua;
-        private String nomeFantasia;
-        private String razaoSocial;
-        private Long cnpj;
-        private Vendedor[] vendedores;
-        private Cliente[] clientes;
-
-        private LojaBuilder() {
-        }
-
-        public static LojaBuilder builder() {
-            return new LojaBuilder();
-        }
-
-        public LojaBuilder cidade(String cidade) {
-            this.cidade = cidade;
-            return this;
-        }
-
-        public LojaBuilder bairro(String bairro) {
-            this.bairro = bairro;
-            return this;
-        }
-
-        public LojaBuilder rua(String rua) {
-            this.rua = rua;
-            return this;
-        }
-
-        public LojaBuilder nomeFantasia(String nomeFantasia) {
-            this.nomeFantasia = nomeFantasia;
-            return this;
-        }
-
-        public LojaBuilder razaoSocial(String razaoSocial) {
-            this.razaoSocial = razaoSocial;
-            return this;
-        }
-
-        public LojaBuilder cnpj(Long cnpj) {
-            this.cnpj = cnpj;
-            return this;
-        }
-
-        public LojaBuilder vendedores(Vendedor[] vendedores) {
-            this.vendedores = vendedores;
-            return this;
-        }
-
-        public LojaBuilder clientes(Cliente[] clientes) {
-            this.clientes = clientes;
-            return this;
-        }
-
-        public Loja build() {
-            return new Loja(cidade, bairro, rua, nomeFantasia, razaoSocial, cnpj, vendedores, clientes);
-        }
     }
 
 }

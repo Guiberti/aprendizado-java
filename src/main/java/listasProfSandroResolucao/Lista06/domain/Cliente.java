@@ -1,9 +1,9 @@
 package listasProfSandroResolucao.Lista06.domain;
 
 public class Cliente extends Pessoa {
-
-    private Cliente(String nomePessoa, String cidade, String bairro, String rua, Integer idade) {
-        super(nomePessoa, cidade, bairro, rua, idade);
+    private Cliente(String nomePessoa, Integer idade, String estado, String cidade, String bairro, String rua,
+                    Integer numero, String complemento) {
+        super(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento);
     }
 
     // Met add
@@ -17,10 +17,13 @@ public class Cliente extends Pessoa {
 
     public static final class ClienteBuilder {
         private String nomePessoa;
+        private Integer idade;
+        private String estado;
         private String cidade;
         private String bairro;
         private String rua;
-        private Integer idade;
+        private Integer numero;
+        private String complemento;
 
         private ClienteBuilder() {
         }
@@ -31,6 +34,16 @@ public class Cliente extends Pessoa {
 
         public ClienteBuilder nomePessoa(String nomePessoa) {
             this.nomePessoa = nomePessoa;
+            return this;
+        }
+
+        public ClienteBuilder idade(Integer idade) {
+            this.idade = idade;
+            return this;
+        }
+
+        public ClienteBuilder estado(String estado) {
+            this.estado = estado;
             return this;
         }
 
@@ -49,13 +62,19 @@ public class Cliente extends Pessoa {
             return this;
         }
 
-        public ClienteBuilder idade(Integer idade) {
-            this.idade = idade;
+        public ClienteBuilder numero(Integer numero) {
+            this.numero = numero;
             return this;
         }
 
+        public ClienteBuilder complemento(String complemento) {
+            this.complemento = complemento;
+            return this;
+        }
+
+
         public Cliente build() {
-            return new Cliente(nomePessoa, cidade, bairro, rua, idade);
+            return new Cliente(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento);
         }
     }
 

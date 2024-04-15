@@ -5,9 +5,9 @@ public class Gerente extends Pessoa {
     double salarioBase;
     double[] salarioRecebido = new double[3];
 
-    private Gerente(String nomePessoa, String cidade, String bairro, String rua, Integer idade,
-                    Loja loja, double salarioBase, double[] salarioRecebido) {
-        super(nomePessoa, cidade, bairro, rua, idade);
+    private Gerente(String nomePessoa, Integer idade, String estado, String cidade, String bairro, String rua,
+                    Integer numero, String complemento, Loja loja, double salarioBase, double[] salarioRecebido) {
+        super(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento);
         this.loja = loja;
         this.salarioBase = salarioBase;
         this.salarioRecebido = salarioRecebido;
@@ -40,22 +40,54 @@ public class Gerente extends Pessoa {
         return salarioBase * 0.35;
     }
 
-
     public static final class GerenteBuilder {
+        private String estado;
+        private String cidade;
+        private String bairro;
+        private String rua;
+        private Integer numero;
+        private String complemento;
         private Loja loja;
         private double salarioBase;
         private double[] salarioRecebido;
         private String nomePessoa;
         private Integer idade;
-        private String cidade;
-        private String bairro;
-        private String rua;
 
         private GerenteBuilder() {
         }
 
         public static GerenteBuilder builder() {
             return new GerenteBuilder();
+        }
+
+        public GerenteBuilder estado(String estado) {
+            this.estado = estado;
+            return this;
+        }
+
+        public GerenteBuilder cidade(String cidade) {
+            this.cidade = cidade;
+            return this;
+        }
+
+        public GerenteBuilder bairro(String bairro) {
+            this.bairro = bairro;
+            return this;
+        }
+
+        public GerenteBuilder rua(String rua) {
+            this.rua = rua;
+            return this;
+        }
+
+        public GerenteBuilder numero(Integer numero) {
+            this.numero = numero;
+            return this;
+        }
+
+        public GerenteBuilder complemento(String complemento) {
+            this.complemento = complemento;
+            return this;
         }
 
         public GerenteBuilder loja(Loja loja) {
@@ -83,24 +115,10 @@ public class Gerente extends Pessoa {
             return this;
         }
 
-        public GerenteBuilder cidade(String cidade) {
-            this.cidade = cidade;
-            return this;
-        }
-
-        public GerenteBuilder bairro(String bairro) {
-            this.bairro = bairro;
-            return this;
-        }
-
-        public GerenteBuilder rua(String rua) {
-            this.rua = rua;
-            return this;
-        }
-
         public Gerente build() {
-            return new Gerente(nomePessoa, cidade, bairro, rua, idade, loja, salarioBase, salarioRecebido);
+            return new Gerente(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento, loja, salarioBase, salarioRecebido);
         }
     }
+
 
 }

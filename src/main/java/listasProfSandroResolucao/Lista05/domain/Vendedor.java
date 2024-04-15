@@ -1,4 +1,5 @@
 package listasProfSandroResolucao.Lista05.domain;
+
 import java.util.Arrays;
 
 public class Vendedor extends Pessoa {
@@ -61,7 +62,6 @@ public class Vendedor extends Pessoa {
     public double calcularBonus() {
         return salarioBase * 0.2;
     }
-
     public static final class VendedorBuilder {
         private String nomePessoa;
         private String cidade;
@@ -123,4 +123,5 @@ public class Vendedor extends Pessoa {
             return new Vendedor(nomePessoa, idade, loja, cidade, bairro, rua, salarioBase, salarioRecebido);
         }
     }
+
 }
