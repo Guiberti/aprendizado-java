@@ -4,6 +4,7 @@ import listasProfSandroResolucao.Lista06.domain.*;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListaSeisTest {
@@ -19,7 +20,7 @@ public class ListaSeisTest {
                 .rua("Avenida OLZ")
                 .loja(null)
                 .salarioBase(2200)
-                .salarioRecebido(new double[]{5000, 3900, 8100})
+                .salarioRecebido(Arrays.asList(2200.0, 2500.0, 2000.0))
                 .build();
 
         // Criação e configuração dos Vendedores
@@ -31,7 +32,7 @@ public class ListaSeisTest {
                 .bairro("Centro")
                 .rua("Av OLZ")
                 .salarioBase(1800)
-                .salarioRecebido(new double[]{1500, 1800, 1900})
+                .salarioRecebido(Arrays.asList(1800.0, 1700.0, 1850.0))
                 .build();
 
         Vendedor vendedor2 = Vendedor.VendedorBuilder.builder()
@@ -42,7 +43,7 @@ public class ListaSeisTest {
                 .bairro("Centro")
                 .rua("Rua B")
                 .salarioBase(1900)
-                .salarioRecebido(new double[]{1600, 1300, 1200})
+                .salarioRecebido(Arrays.asList(1900.0, 1900.0, 2200.0))
                 .build();
 
         // Criação e configuração dos Clientes
@@ -152,8 +153,15 @@ public class ListaSeisTest {
         System.out.println(cliente1.apresentarse());
         System.out.println(cliente2.apresentarse());
 
-        // Apresentação dos pedidos processados
-        System.out.println("\n==================== PEDIDOS PROCESSADOS =======================");
+        // Apresentação dos Itens
+        System.out.println("\n==================== ITENS =======================");
+        System.out.println(item1.gerarDescricao());
+        System.out.println(item2.gerarDescricao());
+
+        // Apresentação dos Pedidos
+        System.out.println("\n==================== PEDIDOS =======================");
+        System.out.println(pedido1.gerarDescricaoVenda());
+        System.out.println(pedido2.gerarDescricaoVenda());
 
     }
 }

@@ -69,7 +69,7 @@ public class Pedido {
 
     public String gerarDescricaoVenda() {
         String descricao = "================== Pedido ======================\n";
-        descricao += "ID: " + id + "\n";
+        descricao += "ID Pedido: " + id + "\n";
         descricao += "Data de Criação: " + dataCriacao.format(DateTimeFormatter.ISO_DATE) + "\n";
         descricao += "Cliente: " + cliente.getNomePessoa() + "\n";
         descricao += "Vendedor: " + vendedor.getNomePessoa() + "\n";
@@ -84,7 +84,6 @@ public class Pedido {
         descricao += "\n=============================================\n";
         return descricao;
     }
-
 
 
     public static final class PedidoBuilder {

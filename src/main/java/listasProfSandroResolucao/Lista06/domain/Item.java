@@ -46,7 +46,7 @@ public class Item {
     }
 
     public String gerarDescricao() {
-        return ("ID: " + id + ", Nome: " + nome + ", Tipo: " + tipo
+        return ("ID Item: " + id + ", Nome: " + nome + ", Tipo: " + tipo
                 + ", Valor: " + valor);
     }
 
