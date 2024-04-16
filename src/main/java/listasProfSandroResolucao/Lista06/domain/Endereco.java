@@ -9,6 +9,9 @@ public abstract class Endereco {
     protected String complemento;
 
     protected Endereco(String estado, String cidade, String bairro, String rua, Integer numero, String complemento) {
+        if (estado == null || cidade == null || bairro == null || rua == null || numero == null || complemento == null) {
+            throw new IllegalArgumentException("Os parâmetros do endereço não podem ser nulos");
+        }
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;

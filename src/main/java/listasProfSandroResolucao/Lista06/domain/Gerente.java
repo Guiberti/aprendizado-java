@@ -1,12 +1,14 @@
 package listasProfSandroResolucao.Lista06.domain;
 
+import java.util.List;
+
 public class Gerente extends Pessoa {
-    Loja loja;
-    double salarioBase;
-    double[] salarioRecebido = new double[3];
+    private Loja loja;
+    private double salarioBase;
+    private List<Double> salarioRecebido;
 
     private Gerente(String nomePessoa, Integer idade, String estado, String cidade, String bairro, String rua,
-                    Integer numero, String complemento, Loja loja, double salarioBase, double[] salarioRecebido) {
+                    Integer numero, String complemento, Loja loja, double salarioBase, List<Double> salarioRecebido) {
         super(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento);
         this.loja = loja;
         this.salarioBase = salarioBase;
@@ -29,11 +31,8 @@ public class Gerente extends Pessoa {
     }
 
     public double calcularMedia() {
-        double soma = 0;
-        for (double salario : salarioRecebido) {
-            soma += salario;
-        }
-        return soma / salarioRecebido.length;
+        double soma = salarioRecebido.stream().mapToDouble(Double::doubleValue).sum();
+        return soma / salarioRecebido.size();
     }
 
     public double calcularBonus() {
@@ -49,7 +48,7 @@ public class Gerente extends Pessoa {
         private String complemento;
         private Loja loja;
         private double salarioBase;
-        private double[] salarioRecebido;
+        private List<Double> salarioRecebido;
         private String nomePessoa;
         private Integer idade;
 
@@ -100,7 +99,7 @@ public class Gerente extends Pessoa {
             return this;
         }
 
-        public GerenteBuilder salarioRecebido(double[] salarioRecebido) {
+        public GerenteBuilder salarioRecebido(List<Double> salarioRecebido) {
             this.salarioRecebido = salarioRecebido;
             return this;
         }
