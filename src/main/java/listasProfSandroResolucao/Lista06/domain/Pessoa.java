@@ -11,6 +11,14 @@ public abstract class Pessoa extends Endereco {
         this.idade = idade;
     }
 
+    public String getNomePessoa() {
+        return nomePessoa;
+    }
+
+    public Integer getIdade() {
+        return idade;
+    }
+
     // met add
     public abstract String apresentarse();
 }

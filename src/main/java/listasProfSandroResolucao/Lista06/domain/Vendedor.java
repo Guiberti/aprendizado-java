@@ -1,9 +1,9 @@
 package listasProfSandroResolucao.Lista06.domain;
 
 public class Vendedor extends Pessoa {
-    Loja loja;
-    double salarioBase;
-    double[] salarioRecebido = new double[3];
+    private Loja loja;
+    private double salarioBase;
+    private double[] salarioRecebido = new double[3];
 
     private Vendedor(String nomePessoa, Integer idade, String estado, String cidade, String bairro, String rua,
                      Integer numero, String complemento, Loja loja, double salarioBase, double[] salarioRecebido) {

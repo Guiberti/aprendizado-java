@@ -17,6 +17,30 @@ public abstract class Endereco {
         this.complemento = complemento;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
     protected String apresentarLogradouro() {
         return ("Moro no estado de: " + estado + " ,na cidade de: " + cidade + ", no bairro: " + bairro
                 + ", na rua: " + rua + ", complemento: " + complemento + ".");
