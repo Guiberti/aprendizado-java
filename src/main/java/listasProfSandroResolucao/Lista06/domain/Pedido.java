@@ -65,7 +65,7 @@ public class Pedido {
         private PedidoBuilder() {
         }
 
-        public static PedidoBuilder aPedido() {
+        public static PedidoBuilder builder() {
             return new PedidoBuilder();
         }
 
@@ -112,5 +112,6 @@ public class Pedido {
         public Pedido build() {
             return new Pedido(id, dataCriacao, dataPagamento, dataVencimentoReserva, cliente, vendedor, loja, itens);
         }
+
     }
 }
