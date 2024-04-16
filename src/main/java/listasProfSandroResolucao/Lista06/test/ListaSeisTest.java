@@ -2,13 +2,13 @@ package listasProfSandroResolucao.Lista06.test;
 
 import listasProfSandroResolucao.Lista06.domain.*;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ListaSeisTest {
     public static void main(String[] args) {
+        DecimalFormat df = new DecimalFormat("0.00"); // Define duas casas decimais
 
         // Criação e configuração do Gerente
         Gerente gerente = Gerente.GerenteBuilder.builder()
@@ -36,7 +36,7 @@ public class ListaSeisTest {
 
         Vendedor vendedor2 = Vendedor.VendedorBuilder.builder()
                 .nomePessoa("Talita")
-                .idade(45)
+                .idade(23)
                 .loja(null)
                 .cidade("Sta Lucia")
                 .bairro("Centro")
@@ -106,53 +106,78 @@ public class ListaSeisTest {
                 .id(1L)
                 .dataCriacao(LocalDate.of(2024, 4, 10))
                 .dataPagamento(LocalDate.of(2024, 4, 15))
-                .dataVencimentoReserva(LocalDate.of(2024, 4, 25))
+                .dataVencimentoReserva(LocalDate.of(2024, 4, 13))
                 .cliente(cliente1)
                 .vendedor(vendedor1)
                 .loja(loja)
                 .itens(List.of(item1, item2))
                 .build();
 
-        Pedido pedido2= Pedido.PedidoBuilder.builder()
+        Pedido pedido2 = Pedido.PedidoBuilder.builder()
                 .id(2L)
                 .dataCriacao(LocalDate.of(2024, 4, 10))
-                .dataPagamento(LocalDate.of(2024, 4, 15))
-                .dataVencimentoReserva(LocalDate.of(2024, 4, 25))
+                .dataPagamento(LocalDate.of(2024, 4, 12))
+                .dataVencimentoReserva(LocalDate.of(2024, 4, 13))
                 .cliente(cliente2)
                 .vendedor(vendedor2)
                 .loja(loja)
                 .itens(List.of(item3))
                 .build();
 
+        // Criação e configuração da instância de ProcessarPedido
+        ProcessarPedido processarPedido = new ProcessarPedido(loja);
 
+        // Processamento dos pedidos
+        Pedido pedidoProcessado1 = processarPedido.processar(
+                pedido1.getLoja(), pedido1.getCliente(), pedido1.getVendedor(), pedido1.getItens(),
+                pedido1.getDataCriacao(), pedido1.getDataPagamento(), pedido1.getDataVencimentoReserva()
+        );
+        Pedido pedidoProcessado2 = processarPedido.processar(
+                pedido2.getLoja(), pedido2.getCliente(), pedido2.getVendedor(), pedido2.getItens(),
+                pedido2.getDataCriacao(), pedido2.getDataPagamento(), pedido2.getDataVencimentoReserva()
+        );
+
+
+        //Apresentações
         System.out.println("\n==================== LOJA =======================");
         System.out.println(loja.apresentarse());
-        System.out.println("Quantidade de clientes: %d\\n" + loja.contarClientes());
-        System.out.println("Quantidade de vendedores: %d\\n" + loja.contarVendedores());
+        System.out.println("Quantidade de clientes: " + loja.contarClientes());
+        System.out.println("Quantidade de vendedores: " + loja.contarVendedores());
 
         System.out.println("\n==================== GERENTES =======================");
         System.out.println(gerente.apresentarse());
-        System.out.println("Minha média salárial: " + gerente.calcularMedia());
-        System.out.println("Meu bônus salarial: " + gerente.calcularBonus());
+        System.out.println("Média salárial: " + df.format(gerente.calcularMedia()));
+        System.out.println("Bônus salarial: " + df.format(gerente.calcularBonus()));
 
         System.out.println("\n==================== VENDEDORES =======================");
         System.out.println("Vendedor 1: ");
         System.out.println(vendedor1.apresentarse());
-        System.out.println("Minha média salárial: " + vendedor1.calcularMedia());
-        System.out.println("Meu bônus salarial: " + vendedor1.calcularBonus());
+        System.out.println("Média salárial: " + df.format(vendedor1.calcularMedia()));
+        System.out.println("Bônus salarial: " + df.format(vendedor1.calcularBonus()));
 
         System.out.println("\nVendedor 2: ");
         System.out.println(vendedor2.apresentarse());
-        System.out.println("Minha média salárial: " + vendedor2.calcularMedia());
-        System.out.println("Meu bônus salarial: " + vendedor2.calcularBonus());
+        System.out.println("Média salárial: " + df.format(vendedor2.calcularMedia()));
+        System.out.println("Bônus salarial: " + df.format(vendedor2.calcularBonus()));
 
         System.out.println("\n==================== CLIENTES =======================");
         System.out.println(cliente1.apresentarse());
         System.out.println(cliente2.apresentarse());
 
-        System.out.println("\n==================== PEDIDOS =======================");
-        System.out.println(pedido1.gerarDescricaoVenda());
-        System.out.println(pedido2.gerarDescricaoVenda());
+        // Apresentação dos pedidos processados
+        System.out.println("\n==================== PEDIDOS PROCESSADOS =======================");
+        if (pedidoProcessado1 != null) {
+            System.out.println("Pedido 1 processado com sucesso:");
+            System.out.println(pedidoProcessado1.gerarDescricaoVenda());
+        } else {
+            System.out.println("Falha ao processar o pedido 1.");
+        }
 
+        if (pedidoProcessado2 != null) {
+            System.out.println("Pedido 2 processado com sucesso:");
+            System.out.println(pedidoProcessado2.gerarDescricaoVenda());
+        } else {
+            System.out.println("Falha ao processar o pedido 2.");
+        }
     }
 }

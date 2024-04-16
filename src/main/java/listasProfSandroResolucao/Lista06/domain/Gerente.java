@@ -1,8 +1,6 @@
 package listasProfSandroResolucao.Lista06.domain;
 
 public class Gerente extends Pessoa {
-
-
     Loja loja;
     double salarioBase;
     double[] salarioRecebido = new double[3];
@@ -118,7 +116,8 @@ public class Gerente extends Pessoa {
         }
 
         public Gerente build() {
-            return new Gerente(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento, loja, salarioBase, salarioRecebido);
+            return new Gerente(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento,
+                    loja, salarioBase, salarioRecebido);
         }
     }
 }
