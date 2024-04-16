@@ -104,38 +104,26 @@ public class ListaSeisTest {
         //Criaçào e Configuração do Pedido
         Pedido pedido1 = Pedido.PedidoBuilder.builder()
                 .id(1L)
-                .dataCriacao(LocalDate.of(2024, 4, 10))
-                .dataPagamento(LocalDate.of(2024, 4, 15))
-                .dataVencimentoReserva(LocalDate.of(2024, 4, 13))
+                .dataCriacao(LocalDate.of(2024, 4, 25))
+                .dataPagamento(LocalDate.of(2024, 4, 26))
+                .dataVencimentoReserva(LocalDate.of(2024, 4, 28))
                 .cliente(cliente1)
                 .vendedor(vendedor1)
                 .loja(loja)
                 .itens(List.of(item1, item2))
                 .build();
 
+
         Pedido pedido2 = Pedido.PedidoBuilder.builder()
                 .id(2L)
-                .dataCriacao(LocalDate.of(2024, 4, 10))
-                .dataPagamento(LocalDate.of(2024, 4, 12))
-                .dataVencimentoReserva(LocalDate.of(2024, 4, 13))
+                .dataCriacao(LocalDate.of(2024, 4, 16))
+                .dataPagamento(LocalDate.of(2024, 4, 17))
+                .dataVencimentoReserva(LocalDate.of(2024, 4, 19))
                 .cliente(cliente2)
                 .vendedor(vendedor2)
                 .loja(loja)
                 .itens(List.of(item3))
                 .build();
-
-        // Criação e configuração da instância de ProcessarPedido
-        ProcessarPedido processarPedido = new ProcessarPedido(loja);
-
-        // Processamento dos pedidos
-        Pedido pedidoProcessado1 = processarPedido.processar(
-                pedido1.getLoja(), pedido1.getCliente(), pedido1.getVendedor(), pedido1.getItens(),
-                pedido1.getDataCriacao(), pedido1.getDataPagamento(), pedido1.getDataVencimentoReserva()
-        );
-        Pedido pedidoProcessado2 = processarPedido.processar(
-                pedido2.getLoja(), pedido2.getCliente(), pedido2.getVendedor(), pedido2.getItens(),
-                pedido2.getDataCriacao(), pedido2.getDataPagamento(), pedido2.getDataVencimentoReserva()
-        );
 
 
         //Apresentações
@@ -166,18 +154,6 @@ public class ListaSeisTest {
 
         // Apresentação dos pedidos processados
         System.out.println("\n==================== PEDIDOS PROCESSADOS =======================");
-        if (pedidoProcessado1 != null) {
-            System.out.println("Pedido 1 processado com sucesso:");
-            System.out.println(pedidoProcessado1.gerarDescricaoVenda());
-        } else {
-            System.out.println("Falha ao processar o pedido 1.");
-        }
 
-        if (pedidoProcessado2 != null) {
-            System.out.println("Pedido 2 processado com sucesso:");
-            System.out.println(pedidoProcessado2.gerarDescricaoVenda());
-        } else {
-            System.out.println("Falha ao processar o pedido 2.");
-        }
     }
 }
