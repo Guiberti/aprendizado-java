@@ -198,7 +198,6 @@ public class ListaSeisTest {
         System.out.println(item5.gerarDescricao());
 
         // Criar e processar um pedido fictício
-        System.out.println("\n==================== PEDIDOS PROCESSADOS =======================");
         processador.processar(pedido1);
         processador.processar(pedido2);
         processador.processar(pedido3);

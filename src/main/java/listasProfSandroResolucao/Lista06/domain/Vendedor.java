@@ -26,7 +26,7 @@ public class Vendedor extends Pessoa {
                 .concat(nomePessoa)
                 .concat(", minha idade é: ")
                 .concat(String.valueOf(idade))
-                .concat(", sou vendedor da loja: ")
+                .concat(", sou vendedor(a) da loja: ")
                 .concat((loja == null) ? "null" : loja.getNomeFantasia())
                 .concat("."));
     }
