@@ -4,6 +4,7 @@ import listasProfSandroResolucao.Lista06.domain.*;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +13,6 @@ public class ListaSeisTest {
         DecimalFormat df = new DecimalFormat("0.00"); // Define duas casas decimais
         ProcessarPedido processador = new ProcessarPedido();
 
-        // Criação e configuração do Gerente
         Gerente gerente = Gerente.GerenteBuilder.builder()
                 .nomePessoa("Vânia")
                 .idade(28)
@@ -24,7 +24,6 @@ public class ListaSeisTest {
                 .salarioRecebido(Arrays.asList(2200.0, 2500.0, 2000.0))
                 .build();
 
-        // Criação e configuração dos Vendedores
         Vendedor vendedor1 = Vendedor.VendedorBuilder.builder()
                 .nomePessoa("Guilherme")
                 .idade(18)
@@ -46,8 +45,17 @@ public class ListaSeisTest {
                 .salarioBase(1900)
                 .salarioRecebido(Arrays.asList(1900.0, 1900.0, 2200.0))
                 .build();
+        Vendedor vendedor3 = Vendedor.VendedorBuilder.builder()
+                .nomePessoa("Fran")
+                .idade(25)
+                .loja(null)
+                .cidade("Sta Lucia")
+                .bairro("Centro")
+                .rua("Rua B")
+                .salarioBase(2000)
+                .salarioRecebido(Arrays.asList(2000.0, 2000.0, 2300.0))
+                .build();
 
-        // Criação e configuração dos Clientes
         Cliente cliente1 = Cliente.ClienteBuilder.builder()
                 .nomePessoa("Fátima")
                 .idade(54)
@@ -64,7 +72,6 @@ public class ListaSeisTest {
                 .rua("Av Brasil")
                 .build();
 
-        // Criação e configuração da Loja
         Loja loja = Loja.LojaBuilder.builder()
                 .cidade("Santa Lúcia")
                 .bairro("Centro")
@@ -72,17 +79,15 @@ public class ListaSeisTest {
                 .nomeFantasia("Magazine Móveis")
                 .razaoSocial("magamo")
                 .cnpj(17235604000110L)
-                .vendedores(Arrays.asList(vendedor1, vendedor2))
+                .vendedores(Arrays.asList(vendedor1, vendedor2, vendedor3))
                 .clientes(Arrays.asList(cliente1, cliente2))
                 .build();
 
-        // Associa os vendedores à loja
         vendedor1.setLoja(loja);
         vendedor2.setLoja(loja);
-        // Associa o gerente à loja
+        vendedor3.setLoja(loja);
         gerente.setLoja(loja);
 
-        //Criaçào e Configuração dos Itens
         Item item1 = Item.ItemBuilder.builder()
                 .id(15L)
                 .nome("Electrolux LED-17")
@@ -118,11 +123,10 @@ public class ListaSeisTest {
                 .build();
 
 
-        //Criaçào e Configuração do Pedido
         Pedido pedido1 = Pedido.PedidoBuilder.builder()
                 .id(1L)
                 .dataCriacao(LocalDate.of(2024, 4, 25))
-                .dataPagamento(LocalDate.of(2024, 4, 26))
+                .dataPagamento(LocalDate.of(2024, 4, 30))
                 .dataVencimentoReserva(LocalDate.of(2024, 4, 28))
                 .cliente(cliente1)
                 .vendedor(vendedor1)
@@ -130,40 +134,6 @@ public class ListaSeisTest {
                 .itens(List.of(item1, item2))
                 .build();
 
-
-        Pedido pedido2 = Pedido.PedidoBuilder.builder()
-                .id(2L)
-                .dataCriacao(LocalDate.now().plusDays(5))
-                .dataPagamento(LocalDate.now().plusDays(3))
-                .dataVencimentoReserva(LocalDate.now().plusDays(1))
-                .cliente(cliente2)
-                .vendedor(vendedor2)
-                .loja(loja)
-                .itens(List.of(item3))
-                .build();
-
-        Pedido pedido3 = Pedido.PedidoBuilder.builder()
-                .id(3L)
-                .dataCriacao(LocalDate.of(2024, 4, 25))
-                .dataPagamento(LocalDate.of(2024, 4, 22))
-                .dataVencimentoReserva(LocalDate.of(2024, 4, 19))
-                .cliente(cliente1)
-                .vendedor(vendedor2)
-                .loja(loja)
-                .itens(List.of(item3, item4, item5))
-                .build();
-        Pedido pedido4 = Pedido.PedidoBuilder.builder()
-                .id(3L)
-                .dataCriacao(LocalDate.now())
-                .dataPagamento(LocalDate.now().plusDays(2))
-                .dataVencimentoReserva(LocalDate.now().plusDays(3))
-                .cliente(cliente2)
-                .vendedor(vendedor1)
-                .loja(loja)
-                .itens(List.of(item1, item3, item4, item5))
-                .build();
-
-        //Apresentações
         System.out.println("\n==================== LOJA =======================");
         System.out.println(loja.apresentarse());
         System.out.println("Quantidade de clientes: " + loja.contarClientes());
@@ -185,11 +155,15 @@ public class ListaSeisTest {
         System.out.println("Média salárial: " + df.format(vendedor2.calcularMedia()));
         System.out.println("Bônus salarial: " + df.format(vendedor2.calcularBonus()));
 
+        System.out.println("\nVendedor 3: ");
+        System.out.println(vendedor3.apresentarse());
+        System.out.println("Média salárial: " + df.format(vendedor3.calcularMedia()));
+        System.out.println("Bônus salarial: " + df.format(vendedor3.calcularBonus()));
+
         System.out.println("\n==================== CLIENTES DA LOJA =======================");
         System.out.println(cliente1.apresentarse());
         System.out.println(cliente2.apresentarse());
 
-        // Apresentação dos Itens (Teste)
         System.out.println("\n==================== ITENS DISPONIVEIS =======================");
         System.out.println(item1.gerarDescricao());
         System.out.println(item2.gerarDescricao());
@@ -197,10 +171,8 @@ public class ListaSeisTest {
         System.out.println(item4.gerarDescricao());
         System.out.println(item5.gerarDescricao());
 
-        // Criar e processar um pedido fictício
         processador.processar(pedido1);
-        processador.processar(pedido2);
-        processador.processar(pedido3);
-        processador.processar(pedido4);
+        Pedido pedido = processador.processar(cliente1, vendedor1, loja, List.of(item1, item3, item4, item5));
+
     }
 }

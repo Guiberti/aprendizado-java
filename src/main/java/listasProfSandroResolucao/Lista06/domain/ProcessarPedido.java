@@ -4,19 +4,18 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ProcessarPedido {
-    public void processar(Cliente cliente, Vendedor vendedor, Loja loja, List<Item> itens) {
+    private static long proximoIdPedido = 1;
+    private Pedido pedido;
+
+    public Pedido processar(Cliente cliente, Vendedor vendedor, Loja loja, List<Item> itens) {
         LocalDate dataAtual = LocalDate.now();
         LocalDate dataCriacao = LocalDate.now();
-        LocalDate dataPagamento = dataAtual;
         LocalDate dataVencimentoReserva = dataCriacao.plusDays(3);
 
-        //Incrementa automaticamente o ID
-        long idPedido = proximoIdPedido++;
-
         Pedido pedido = Pedido.PedidoBuilder.builder()
-                .id(idPedido)
+                .id(proximoIdPedido++)
                 .dataCriacao(dataCriacao)
-                .dataPagamento(dataPagamento)
+                .dataPagamento(dataAtual)
                 .dataVencimentoReserva(dataVencimentoReserva)
                 .cliente(cliente)
                 .vendedor(vendedor)
@@ -25,9 +24,11 @@ public class ProcessarPedido {
                 .build();
 
         processar(pedido);
+        return pedido;
     }
 
     public void processar(Pedido pedido) {
+        this.pedido = pedido;
         if (pedido == null) {
             System.out.println("Pedido inválido. Não é possível processar.");
             return;
@@ -35,19 +36,17 @@ public class ProcessarPedido {
 
         LocalDate dataAtual = LocalDate.now();
 
-        if (confirmarPagamento(pedido.getDataCriacao(), pedido.getDataVencimentoReserva(), pedido.getDataPagamento())) {
-            System.out.println("Pedido processado com sucesso!");
+        if (verificarPagamento()) {
+            System.out.println("\n\n    Pedido processado com sucesso!");
             System.out.println(pedido.gerarDescricaoVenda());
         } else {
-            System.out.println("Não foi possível processar o pedido. A reserva está vencida.");
+            System.out.println("Não foi possível processar o pedido. A reserva está vencida.\n");
         }
     }
 
-    private boolean confirmarPagamento(LocalDate dataAtual, LocalDate dataVencimentoReserva, LocalDate dataPagamento) {
-        return !dataAtual.isAfter(dataVencimentoReserva) && !dataPagamento.isAfter(dataVencimentoReserva);
+    private boolean verificarPagamento() {
+        return !pedido.getDataCriacao().isAfter(pedido.getDataPagamento()) &&
+                !pedido.getDataPagamento().isAfter(pedido.getDataVencimentoReserva());
     }
-
-    // Variável para controlar o próximo ID do pedido
-    private static long proximoIdPedido = 1;
 }
 
