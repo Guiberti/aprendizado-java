@@ -120,4 +120,6 @@ public class Vendedor extends Pessoa {
             return new Vendedor(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento, loja, salarioBase, salarioRecebido);
         }
     }
+
+
 }

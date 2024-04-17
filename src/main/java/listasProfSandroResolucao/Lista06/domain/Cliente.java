@@ -72,8 +72,6 @@ public class Cliente extends Pessoa {
             this.complemento = complemento;
             return this;
         }
-
-
         public Cliente build() {
             return new Cliente(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento);
         }

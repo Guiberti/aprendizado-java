@@ -10,6 +10,7 @@ import java.util.List;
 public class ListaSeisTest {
     public static void main(String[] args) {
         DecimalFormat df = new DecimalFormat("0.00"); // Define duas casas decimais
+        ProcessarPedido processador = new ProcessarPedido();
 
         // Criação e configuração do Gerente
         Gerente gerente = Gerente.GerenteBuilder.builder()
@@ -54,6 +55,7 @@ public class ListaSeisTest {
                 .bairro("Centro")
                 .rua("Av OLZ")
                 .build();
+
         Cliente cliente2 = Cliente.ClienteBuilder.builder()
                 .nomePessoa("Dalci")
                 .idade(62)
@@ -70,8 +72,8 @@ public class ListaSeisTest {
                 .nomeFantasia("Magazine Móveis")
                 .razaoSocial("magamo")
                 .cnpj(17235604000110L)
-                .vendedores(new Vendedor[]{vendedor1, vendedor2})
-                .clientes(new Cliente[]{cliente1, cliente2})
+                .vendedores(Arrays.asList(vendedor1, vendedor2))
+                .clientes(Arrays.asList(cliente1, cliente2))
                 .build();
 
         // Associa os vendedores à loja
@@ -101,6 +103,20 @@ public class ListaSeisTest {
                 .tipo("Sanduicheira")
                 .valor(99.00)
                 .build();
+        Item item4 = Item.ItemBuilder.builder()
+                .id(18L)
+                .nome("Microondas Electrolux")
+                .tipo("Eletrodoméstico")
+                .valor(699.00)
+                .build();
+
+        Item item5 = Item.ItemBuilder.builder()
+                .id(19L)
+                .nome("Liquidificador Philips")
+                .tipo("Eletrodoméstico")
+                .valor(129.00)
+                .build();
+
 
         //Criaçào e Configuração do Pedido
         Pedido pedido1 = Pedido.PedidoBuilder.builder()
@@ -117,15 +133,35 @@ public class ListaSeisTest {
 
         Pedido pedido2 = Pedido.PedidoBuilder.builder()
                 .id(2L)
-                .dataCriacao(LocalDate.of(2024, 4, 16))
-                .dataPagamento(LocalDate.of(2024, 4, 17))
-                .dataVencimentoReserva(LocalDate.of(2024, 4, 19))
+                .dataCriacao(LocalDate.now().plusDays(5))
+                .dataPagamento(LocalDate.now().plusDays(3))
+                .dataVencimentoReserva(LocalDate.now().plusDays(1))
                 .cliente(cliente2)
                 .vendedor(vendedor2)
                 .loja(loja)
                 .itens(List.of(item3))
                 .build();
 
+        Pedido pedido3 = Pedido.PedidoBuilder.builder()
+                .id(3L)
+                .dataCriacao(LocalDate.of(2024, 4, 25))
+                .dataPagamento(LocalDate.of(2024, 4, 22))
+                .dataVencimentoReserva(LocalDate.of(2024, 4, 19))
+                .cliente(cliente1)
+                .vendedor(vendedor2)
+                .loja(loja)
+                .itens(List.of(item3, item4, item5))
+                .build();
+        Pedido pedido4 = Pedido.PedidoBuilder.builder()
+                .id(3L)
+                .dataCriacao(LocalDate.now())
+                .dataPagamento(LocalDate.now().plusDays(2))
+                .dataVencimentoReserva(LocalDate.now().plusDays(3))
+                .cliente(cliente2)
+                .vendedor(vendedor1)
+                .loja(loja)
+                .itens(List.of(item1, item3, item4, item5))
+                .build();
 
         //Apresentações
         System.out.println("\n==================== LOJA =======================");
@@ -149,19 +185,23 @@ public class ListaSeisTest {
         System.out.println("Média salárial: " + df.format(vendedor2.calcularMedia()));
         System.out.println("Bônus salarial: " + df.format(vendedor2.calcularBonus()));
 
-        System.out.println("\n==================== CLIENTES =======================");
+        System.out.println("\n==================== CLIENTES DA LOJA =======================");
         System.out.println(cliente1.apresentarse());
         System.out.println(cliente2.apresentarse());
 
-        // Apresentação dos Itens
-        System.out.println("\n==================== ITENS =======================");
+        // Apresentação dos Itens (Teste)
+        System.out.println("\n==================== ITENS DISPONIVEIS =======================");
         System.out.println(item1.gerarDescricao());
         System.out.println(item2.gerarDescricao());
+        System.out.println(item3.gerarDescricao());
+        System.out.println(item4.gerarDescricao());
+        System.out.println(item5.gerarDescricao());
 
-        // Apresentação dos Pedidos
-        System.out.println("\n==================== PEDIDOS =======================");
-        System.out.println(pedido1.gerarDescricaoVenda());
-        System.out.println(pedido2.gerarDescricaoVenda());
-
+        // Criar e processar um pedido fictício
+        System.out.println("\n==================== PEDIDOS PROCESSADOS =======================");
+        processador.processar(pedido1);
+        processador.processar(pedido2);
+        processador.processar(pedido3);
+        processador.processar(pedido4);
     }
 }

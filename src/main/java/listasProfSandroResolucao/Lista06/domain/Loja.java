@@ -1,14 +1,16 @@
 package listasProfSandroResolucao.Lista06.domain;
 
+import java.util.List;
+
 public class Loja extends Endereco {
     private String nomeFantasia;
     private String razaoSocial;
     private Long cnpj;
-    private Vendedor[] vendedores;
-    private Cliente[] clientes;
+    private List<Vendedor> vendedores;
+    private List<Cliente> clientes;
 
     private Loja(String estado, String cidade, String bairro, String rua, Integer numero, String complemento,
-                 String nomeFantasia, String razaoSocial, Long cnpj, Vendedor[] vendedores, Cliente[] clientes) {
+                 String nomeFantasia, String razaoSocial, Long cnpj, List<Vendedor> vendedores, List<Cliente> clientes) {
         super(estado, cidade, bairro, rua, numero, complemento);
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
@@ -43,11 +45,11 @@ public class Loja extends Endereco {
 
     // met add
     public int contarClientes() {
-        return clientes.length;
+        return clientes.size();
     }
 
     public int contarVendedores() {
-        return vendedores.length;
+        return vendedores.size();
     }
 
     public String apresentarse() {
@@ -66,7 +68,6 @@ public class Loja extends Endereco {
         );
     }
 
-
     public static final class LojaBuilder {
         private String estado;
         private String cidade;
@@ -77,8 +78,8 @@ public class Loja extends Endereco {
         private String nomeFantasia;
         private String razaoSocial;
         private Long cnpj;
-        private Vendedor[] vendedores;
-        private Cliente[] clientes;
+        private List<Vendedor> vendedores;
+        private List<Cliente> clientes;
 
         private LojaBuilder() {
         }
@@ -132,12 +133,12 @@ public class Loja extends Endereco {
             return this;
         }
 
-        public LojaBuilder vendedores(Vendedor[] vendedores) {
+        public LojaBuilder vendedores(List<Vendedor> vendedores) {
             this.vendedores = vendedores;
             return this;
         }
 
-        public LojaBuilder clientes(Cliente[] clientes) {
+        public LojaBuilder clientes(List<Cliente> clientes) {
             this.clientes = clientes;
             return this;
         }
