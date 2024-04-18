@@ -3,13 +3,13 @@ package listasProfSandroResolucao.Lista06.domain;
 import java.util.List;
 
 public class Vendedor extends Pessoa {
+    private Endereco endereco;
     private Loja loja;
     private double salarioBase;
     private List<Double> salarioRecebido;
 
-    private Vendedor(String nomePessoa, Integer idade, String estado, String cidade, String bairro, String rua,
-                     Integer numero, String complemento, Loja loja, double salarioBase, List<Double> salarioRecebido) {
-        super(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento);
+    private Vendedor(String nomePessoa, Integer idade, Endereco endereco, Loja loja, double salarioBase, List<Double> salarioRecebido) {
+        super(nomePessoa, idade, endereco);
         this.loja = loja;
         this.salarioBase = salarioBase;
         this.salarioRecebido = salarioRecebido;
@@ -22,11 +22,11 @@ public class Vendedor extends Pessoa {
     // Met add
     @Override
     public String apresentarse() {
-        return ("Meu nome é: "
-                .concat(nomePessoa)
-                .concat(", minha idade é: ")
-                .concat(String.valueOf(idade))
-                .concat(", sou vendedor(a) da loja: ")
+        return ("Nome: "
+                .concat(nomePessoa + ", ")
+                .concat("idade: ")
+                .concat(idade + ", ")
+                .concat("vendedor(a) da loja: ")
                 .concat((loja == null) ? "null" : loja.getNomeFantasia())
                 .concat("."));
     }
@@ -42,14 +42,9 @@ public class Vendedor extends Pessoa {
 
 
     public static final class VendedorBuilder {
-        private String estado;
-        private String cidade;
-        private String bairro;
-        private String rua;
-        private Integer numero;
-        private String complemento;
         private String nomePessoa;
         private Integer idade;
+        private Endereco endereco;
         private Loja loja;
         private double salarioBase;
         private List<Double> salarioRecebido;
@@ -61,36 +56,6 @@ public class Vendedor extends Pessoa {
             return new VendedorBuilder();
         }
 
-        public VendedorBuilder estado(String estado) {
-            this.estado = estado;
-            return this;
-        }
-
-        public VendedorBuilder cidade(String cidade) {
-            this.cidade = cidade;
-            return this;
-        }
-
-        public VendedorBuilder bairro(String bairro) {
-            this.bairro = bairro;
-            return this;
-        }
-
-        public VendedorBuilder rua(String rua) {
-            this.rua = rua;
-            return this;
-        }
-
-        public VendedorBuilder numero(Integer numero) {
-            this.numero = numero;
-            return this;
-        }
-
-        public VendedorBuilder complemento(String complemento) {
-            this.complemento = complemento;
-            return this;
-        }
-
         public VendedorBuilder nomePessoa(String nomePessoa) {
             this.nomePessoa = nomePessoa;
             return this;
@@ -98,6 +63,11 @@ public class Vendedor extends Pessoa {
 
         public VendedorBuilder idade(Integer idade) {
             this.idade = idade;
+            return this;
+        }
+
+        public VendedorBuilder endereco(Endereco endereco) {
+            this.endereco = endereco;
             return this;
         }
 
@@ -117,9 +87,7 @@ public class Vendedor extends Pessoa {
         }
 
         public Vendedor build() {
-            return new Vendedor(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento, loja, salarioBase, salarioRecebido);
+            return new Vendedor(nomePessoa, idade, endereco, loja, salarioBase, salarioRecebido);
         }
     }
-
-
 }

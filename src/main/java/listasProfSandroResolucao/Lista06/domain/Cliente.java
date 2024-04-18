@@ -2,29 +2,31 @@ package listasProfSandroResolucao.Lista06.domain;
 
 public class Cliente extends Pessoa {
 
-    private Cliente(String nomePessoa, Integer idade, String estado, String cidade, String bairro, String rua,
-                    Integer numero, String complemento) {
-        super(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento);
+    private Cliente(String nomePessoa, Integer idade, Endereco endereco) {
+        super(nomePessoa, idade, endereco);
     }
 
     // Met add
     @Override
     public String apresentarse() {
-        return ("Meu nome é: "
-                .concat(nomePessoa)
-                .concat(", minha idade é: ")
-                .concat(idade + "."));
+        return ("Nome: "
+                .concat(nomePessoa + ", ")
+                .concat("idade: ")
+                .concat(idade + ", ")
+                .concat("endereço: ")
+                .concat(endereco.cidade + ", ")
+                .concat(endereco.bairro + ", ")
+                .concat(endereco.rua + ", ")
+                .concat(endereco.numero + ", ")
+                .concat(endereco.complemento + ", ")
+                .concat(endereco.estado + ".\n")
+        );
     }
 
     public static final class ClienteBuilder {
         private String nomePessoa;
         private Integer idade;
-        private String estado;
-        private String cidade;
-        private String bairro;
-        private String rua;
-        private Integer numero;
-        private String complemento;
+        private Endereco endereco;
 
         private ClienteBuilder() {
         }
@@ -43,37 +45,13 @@ public class Cliente extends Pessoa {
             return this;
         }
 
-        public ClienteBuilder estado(String estado) {
-            this.estado = estado;
+        public ClienteBuilder endereco(Endereco endereco) {
+            this.endereco = endereco;
             return this;
         }
 
-        public ClienteBuilder cidade(String cidade) {
-            this.cidade = cidade;
-            return this;
-        }
-
-        public ClienteBuilder bairro(String bairro) {
-            this.bairro = bairro;
-            return this;
-        }
-
-        public ClienteBuilder rua(String rua) {
-            this.rua = rua;
-            return this;
-        }
-
-        public ClienteBuilder numero(Integer numero) {
-            this.numero = numero;
-            return this;
-        }
-
-        public ClienteBuilder complemento(String complemento) {
-            this.complemento = complemento;
-            return this;
-        }
         public Cliente build() {
-            return new Cliente(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento);
+            return new Cliente(nomePessoa, idade, endereco);
         }
     }
 

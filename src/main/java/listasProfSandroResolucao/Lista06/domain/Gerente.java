@@ -3,13 +3,14 @@ package listasProfSandroResolucao.Lista06.domain;
 import java.util.List;
 
 public class Gerente extends Pessoa {
+    private Endereco endereco;
     private Loja loja;
     private double salarioBase;
     private List<Double> salarioRecebido;
 
-    private Gerente(String nomePessoa, Integer idade, String estado, String cidade, String bairro, String rua,
-                    Integer numero, String complemento, Loja loja, double salarioBase, List<Double> salarioRecebido) {
-        super(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento);
+    private Gerente(String nomePessoa, Integer idade, Endereco endereco, Loja loja, double salarioBase, List<Double> salarioRecebido) {
+        super(nomePessoa, idade, endereco);
+        this.endereco = endereco;
         this.loja = loja;
         this.salarioBase = salarioBase;
         this.salarioRecebido = salarioRecebido;
@@ -40,17 +41,12 @@ public class Gerente extends Pessoa {
     }
 
     public static final class GerenteBuilder {
-        private String estado;
-        private String cidade;
-        private String bairro;
-        private String rua;
-        private Integer numero;
-        private String complemento;
+        private String nomePessoa;
+        private Integer idade;
+        private Endereco endereco;
         private Loja loja;
         private double salarioBase;
         private List<Double> salarioRecebido;
-        private String nomePessoa;
-        private Integer idade;
 
         private GerenteBuilder() {
         }
@@ -59,33 +55,18 @@ public class Gerente extends Pessoa {
             return new GerenteBuilder();
         }
 
-        public GerenteBuilder estado(String estado) {
-            this.estado = estado;
+        public GerenteBuilder nomePessoa(String nomePessoa) {
+            this.nomePessoa = nomePessoa;
             return this;
         }
 
-        public GerenteBuilder cidade(String cidade) {
-            this.cidade = cidade;
+        public GerenteBuilder idade(Integer idade) {
+            this.idade = idade;
             return this;
         }
 
-        public GerenteBuilder bairro(String bairro) {
-            this.bairro = bairro;
-            return this;
-        }
-
-        public GerenteBuilder rua(String rua) {
-            this.rua = rua;
-            return this;
-        }
-
-        public GerenteBuilder numero(Integer numero) {
-            this.numero = numero;
-            return this;
-        }
-
-        public GerenteBuilder complemento(String complemento) {
-            this.complemento = complemento;
+        public GerenteBuilder endereco(Endereco endereco) {
+            this.endereco = endereco;
             return this;
         }
 
@@ -104,19 +85,9 @@ public class Gerente extends Pessoa {
             return this;
         }
 
-        public GerenteBuilder nomePessoa(String nomePessoa) {
-            this.nomePessoa = nomePessoa;
-            return this;
-        }
-
-        public GerenteBuilder idade(Integer idade) {
-            this.idade = idade;
-            return this;
-        }
 
         public Gerente build() {
-            return new Gerente(nomePessoa, idade, estado, cidade, bairro, rua, numero, complemento,
-                    loja, salarioBase, salarioRecebido);
+            return new Gerente(nomePessoa, idade, endereco, loja, salarioBase, salarioRecebido);
         }
     }
 }

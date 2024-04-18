@@ -1,6 +1,6 @@
 package listasProfSandroResolucao.Lista06.domain;
 
-public abstract class Endereco {
+public class Endereco {
     protected String estado;
     protected String cidade;
     protected String bairro;
@@ -8,7 +8,7 @@ public abstract class Endereco {
     protected Integer numero;
     protected String complemento;
 
-    protected Endereco(String estado, String cidade, String bairro, String rua, Integer numero, String complemento) {
+    public Endereco(String estado, String cidade, String bairro, String rua, Integer numero, String complemento) {
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;

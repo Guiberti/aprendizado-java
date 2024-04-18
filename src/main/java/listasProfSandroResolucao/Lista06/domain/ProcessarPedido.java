@@ -37,10 +37,10 @@ public class ProcessarPedido {
         LocalDate dataAtual = LocalDate.now();
 
         if (verificarPagamento()) {
-            System.out.println("\n\n    Pedido processado com sucesso!");
+            System.out.println("Pedido processado com sucesso!");
             System.out.println(pedido.gerarDescricaoVenda());
         } else {
-            System.out.println("Não foi possível processar o pedido. A reserva está vencida.\n");
+            System.out.println("\nNão foi possível processar o pedido. A reserva está vencida.\n");
         }
     }
 
