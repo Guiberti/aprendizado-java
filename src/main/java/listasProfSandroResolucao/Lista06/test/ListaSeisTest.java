@@ -3,7 +3,6 @@ package listasProfSandroResolucao.Lista06.test;
 import listasProfSandroResolucao.Lista06.domain.*;
 
 import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
