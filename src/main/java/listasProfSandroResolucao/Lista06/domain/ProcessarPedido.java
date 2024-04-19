@@ -4,19 +4,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ProcessarPedido {
-    private static long proximoIdPedido = 1;
+    private Long proximoIdPedido = 1L;
     private Pedido pedido;
 
     public Pedido processar(Cliente cliente, Vendedor vendedor, Loja loja, List<Item> itens) {
-        LocalDate dataAtual = LocalDate.now();
-        LocalDate dataCriacao = LocalDate.now();
-        LocalDate dataVencimentoReserva = dataCriacao.plusDays(3);
 
         Pedido pedido = Pedido.PedidoBuilder.builder()
                 .id(proximoIdPedido++)
-                .dataCriacao(dataCriacao)
-                .dataPagamento(dataAtual)
-                .dataVencimentoReserva(dataVencimentoReserva)
                 .cliente(cliente)
                 .vendedor(vendedor)
                 .loja(loja)

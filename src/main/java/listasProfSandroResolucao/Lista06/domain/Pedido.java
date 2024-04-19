@@ -14,19 +14,17 @@ public class Pedido {
     private Loja loja;
     private List<Item> itens;
 
-    public Pedido(Long id, LocalDate dataCriacao, LocalDate dataPagamento, LocalDate dataVencimentoReserva,
+    public Pedido(Long id,
                   Cliente cliente, Vendedor vendedor, Loja loja, List<Item> itens) {
         this.id = id;
-        this.dataCriacao = dataCriacao;
-        this.dataPagamento = dataPagamento;
-        this.dataVencimentoReserva = dataVencimentoReserva;
         this.cliente = cliente;
         this.vendedor = vendedor;
         this.loja = loja;
         this.itens = itens;
+        this.dataCriacao = LocalDate.now();
+        this.dataPagamento = dataCriacao.plusDays(1);
+        this.dataVencimentoReserva = dataCriacao.plusDays(3);
     }
-
-
     public Long getId() {
         return id;
     }
@@ -34,7 +32,6 @@ public class Pedido {
     public LocalDate getDataCriacao() {
         return dataCriacao;
     }
-
     public LocalDate getDataPagamento() {
         return dataPagamento;
     }
@@ -144,7 +141,7 @@ public class Pedido {
         }
 
         public Pedido build() {
-            return new Pedido(id, dataCriacao, dataPagamento, dataVencimentoReserva, cliente, vendedor, loja, itens);
+            return new Pedido(id, cliente, vendedor, loja, itens);
         }
     }
 }

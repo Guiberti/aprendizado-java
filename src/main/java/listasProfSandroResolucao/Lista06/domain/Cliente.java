@@ -14,12 +14,12 @@ public class Cliente extends Pessoa {
                 .concat("idade: ")
                 .concat(idade + ", ")
                 .concat("endereço: ")
-                .concat(endereco.cidade + ", ")
-                .concat(endereco.bairro + ", ")
-                .concat(endereco.rua + ", ")
-                .concat(endereco.numero + ", ")
-                .concat(endereco.complemento + ", ")
-                .concat(endereco.estado + ".\n")
+                .concat(endereco.getCidade() + ", ")
+                .concat(endereco.getBairro() + ", ")
+                .concat(endereco.getRua() + ", ")
+                .concat(endereco.getNumero() + ", ")
+                .concat(endereco.getComplemento() + ", ")
+                .concat(endereco.getEstado() + ".\n")
         );
     }
 

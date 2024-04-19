@@ -2,19 +2,20 @@ package listasProfSandroResolucao.Lista06.domain;
 
 import java.util.List;
 
-public class Loja extends Endereco {
+public class Loja {
     private String nomeFantasia;
     private String razaoSocial;
-    private Long cnpj;
+    private String cnpj;
+    private Endereco endereco;
     private List<Vendedor> vendedores;
     private List<Cliente> clientes;
 
-    private Loja(String estado, String cidade, String bairro, String rua, Integer numero, String complemento,
-                 String nomeFantasia, String razaoSocial, Long cnpj, List<Vendedor> vendedores, List<Cliente> clientes) {
-        super(estado, cidade, bairro, rua, numero, complemento);
+    private Loja(String nomeFantasia, String razaoSocial, String cnpj, Endereco endereco,
+                 List<Vendedor> vendedores, List<Cliente> clientes) {
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
+        this.endereco = endereco;
         this.vendedores = vendedores;
         this.clientes = clientes;
     }
@@ -27,20 +28,8 @@ public class Loja extends Endereco {
         return razaoSocial;
     }
 
-    public Long getCnpj() {
+    public String getCnpj() {
         return cnpj;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public String getRua() {
-        return rua;
     }
 
     // met add
@@ -56,28 +45,23 @@ public class Loja extends Endereco {
         return ("Nome Fantasia: "
                 .concat(nomeFantasia)
                 .concat(", CNPJ: ")
-                .concat(String.valueOf(cnpj))
+                .concat(cnpj)
                 .concat(", Endereço: ")
                 .concat(" Cidade: ")
-                .concat(cidade)
+                .concat(endereco.getCidade())
                 .concat(", Bairro: ")
-                .concat(bairro)
+                .concat(endereco.getBairro())
                 .concat(", Rua: ")
-                .concat(rua)
+                .concat(endereco.getRua())
                 .concat(".")
         );
     }
 
     public static final class LojaBuilder {
-        private String estado;
-        private String cidade;
-        private String bairro;
-        private String rua;
-        private Integer numero;
-        private String complemento;
         private String nomeFantasia;
         private String razaoSocial;
-        private Long cnpj;
+        private String cnpj;
+        private Endereco endereco;
         private List<Vendedor> vendedores;
         private List<Cliente> clientes;
 
@@ -86,36 +70,6 @@ public class Loja extends Endereco {
 
         public static LojaBuilder builder() {
             return new LojaBuilder();
-        }
-
-        public LojaBuilder estado(String estado) {
-            this.estado = estado;
-            return this;
-        }
-
-        public LojaBuilder cidade(String cidade) {
-            this.cidade = cidade;
-            return this;
-        }
-
-        public LojaBuilder bairro(String bairro) {
-            this.bairro = bairro;
-            return this;
-        }
-
-        public LojaBuilder rua(String rua) {
-            this.rua = rua;
-            return this;
-        }
-
-        public LojaBuilder numero(Integer numero) {
-            this.numero = numero;
-            return this;
-        }
-
-        public LojaBuilder complemento(String complemento) {
-            this.complemento = complemento;
-            return this;
         }
 
         public LojaBuilder nomeFantasia(String nomeFantasia) {
@@ -128,8 +82,13 @@ public class Loja extends Endereco {
             return this;
         }
 
-        public LojaBuilder cnpj(Long cnpj) {
+        public LojaBuilder cnpj(String cnpj) {
             this.cnpj = cnpj;
+            return this;
+        }
+
+        public LojaBuilder endereco(Endereco endereco) {
+            this.endereco = endereco;
             return this;
         }
 
@@ -144,7 +103,7 @@ public class Loja extends Endereco {
         }
 
         public Loja build() {
-            return new Loja(estado, cidade, bairro, rua, numero, complemento, nomeFantasia, razaoSocial, cnpj, vendedores, clientes);
+            return new Loja(nomeFantasia, razaoSocial, cnpj, endereco, vendedores, clientes);
         }
     }
 }

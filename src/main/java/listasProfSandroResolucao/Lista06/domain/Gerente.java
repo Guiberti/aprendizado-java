@@ -22,11 +22,11 @@ public class Gerente extends Pessoa {
 
     @Override
     public String apresentarse() {
-        return ("Meu nome é: "
+        return ("Nome: "
                 .concat(nomePessoa)
-                .concat(", tenho idade é: ")
+                .concat(", idade: ")
                 .concat(String.valueOf(idade))
-                .concat(", sou gerente da loja: ")
+                .concat(", gerente da loja: ")
                 .concat((loja == null) ? "null" : loja.getNomeFantasia())
                 .concat("."));
     }
@@ -54,38 +54,30 @@ public class Gerente extends Pessoa {
         public static GerenteBuilder builder() {
             return new GerenteBuilder();
         }
-
         public GerenteBuilder nomePessoa(String nomePessoa) {
             this.nomePessoa = nomePessoa;
             return this;
         }
-
         public GerenteBuilder idade(Integer idade) {
             this.idade = idade;
             return this;
         }
-
         public GerenteBuilder endereco(Endereco endereco) {
             this.endereco = endereco;
             return this;
         }
-
         public GerenteBuilder loja(Loja loja) {
             this.loja = loja;
             return this;
         }
-
         public GerenteBuilder salarioBase(double salarioBase) {
             this.salarioBase = salarioBase;
             return this;
         }
-
         public GerenteBuilder salarioRecebido(List<Double> salarioRecebido) {
             this.salarioRecebido = salarioRecebido;
             return this;
         }
-
-
         public Gerente build() {
             return new Gerente(nomePessoa, idade, endereco, loja, salarioBase, salarioRecebido);
         }

@@ -72,12 +72,11 @@ public class ListaSeisTest {
                 .build();
 
         Loja loja = Loja.LojaBuilder.builder()
-                .cidade("Santa Lúcia")
-                .bairro("Centro")
-                .rua("Avenida OLZ")
-                .nomeFantasia("Magazine Móveis")
-                .razaoSocial("magamo")
-                .cnpj(17235604000110L)
+                .nomeFantasia("Myy Plants")
+                .razaoSocial("mypla")
+                .cnpj("17235604000110")
+                .endereco(new Endereco("Paraná", "Santa Lúcia", "Centro", "Avenida OLZ",
+                        455, "Loja de Esquina"))
                 .vendedores(Arrays.asList(vendedor1, vendedor2, vendedor3))
                 .clientes(Arrays.asList(cliente1, cliente2))
                 .build();
@@ -121,18 +120,6 @@ public class ListaSeisTest {
                 .valor(129.00)
                 .build();
 
-
-        Pedido pedido1 = Pedido.PedidoBuilder.builder()
-                .id(1L)
-                .dataCriacao(LocalDate.of(2024, 4, 25))
-                .dataPagamento(LocalDate.of(2024, 4, 30))
-                .dataVencimentoReserva(LocalDate.of(2024, 4, 28))
-                .cliente(cliente1)
-                .vendedor(vendedor1)
-                .loja(loja)
-                .itens(List.of(item1, item2))
-                .build();
-
         System.out.println("\n==================== LOJA =======================");
         System.out.println(loja.apresentarse());
         System.out.println("Quantidade de clientes: " + loja.contarClientes());
@@ -170,8 +157,8 @@ public class ListaSeisTest {
         System.out.println(item4.gerarDescricao());
         System.out.println(item5.gerarDescricao());
 
-        processador.processar(pedido1);
-        Pedido pedido = processador.processar(cliente1, vendedor1, loja, List.of(item1, item3, item4, item5));
-
+        System.out.println("\n==================== PEDIDOS PROCESSADOS =======================");
+        Pedido pedido1 = processador.processar(cliente1, vendedor1, loja, List.of(item1, item3, item4, item5));
+        Pedido pedido2 = processador.processar(cliente2, vendedor3, loja, List.of(item5, item2));
     }
 }

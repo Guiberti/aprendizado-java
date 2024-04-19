@@ -1,12 +1,12 @@
 package listasProfSandroResolucao.Lista06.domain;
 
 public class Endereco {
-    protected String estado;
-    protected String cidade;
-    protected String bairro;
-    protected String rua;
-    protected Integer numero;
-    protected String complemento;
+    private String estado;
+    private String cidade;
+    private String bairro;
+    private String rua;
+    private Integer numero;
+    private String complemento;
 
     public Endereco(String estado, String cidade, String bairro, String rua, Integer numero, String complemento) {
         this.estado = estado;
