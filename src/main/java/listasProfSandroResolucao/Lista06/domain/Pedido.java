@@ -15,7 +15,7 @@ public class Pedido {
     private List<Item> itens;
 
     public Pedido(Long id,
-                  Cliente cliente, Vendedor vendedor, Loja loja, List<Item> itens) {
+                  Cliente cliente, Vendedor vendedor, LocalDate dataCriacao, Loja loja, List<Item> itens) {
         this.id = id;
         this.cliente = cliente;
         this.vendedor = vendedor;
@@ -25,6 +25,7 @@ public class Pedido {
         this.dataPagamento = dataCriacao.plusDays(1);
         this.dataVencimentoReserva = dataCriacao.plusDays(3);
     }
+
     public Long getId() {
         return id;
     }
@@ -32,6 +33,7 @@ public class Pedido {
     public LocalDate getDataCriacao() {
         return dataCriacao;
     }
+
     public LocalDate getDataPagamento() {
         return dataPagamento;
     }
@@ -110,16 +112,6 @@ public class Pedido {
             return this;
         }
 
-        public PedidoBuilder dataPagamento(LocalDate dataPagamento) {
-            this.dataPagamento = dataPagamento;
-            return this;
-        }
-
-        public PedidoBuilder dataVencimentoReserva(LocalDate dataVencimentoReserva) {
-            this.dataVencimentoReserva = dataVencimentoReserva;
-            return this;
-        }
-
         public PedidoBuilder cliente(Cliente cliente) {
             this.cliente = cliente;
             return this;
@@ -141,7 +133,7 @@ public class Pedido {
         }
 
         public Pedido build() {
-            return new Pedido(id, cliente, vendedor, loja, itens);
+            return new Pedido(id, cliente, vendedor, dataCriacao, loja, itens);
         }
     }
 }
