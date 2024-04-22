@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Menu2 {
+public class Menu {
     private static final List<Loja> lojas = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -36,6 +36,7 @@ public class Menu2 {
     }
 
     private static void menuPrincipal() {
+        int opcao;
 
         while (true) {
 
@@ -46,28 +47,28 @@ public class Menu2 {
                 System.out.println((i + 1) + ". " + lojas.get(i).getNomeFantasia());
             }
 
-            int opcao = new Scanner(System.in).nextInt();
-            if (opcao == 0)
-                break;
+            System.out.println((lojas.size() + 1) + ". Criar Nova Loja");
+
             System.out.print("Digite sua opção: ");
             opcao = new Scanner(System.in).nextInt();
 
-            switch (opcao) {
-                case 1:
-                    acessarMenuLoja(0);
-                    break;
-                case 2:
-                    acessarMenuLoja(1);
-                    break;
-
-                case 3:
-                    criarNovaLoja();
-                    break;
-                default:
-                    System.out.println("Opção inválida!");
+            if (opcao == 0) {
+                return;
             }
+            if (opcao == lojas.size() + 1) {
+                criarNovaLoja();
+                return;
+            }
+            if (opcao > 0 && opcao <= lojas.size()) {
+                acessarMenuLoja(opcao - 1);
+                return;
+            } else {
+                System.out.println("Opção inválida!");
+            }
+
+
         }
-        ;
+
     }
 
     private static void acessarMenuLoja(int indiceLoja) {
@@ -81,11 +82,6 @@ public class Menu2 {
         int opcaoMenuLoja;
 
         while (true) {
-
-            int opcao = new Scanner(System.in).nextInt();
-            if (opcao == 0)
-                break;
-
             System.out.println("\n\nMenu Loja: " + lojaAtual.getNomeFantasia());
             System.out.println("-----------------");
 
@@ -102,7 +98,10 @@ public class Menu2 {
 
             System.out.print("Digite sua opção: ");
             opcaoMenuLoja = new Scanner(System.in).nextInt();
-
+            if (opcaoMenuLoja == 0) {
+                menuPrincipal();
+                return;
+            }
         }
     }
 
@@ -134,7 +133,6 @@ public class Menu2 {
         System.out.println("Digite o complemento do endereço da loja: ");
         String enderecoComplemento = new Scanner(System.in).nextLine();
 
-
         Endereco endereco = Endereco.EnderecoBuilder.builder()
                 .estado(enderecoEstado)
                 .cidade(enderecoCidade)
@@ -154,7 +152,7 @@ public class Menu2 {
         lojas.add(lojanova);
 
         System.out.println("Nova loja criada com sucesso!");
-
+        menuPrincipal();
     }
 }
 
