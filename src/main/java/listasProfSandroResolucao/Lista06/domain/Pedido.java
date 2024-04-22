@@ -26,10 +26,6 @@ public class Pedido {
         this.dataVencimentoReserva = dataCriacao.plusDays(3);
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public LocalDate getDataCriacao() {
         return dataCriacao;
     }
@@ -46,16 +42,8 @@ public class Pedido {
         return cliente;
     }
 
-    public Vendedor getVendedor() {
-        return vendedor;
-    }
-
     public Loja getLoja() {
         return loja;
-    }
-
-    public List<Item> getItens() {
-        return itens;
     }
 
     public double calcularValorTotal() {
@@ -133,6 +121,9 @@ public class Pedido {
         }
 
         public Pedido build() {
+            if (dataCriacao == null) {
+                throw new IllegalStateException("Data de criação não pode ser nula");
+            }
             return new Pedido(id, cliente, vendedor, dataCriacao, loja, itens);
         }
     }

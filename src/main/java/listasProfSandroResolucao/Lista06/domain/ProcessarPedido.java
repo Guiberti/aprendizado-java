@@ -7,13 +7,14 @@ public class ProcessarPedido {
     private Long proximoIdPedido = 1L;
     private Pedido pedido;
 
-    public Pedido processar(Cliente cliente, Vendedor vendedor, Loja loja, List<Item> itens) {
+    public Pedido processar(Cliente cliente, Vendedor vendedor, Loja loja, LocalDate dataCriacao, List<Item> itens) {
 
         Pedido pedido = Pedido.PedidoBuilder.builder()
                 .id(proximoIdPedido++)
                 .cliente(cliente)
                 .vendedor(vendedor)
                 .loja(loja)
+                .dataCriacao(dataCriacao)
                 .itens(itens)
                 .build();
 

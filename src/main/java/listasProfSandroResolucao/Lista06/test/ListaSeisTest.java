@@ -3,6 +3,7 @@ package listasProfSandroResolucao.Lista06.test;
 import listasProfSandroResolucao.Lista06.domain.*;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -157,7 +158,8 @@ public class ListaSeisTest {
         System.out.println(item5.gerarDescricao());
 
         System.out.println("\n==================== PEDIDOS PROCESSADOS =======================");
-        Pedido pedido1 = processador.processar(cliente1, vendedor1, loja, List.of(item1, item3, item4, item5));
-        Pedido pedido2 = processador.processar(cliente2, vendedor3, loja, List.of(item5, item2));
+        Pedido pedido1 = processador.processar(cliente1, vendedor1, loja, LocalDate.now(),
+                List.of(item1, item3, item4, item5));
+        Pedido pedido2 = processador.processar(cliente2, vendedor3, loja, LocalDate.now(), List.of(item5, item2));
     }
 }
