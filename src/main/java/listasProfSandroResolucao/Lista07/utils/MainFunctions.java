@@ -5,6 +5,7 @@ import listasProfSandroResolucao.Lista07.domain.*;
 import listasProfSandroResolucao.Lista07.test.MenuSecundario;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class MainFunctions {
     private static List<Gerente> gerentesDaLoja = new ArrayList<>();
     private static List<Item> itensDaLoja = new ArrayList<>();
 
-    public static void gerentes() {
+    public static void gerente() {
         Endereco endereco = Endereco.EnderecoBuilder.builder()
                 .estado("Paraná")
                 .cidade("Santa Lúcia")
@@ -25,69 +26,58 @@ public class MainFunctions {
                 .complemento("Casa")
                 .build();
 
-
         Gerente gerente = Gerente.GerenteBuilder.builder()
                 .nomePessoa("Sandro Ramos")
                 .idade(25)
                 .loja(lojaGlobal)
                 .salarioBase(15600)
-                .valorFixo1(17000)
-                .valorFixo2(18000)
-                .valorFixo3(14900)
+                .salarioRecebido(Arrays.asList(15600.00, 15700.00, 16000.00))
                 .endereco(endereco)
                 .build();
+
+        gerentesDaLoja.add(gerente);
     }
 
-    public static void cadastrarVendedor() {
-
-        System.out.println("Insira o nome do seu Vendedor(a): ");
-        String nomeVendedor = new Scanner(System.in).nextLine();
-
-        System.out.println("Insira a idade do Vendedor(a): ");
-        Integer idadeVendedor = new Scanner(System.in).nextInt();
-
-        System.out.println("Insira o salário base do seu Vendedor(a): ");
-        Double salarioBaseVendedor = new Scanner(System.in).nextDouble();
-
-        System.out.println("Qual estado seu Vendedor(a) reside: ");
-        String estadoVendedor = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual cidade seu Vendedor(a) reside: ");
-        String cidadeVendedor = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual bairro seu Vendedor(a) reside: ");
-        String bairroVendedor = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual rua seu Vendedor(a) reside: ");
-        String ruaVendedor = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual o número da casa em que seu Vendedor(a) reside: ");
-        Integer numeroCasaVendedor = new Scanner(System.in).nextInt();
-
-        System.out.println("Passe um complemento do endereço do seu Vendedor(a): ");
-        String complementoVendedor = new Scanner(System.in).nextLine();
-
+    public static void vendedores() {
         Endereco endereco = Endereco.EnderecoBuilder.builder()
-                .estado(estadoVendedor)
-                .cidade(cidadeVendedor)
-                .bairro(bairroVendedor)
-                .rua(ruaVendedor)
-                .numero(numeroCasaVendedor)
-                .complemento(complementoVendedor)
+                .estado("Paraná")
+                .cidade("Santa Lúcia")
+                .bairro("Centro")
+                .rua("Rua das Palmeiras")
+                .numero(35)
+                .complemento("Casa")
                 .build();
 
-        Vendedor vendedor = Vendedor.VendedorBuilder.builder()
-                .nomePessoa(nomeVendedor)
-                .idade(idadeVendedor)
-                .salarioBase(1800)
-                .salarioRecebido(null)
-                .endereco(endereco)
+        Vendedor vendedor1 = Vendedor.VendedorBuilder.builder()
+                .nomePessoa("Guilherme")
+                .idade(18)
                 .loja(lojaGlobal)
+                .salarioBase(2000)
+                .salarioRecebido(Arrays.asList(2100.00, 1950.00, 2150.00))
+                .endereco(endereco)
                 .build();
 
-        vendedoresDaLoja.add(vendedor);
-        System.out.println("Vendedor cadastrado com sucesso...");
+        Vendedor vendedor2 = Vendedor.VendedorBuilder.builder()
+                .nomePessoa("Rafael")
+                .idade(18)
+                .loja(lojaGlobal)
+                .salarioBase(2000)
+                .salarioRecebido(Arrays.asList(2100.00, 1950.00, 2150.00))
+                .endereco(endereco)
+                .build();
 
+        Vendedor vendedor3 = Vendedor.VendedorBuilder.builder()
+                .nomePessoa("Anderson")
+                .idade(18)
+                .loja(lojaGlobal)
+                .salarioBase(2000)
+                .salarioRecebido(Arrays.asList(2100.00, 1950.00, 2150.00))
+                .endereco(endereco)
+                .build();
+
+        vendedoresDaLoja.add(vendedor1);
+        vendedoresDaLoja.add(vendedor2);
+        vendedoresDaLoja.add(vendedor3);
     }
 
     public static void cadastrarCliente() {
