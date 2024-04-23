@@ -1,29 +1,15 @@
 package listasProfSandroResolucao.Lista07.test;
 
-import listasProfSandroResolucao.Lista07.domain.Cliente;
 import listasProfSandroResolucao.Lista07.domain.Endereco;
 import listasProfSandroResolucao.Lista07.domain.Loja;
-import listasProfSandroResolucao.Lista07.domain.Vendedor;
 import listasProfSandroResolucao.Lista07.utils.Functions;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class MenuPrincipal {
-    public static List<Loja> lojas;
-    public static List<Vendedor> vendedoresDaLoja;
-    public static List<Cliente> clientesDaLoja;
-
-    private static int selectedStoreIndex = -1;
-
+public class MenuSecundario {
     public static void main(String[] args) {
-        lojas = new ArrayList<>();
-        vendedoresDaLoja = new ArrayList<>();
-        clientesDaLoja = new ArrayList<>();
 
-
-        lojas.add(Loja.LojaBuilder.builder()
+        Loja loja = Loja.LojaBuilder.builder()
                 .nomeFantasia("My Plant")
                 .razaoSocial("plantmay")
                 .cnpj("12345678912345")
@@ -37,55 +23,13 @@ public class MenuPrincipal {
                         .build())
                 .clientes(null)
                 .vendedores(null)
-                .build());
+                .build();
 
-        menuPrincipal();
-    }
-
-    private static void menuPrincipal() {
-        int opcao;
-
-        while (true) {
-
-
-            System.out.println("\n\nMenu Principal");
-            System.out.println("-----------------");
-
-            for (int i = 0; i < lojas.size(); i++) {
-                System.out.println((i + 1) + ". " + lojas.get(i).getNomeFantasia());
-            }
-
-            System.out.println("0. Sair");
-
-            System.out.print("Digite sua opção: ");
-            opcao = new Scanner(System.in).nextInt();
-            if (opcao == 0) {
-                System.out.println("Saindo do sistema ...");
-                break;
-            }
-
-            switch (opcao) {
-                case 1 -> acessarMenuLoja(0);
-                case 2 -> acessarMenuLoja(1);
-                default -> System.out.println("Opção inválida!");
-            }
-
-        }
-    }
-
-    public static Loja acessarMenuLoja(int indiceLoja) {
-        if (indiceLoja < 0 || indiceLoja >= lojas.size()) {
-            System.out.println("Loja inválida!");
-            return null;
-        }
-        selectedStoreIndex = indiceLoja;
-
-        Loja lojaAtual = lojas.get(indiceLoja);
-
+        LojaGlobal.loja = loja;
         int opcaoMenuLoja;
 
         while (true) {
-            System.out.println("\n\nMenu Loja: " + lojaAtual.getNomeFantasia());
+            System.out.println("\n\nMenu Loja: " + loja.getNomeFantasia());
             System.out.println("-----------------");
 
             System.out.println("1. Cadastrar Gerente");
@@ -97,12 +41,12 @@ public class MenuPrincipal {
             System.out.println("7. Listar Vendedores");
             System.out.println("8. Criar Novo Pedido");
             System.out.println("9. Processar Novo Pedido");
-            System.out.println("0. Voltar para o Menu Principal");
+            System.out.println("0. Sair do Sistema");
 
             System.out.print("Digite sua opção: ");
             opcaoMenuLoja = new Scanner(System.in).nextInt();
             if (opcaoMenuLoja == 0) {
-                System.out.println("Voltando para o menu principal...");
+                System.out.println("Saindo do sistema...");
                 break;
             }
             switch (opcaoMenuLoja) {
@@ -118,16 +62,10 @@ public class MenuPrincipal {
                 default -> System.out.println("Opcão Inválida...");
             }
         }
-        return lojaAtual;
+    }
+    public static class LojaGlobal {
+        public static Loja loja;
     }
 
-    public static int getSelectedStoreIndex() {
-        return selectedStoreIndex;
-    }
-
-    public static List<Loja> getLojas() {
-        return lojas;
-    }
 }
-
 

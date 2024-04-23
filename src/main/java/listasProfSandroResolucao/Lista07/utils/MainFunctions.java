@@ -1,5 +1,6 @@
 package listasProfSandroResolucao.Lista07.utils;
 
+
 import listasProfSandroResolucao.Lista07.domain.*;
 import listasProfSandroResolucao.Lista07.test.MenuSecundario;
 
@@ -7,62 +8,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Functions {
+public class MainFunctions {
     private static Loja lojaGlobal = MenuSecundario.LojaGlobal.loja;
     private static List<Cliente> clientesDaLoja = new ArrayList<>();
     private static List<Vendedor> vendedoresDaLoja = new ArrayList<>();
     private static List<Gerente> gerentesDaLoja = new ArrayList<>();
     private static List<Item> itensDaLoja = new ArrayList<>();
 
-    public static void cadastrarGerente() {
-
-        System.out.println("Insira o nome do seu Gerente: ");
-        String nomeGerente = new Scanner(System.in).nextLine();
-
-        System.out.println("Insira a idade do Gerente: ");
-        Integer idadeGerente = new Scanner(System.in).nextInt();
-
-        System.out.println("Insira o salário base do seu Gerente: ");
-        Double salarioBaseGerente = new Scanner(System.in).nextDouble();
-
-        System.out.println("Qual estado seu Gerente reside: ");
-        String estadoGerente = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual cidade seu Gerente reside: ");
-        String cidadeGerente = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual bairro seu Gerente reside: ");
-        String bairroGerente = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual rua seu Gerente reside: ");
-        String ruaGerente = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual o número da casa em que seu Gerente reside: ");
-        Integer numeroCasaGerente = new Scanner(System.in).nextInt();
-
-        System.out.println("Passe um complemento do endereço do seu Gerente: ");
-        String complementoGerente = new Scanner(System.in).nextLine();
-
+    public static void gerentes() {
         Endereco endereco = Endereco.EnderecoBuilder.builder()
-                .estado(estadoGerente)
-                .cidade(cidadeGerente)
-                .bairro(bairroGerente)
-                .rua(ruaGerente)
-                .numero(numeroCasaGerente)
-                .complemento(complementoGerente)
+                .estado("Paraná")
+                .cidade("Santa Lúcia")
+                .bairro("Centro")
+                .rua("Rua das Palmeiras")
+                .numero(345)
+                .complemento("Casa")
                 .build();
+
 
         Gerente gerente = Gerente.GerenteBuilder.builder()
-                .nomePessoa(nomeGerente)
-                .idade(idadeGerente)
-                .salarioBase(salarioBaseGerente)
-                .salarioRecebido(null)
-                .endereco(endereco)
+                .nomePessoa("Sandro Ramos")
+                .idade(25)
                 .loja(lojaGlobal)
+                .salarioBase(15600)
+                .valorFixo1(17000)
+                .valorFixo2(18000)
+                .valorFixo3(14900)
+                .endereco(endereco)
                 .build();
-
-        gerentesDaLoja.add(gerente);
-        System.out.println("Gerente cadastrado com sucesso...");
     }
 
     public static void cadastrarVendedor() {
@@ -243,3 +216,4 @@ public class Functions {
 
     }
 }
+
