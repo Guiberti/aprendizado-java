@@ -1,7 +1,9 @@
 package listasProfSandroResolucao.Lista07.test;
 
+import listasProfSandroResolucao.Lista07.domain.Cliente;
 import listasProfSandroResolucao.Lista07.domain.Endereco;
 import listasProfSandroResolucao.Lista07.domain.Loja;
+import listasProfSandroResolucao.Lista07.domain.Vendedor;
 import listasProfSandroResolucao.Lista07.utils.Functions;
 
 import java.util.ArrayList;
@@ -9,17 +11,30 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MenuPrincipal {
-    private static List<Loja> lojas;
+    public static List<Loja> lojas;
+    public static List<Vendedor> vendedoresDaLoja;
+    public static List<Cliente> clientesDaLoja;
+
+    private static int selectedStoreIndex = -1;
 
     public static void main(String[] args) {
         lojas = new ArrayList<>();
+        vendedoresDaLoja = new ArrayList<>();
+        clientesDaLoja = new ArrayList<>();
+
 
         lojas.add(Loja.LojaBuilder.builder()
                 .nomeFantasia("My Plant")
                 .razaoSocial("plantmay")
                 .cnpj("12345678912345")
-                .endereco(new Endereco("Paraná", "Santa Lúcia", "Centro", "Avenida OLZ",
-                        345, "Loja"))
+                .endereco(Endereco.EnderecoBuilder.builder()
+                        .estado("Paraná")
+                        .cidade("Santa Lúcia")
+                        .bairro("Centro")
+                        .rua("Avenida Orlando Luiz Zampronio")
+                        .numero(261)
+                        .complemento("Loja")
+                        .build())
                 .clientes(null)
                 .vendedores(null)
                 .build());
@@ -27,8 +42,8 @@ public class MenuPrincipal {
                 .nomeFantasia("Magazine Móveis")
                 .razaoSocial("magalu")
                 .cnpj("17235604000110")
-                .endereco(new Endereco("Paraná", "Santa Lúcia", "Centro",
-                        "Avenida Americo Mantovani", 34, "Loja"))
+                .endereco(Endereco.EnderecoBuilder.builder()
+                        .build())
                 .clientes(null)
                 .vendedores(null)
                 .build());
@@ -67,11 +82,12 @@ public class MenuPrincipal {
         }
     }
 
-    private static void acessarMenuLoja(int indiceLoja) {
+    public static Loja acessarMenuLoja(int indiceLoja) {
         if (indiceLoja < 0 || indiceLoja >= lojas.size()) {
             System.out.println("Loja inválida!");
-            return;
+            return null;
         }
+        selectedStoreIndex = indiceLoja;
 
         Loja lojaAtual = lojas.get(indiceLoja);
 
@@ -111,6 +127,15 @@ public class MenuPrincipal {
                 default -> System.out.println("Opcão Inválida...");
             }
         }
+        return lojaAtual;
+    }
+
+    public static int getSelectedStoreIndex() {
+        return selectedStoreIndex;
+    }
+
+    public static List<Loja> getLojas() {
+        return lojas;
     }
 }
 

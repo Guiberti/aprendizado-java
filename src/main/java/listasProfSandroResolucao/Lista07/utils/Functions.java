@@ -1,14 +1,24 @@
 package listasProfSandroResolucao.Lista07.utils;
 
-import listasProfSandroResolucao.Lista07.domain.Endereco;
-import listasProfSandroResolucao.Lista07.domain.Gerente;
+import listasProfSandroResolucao.Lista07.domain.*;
 import listasProfSandroResolucao.Lista07.test.MenuPrincipal;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import static listasProfSandroResolucao.Lista07.test.MenuPrincipal.getSelectedStoreIndex;
+import static listasProfSandroResolucao.Lista07.test.MenuPrincipal.lojas;
+
 public class Functions {
+    private static Loja lojaAtual = lojas.get(getSelectedStoreIndex());
+    private static List<Cliente> clientesDaLoja = new ArrayList<>();
+    private static List<Vendedor> vendedoresDaLoja = new ArrayList<>();
 
     public static void cadastrarGerente() {
+
+        List<Cliente> clientesDaLoja = new ArrayList<>();
+
         System.out.println("Insira o nome do seu Gerente: ");
         String nomeGerente = new Scanner(System.in).nextLine();
 
@@ -18,8 +28,31 @@ public class Functions {
         System.out.println("Insira o salário base do seu Gerente: ");
         Double salarioBaseGerente = new Scanner(System.in).nextDouble();
 
-        Endereco endereco = Endereco.EnderecoBuilder.builder()
+        System.out.println("Qual estado seu Gerente reside: ");
+        String estadoGerente = new Scanner(System.in).nextLine();
 
+        System.out.println("Qual cidade seu Gerente reside: ");
+        String cidadeGerente = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual bairro seu Gerente reside: ");
+        String bairroGerente = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual rua seu Gerente reside: ");
+        String ruaGerente = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual o número da casa em que seu Gerente reside: ");
+        Integer numeroCasaGerente = new Scanner(System.in).nextInt();
+
+        System.out.println("Passe um complemento do endereço do seu Gerente: ");
+        String complementoGerente = new Scanner(System.in).nextLine();
+
+        Endereco endereco = Endereco.EnderecoBuilder.builder()
+                .estado(estadoGerente)
+                .cidade(cidadeGerente)
+                .bairro(bairroGerente)
+                .rua(ruaGerente)
+                .numero(numeroCasaGerente)
+                .complemento(complementoGerente)
                 .build();
 
         Gerente gerente = Gerente.GerenteBuilder.builder()
@@ -27,33 +60,169 @@ public class Functions {
                 .idade(idadeGerente)
                 .salarioBase(salarioBaseGerente)
                 .salarioRecebido(null)
-                .loja(null)
-                .endereco()
+                .endereco(endereco)
+                .loja(lojaAtual)
                 .build();
 
+        System.out.println("Gerente cadastrado com sucesso...");
+        MenuPrincipal.acessarMenuLoja(getSelectedStoreIndex());
     }
+
     public static void cadastrarVendedor() {
-        System.out.println("aaaa");
+
+        System.out.println("Insira o nome do seu Vendedor(a): ");
+        String nomeVendedor = new Scanner(System.in).nextLine();
+
+        System.out.println("Insira a idade do Vendedor(a): ");
+        Integer idadeVendedor = new Scanner(System.in).nextInt();
+
+        System.out.println("Insira o salário base do seu Vendedor(a): ");
+        Double salarioBaseVendedor = new Scanner(System.in).nextDouble();
+
+        System.out.println("Qual estado seu Vendedor(a) reside: ");
+        String estadoVendedor = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual cidade seu Vendedor(a) reside: ");
+        String cidadeVendedor = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual bairro seu Vendedor(a) reside: ");
+        String bairroVendedor = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual rua seu Vendedor(a) reside: ");
+        String ruaVendedor = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual o número da casa em que seu Vendedor(a) reside: ");
+        Integer numeroCasaVendedor = new Scanner(System.in).nextInt();
+
+        System.out.println("Passe um complemento do endereço do seu Vendedor(a): ");
+        String complementoVendedor = new Scanner(System.in).nextLine();
+
+        Endereco endereco = Endereco.EnderecoBuilder.builder()
+                .estado(estadoVendedor)
+                .cidade(cidadeVendedor)
+                .bairro(bairroVendedor)
+                .rua(ruaVendedor)
+                .numero(numeroCasaVendedor)
+                .complemento(complementoVendedor)
+                .build();
+
+        Vendedor vendedor = Vendedor.VendedorBuilder.builder()
+                .nomePessoa(nomeVendedor)
+                .idade(idadeVendedor)
+                .salarioBase(1800)
+                .salarioRecebido(null)
+                .endereco(endereco)
+                .loja(lojaAtual)
+                .build();
+
+        vendedoresDaLoja.add(vendedor);
+        System.out.println("Vendedor cadastrado com sucesso...");
+        MenuPrincipal.acessarMenuLoja(getSelectedStoreIndex());
 
     }
+
     public static void cadastrarCliente() {
-        System.out.println("aaaa");
+        System.out.println("Insira o nome do seu Cliente: ");
+        String nomeCliente = new Scanner(System.in).nextLine();
+
+        System.out.println("Insira a idade do Cliente: ");
+        Integer idadeCliente = new Scanner(System.in).nextInt();
+
+        System.out.println("Qual estado seu Cliente reside: ");
+        String estadoCliente = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual cidade seu Cliente reside: ");
+        String cidadeCliente = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual bairro seu Cliente reside: ");
+        String bairroCliente = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual rua seu Cliente reside: ");
+        String ruaCliente = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual o número da casa em que seu Cliente reside: ");
+        Integer numeroCasaCliente = new Scanner(System.in).nextInt();
+
+        System.out.println("Passe um complemento do endereço do seu Cliente: ");
+        String complementoCliente = new Scanner(System.in).nextLine();
+
+        Endereco endereco = Endereco.EnderecoBuilder.builder()
+                .estado(estadoCliente)
+                .cidade(cidadeCliente)
+                .bairro(bairroCliente)
+                .rua(ruaCliente)
+                .numero(numeroCasaCliente)
+                .complemento(complementoCliente)
+                .build();
+
+        Cliente cliente = Cliente.ClienteBuilder.builder()
+                .nomePessoa(nomeCliente)
+                .idade(idadeCliente)
+                .endereco(endereco)
+                .build();
+
+        clientesDaLoja.add(cliente);
+        System.out.println("Cliente cadastrado com sucesso...");
+        MenuPrincipal.acessarMenuLoja(getSelectedStoreIndex());
 
     }
+
     public static void cadastrarNovoItem() {
-        System.out.println("aaaa");
 
+        System.out.println("Insira o ID do novo Item: ");
+        Long idItem = new Scanner(System.in).nextLong();
+
+        System.out.println("Insira o nome do Item: ");
+        String nomeItem = new Scanner(System.in).nextLine();
+
+        System.out.println("Insira o tipo do Item: ");
+        String tipoItem = new Scanner(System.in).nextLine();
+
+        System.out.println("Insira o valor do Item: ");
+        Double valorItem = new Scanner(System.in).nextDouble();
+
+        Item item = Item.ItemBuilder.builder()
+                .id(idItem)
+                .nome(nomeItem)
+                .tipo(tipoItem)
+                .valor(valorItem)
+                .build();
+
+        System.out.println("Item cadastrado com sucesso...");
+        MenuPrincipal.acessarMenuLoja(getSelectedStoreIndex());
     }
 
-    public static void listarClientes(){
-        System.out.println("aaaa");
+    public static void listarClientes() {
 
+        System.out.println(STR."\n\nLista de Clientes da Loja: \{lojaAtual.getNomeFantasia()}");
+        System.out.println("----------------------------------");
+
+        if (clientesDaLoja.isEmpty()) {
+            System.out.println("Ainda não há clientes cadastrados nessa loja.");
+        } else {
+            for (Cliente cliente : clientesDaLoja) {
+                System.out.println(cliente.apresentarse());
+            }
+        }
+
+        System.out.println(STR."\nTotal de Clientes: \{clientesDaLoja.size()}");
     }
 
-    public static void listarVendedores(){
-        System.out.println("aaaa");
+    public static void listarVendedores() {
+        System.out.println(STR."\n\nLista de Vendedores da Loja: \{lojaAtual.getNomeFantasia()}");
+        System.out.println("----------------------------------");
 
+        if (vendedoresDaLoja.isEmpty()) {
+            System.out.println("Ainda não há vendedores cadastrados nessa loja.");
+        } else {
+            for (Vendedor vendedor : vendedoresDaLoja) {
+                System.out.println(vendedor.apresentarse());
+            }
+        }
+
+        System.out.println(STR."\nTotal de Vendedores: \{vendedoresDaLoja.size()}");
     }
+
     public static void listarItens() {
         System.out.println("aaaa");
 
