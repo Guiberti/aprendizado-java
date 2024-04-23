@@ -1,8 +1,7 @@
 package listasProfSandroResolucao.Lista07.utils;
 
-
 import listasProfSandroResolucao.Lista07.domain.*;
-import listasProfSandroResolucao.Lista07.test.MenuSecundario;
+import listasProfSandroResolucao.Lista07.test.MenuPrincipal;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,11 +9,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MainFunctions {
-    private static Loja lojaGlobal = MenuSecundario.LojaGlobal.loja;
+    private static Loja lojaGlobal = MenuPrincipal.LojaGlobal.loja;
     private static List<Cliente> clientesDaLoja = new ArrayList<>();
     private static List<Vendedor> vendedoresDaLoja = new ArrayList<>();
     private static List<Gerente> gerentesDaLoja = new ArrayList<>();
     private static List<Item> itensDaLoja = new ArrayList<>();
+    private static List<Pedido> pedidosDaLoja = new ArrayList<>();
+    private static long proximoIdPedido = 1;
+
 
     public static void gerente() {
         Endereco endereco = Endereco.EnderecoBuilder.builder()
@@ -122,7 +124,6 @@ public class MainFunctions {
 
         clientesDaLoja.add(cliente);
         System.out.println("Cliente cadastrado com sucesso...");
-
     }
 
     public static void cadastrarNovoItem() {
@@ -166,21 +167,6 @@ public class MainFunctions {
         System.out.println("\nTotal de Clientes:" + clientesDaLoja.size());
     }
 
-    public static void listarVendedores() {
-        System.out.println("\n\nLista de Vendedores da Loja:" + lojaGlobal.getNomeFantasia());
-        System.out.println("----------------------------------");
-
-        if (vendedoresDaLoja.isEmpty()) {
-            System.out.println("Ainda não há vendedores cadastrados nessa loja.");
-        } else {
-            for (Vendedor vendedor : vendedoresDaLoja) {
-                System.out.println(vendedor.apresentarse());
-            }
-        }
-
-        System.out.println("\nTotal de Vendedores: " + vendedoresDaLoja.size());
-    }
-
     public static void listarItens() {
         System.out.println("\n\nLista de Itens da Loja:" + lojaGlobal.getNomeFantasia());
         System.out.println("----------------------------------");
@@ -196,9 +182,80 @@ public class MainFunctions {
         System.out.println("\nTotal de Itens: " + itensDaLoja.size());
     }
 
-    public static void criarNovoPedido() {
-        System.out.println("aaaa");
+    public static Cliente encontrarClientePorNome(String nomeCliente) {
+        for (Cliente cliente : clientesDaLoja) {
+            if (cliente.getNomePessoa().equalsIgnoreCase(nomeCliente)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
 
+    public static Vendedor encontrarVendedorPorNome(String nomeVendedor) {
+        for (Vendedor vendedor : vendedoresDaLoja) {
+            if (vendedor.getNomePessoa().equalsIgnoreCase(nomeVendedor)) {
+                return vendedor;
+            }
+        }
+        return null;
+    }
+
+    public static Item encontrarItemPorId(long idItem) {
+        for (Item item : itensDaLoja) {
+            if (item.getId() == idItem) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public static void criarNovoPedido() {
+
+        System.out.println("Digite o nome do cliente: ");
+        String nomeCliente = new Scanner(System.in).nextLine();
+        Cliente cliente = encontrarClientePorNome(nomeCliente);
+        if (cliente == null) {
+            System.out.println("Cliente não encontrado. Pedido não pode ser criado.");
+            return;
+        }
+
+        System.out.println("Digite o nome do vendedor: ");
+        String nomeVendedor = new Scanner(System.in).nextLine();
+        Vendedor vendedor = encontrarVendedorPorNome(nomeVendedor);
+        if (vendedor == null) {
+            System.out.println("Vendedor não encontrado. Pedido não pode ser criado.");
+            return;
+        }
+
+        List<Item> itensSelecionados = new ArrayList<>();
+        boolean continuarAdicionandoItens = true;
+        while (continuarAdicionandoItens) {
+            System.out.println("Digite o ID do item a ser adicionado ao pedido (ou 0 para sair): ");
+            long idItem = new Scanner(System.in).nextLong();
+            if (idItem == 0) {
+                continuarAdicionandoItens = false;
+            } else {
+                Item itemEncontrado = encontrarItemPorId(idItem);
+                if (itemEncontrado != null) {
+                    itensSelecionados.add(itemEncontrado);
+                    System.out.println("Item adicionado ao pedido com sucesso!");
+                } else {
+                    System.out.println("Item não encontrado na loja. Tente novamente.");
+                }
+            }
+        }
+
+        Pedido pedido = new Pedido.PedidoBuilder()
+                .id(proximoIdPedido++)
+                .cliente(cliente)
+                .vendedor(vendedor)
+                .loja(lojaGlobal)
+                .itens(itensSelecionados)
+                .build();
+
+        pedidosDaLoja.add(pedido);
+
+        System.out.println("Pedido criado com sucesso!");
     }
 
     public static void processarNovoPedido() {
