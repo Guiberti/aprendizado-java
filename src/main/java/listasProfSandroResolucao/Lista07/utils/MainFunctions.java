@@ -3,6 +3,7 @@ package listasProfSandroResolucao.Lista07.utils;
 import listasProfSandroResolucao.Lista07.domain.*;
 import listasProfSandroResolucao.Lista07.test.MenuPrincipal;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,10 +17,11 @@ public class MainFunctions {
     private static List<Item> itensDaLoja = new ArrayList<>();
     private static List<Pedido> pedidosDaLoja = new ArrayList<>();
     private static long proximoIdPedido = 1;
+    private static long proximoIdItem = 1;
 
 
-    public static void gerente() {
-        Endereco endereco = Endereco.EnderecoBuilder.builder()
+    public static void ficticios() {
+        Endereco enderecoFicticio = Endereco.EnderecoBuilder.builder()
                 .estado("Paraná")
                 .cidade("Santa Lúcia")
                 .bairro("Centro")
@@ -34,21 +36,10 @@ public class MainFunctions {
                 .loja(lojaGlobal)
                 .salarioBase(15600)
                 .salarioRecebido(Arrays.asList(15600.00, 15700.00, 16000.00))
-                .endereco(endereco)
+                .endereco(enderecoFicticio)
                 .build();
 
         gerentesDaLoja.add(gerente);
-    }
-
-    public static void vendedores() {
-        Endereco endereco = Endereco.EnderecoBuilder.builder()
-                .estado("Paraná")
-                .cidade("Santa Lúcia")
-                .bairro("Centro")
-                .rua("Rua das Palmeiras")
-                .numero(35)
-                .complemento("Casa")
-                .build();
 
         Vendedor vendedor1 = Vendedor.VendedorBuilder.builder()
                 .nomePessoa("Guilherme")
@@ -56,7 +47,7 @@ public class MainFunctions {
                 .loja(lojaGlobal)
                 .salarioBase(2000)
                 .salarioRecebido(Arrays.asList(2100.00, 1950.00, 2150.00))
-                .endereco(endereco)
+                .endereco(enderecoFicticio)
                 .build();
 
         Vendedor vendedor2 = Vendedor.VendedorBuilder.builder()
@@ -65,21 +56,68 @@ public class MainFunctions {
                 .loja(lojaGlobal)
                 .salarioBase(2000)
                 .salarioRecebido(Arrays.asList(2100.00, 1950.00, 2150.00))
-                .endereco(endereco)
+                .endereco(enderecoFicticio)
                 .build();
 
         Vendedor vendedor3 = Vendedor.VendedorBuilder.builder()
-                .nomePessoa("Anderson")
+                .nomePessoa("Bernardo")
                 .idade(18)
                 .loja(lojaGlobal)
                 .salarioBase(2000)
                 .salarioRecebido(Arrays.asList(2100.00, 1950.00, 2150.00))
-                .endereco(endereco)
+                .endereco(enderecoFicticio)
                 .build();
 
         vendedoresDaLoja.add(vendedor1);
         vendedoresDaLoja.add(vendedor2);
         vendedoresDaLoja.add(vendedor3);
+
+        Cliente cliente1 = Cliente.ClienteBuilder.builder()
+                .nomePessoa("Kaue")
+                .idade(18)
+                .endereco(enderecoFicticio)
+                .build();
+
+        Cliente cliente2 = Cliente.ClienteBuilder.builder()
+                .nomePessoa("Anderson")
+                .idade(18)
+                .endereco(enderecoFicticio)
+                .build();
+
+        Cliente cliente3 = Cliente.ClienteBuilder.builder()
+                .nomePessoa("Lucas")
+                .idade(18)
+                .endereco(enderecoFicticio)
+                .build();
+
+        clientesDaLoja.add(cliente1);
+        clientesDaLoja.add(cliente2);
+        clientesDaLoja.add(cliente3);
+
+        Item item1 = Item.ItemBuilder.builder()
+                .id(proximoIdItem++)
+                .nome("Notebook Acer I3")
+                .tipo("Eletronico")
+                .valor(4999.00)
+                .build();
+
+        Item item2 = Item.ItemBuilder.builder()
+                .id(proximoIdItem++)
+                .nome("Notebook Samsung I5")
+                .tipo("Eletronico")
+                .valor(4999.00)
+                .build();
+
+        Item item3 = Item.ItemBuilder.builder()
+                .id(proximoIdItem++)
+                .nome("Celular Xiaomi 256GB")
+                .tipo("Eletronico")
+                .valor(4999.00)
+                .build();
+
+        itensDaLoja.add(item1);
+        itensDaLoja.add(item2);
+        itensDaLoja.add(item3);
     }
 
     public static void cadastrarCliente() {
@@ -151,6 +189,22 @@ public class MainFunctions {
         System.out.println("Item cadastrado com sucesso...");
     }
 
+    public static void listarVendedores() {
+
+        System.out.println("\n\nLista de Vendedores da Loja:" + lojaGlobal.getNomeFantasia());
+        System.out.println("----------------------------------");
+
+        if (vendedoresDaLoja.isEmpty()) {
+            System.out.println("Ainda não há vendedores cadastrados nessa loja.");
+        } else {
+            for (Vendedor vendedor : vendedoresDaLoja) {
+                System.out.println(vendedor.apresentarse());
+            }
+        }
+
+        System.out.println("\nTotal de Vendedores:" + vendedoresDaLoja.size());
+    }
+
     public static void listarClientes() {
 
         System.out.println("\n\nLista de Clientes da Loja:" + lojaGlobal.getNomeFantasia());
@@ -210,6 +264,9 @@ public class MainFunctions {
     }
 
     public static void criarNovoPedido() {
+        listarVendedores();
+        listarClientes();
+        listarItens();
 
         System.out.println("Digite o nome do cliente: ");
         String nomeCliente = new Scanner(System.in).nextLine();
@@ -251,11 +308,27 @@ public class MainFunctions {
                 .vendedor(vendedor)
                 .loja(lojaGlobal)
                 .itens(itensSelecionados)
+                .dataCriacao(LocalDate.now())
                 .build();
 
         pedidosDaLoja.add(pedido);
 
         System.out.println("Pedido criado com sucesso!");
+    }
+
+    public static void listarPedidos() {
+        System.out.println("\n\nLista de Pedidos gerados na Loja:" + lojaGlobal.getNomeFantasia());
+        System.out.println("----------------------------------");
+
+        if (pedidosDaLoja.isEmpty()) {
+            System.out.println("Ainda não há pedidos gerados na loja.");
+        } else {
+            for (Pedido pedido : pedidosDaLoja) {
+                System.out.println(pedido.gerarDescricaoVenda());
+            }
+        }
+
+        System.out.println("\nTotal de Pedidos: " + pedidosDaLoja.size());
     }
 
     public static void processarNovoPedido() {
