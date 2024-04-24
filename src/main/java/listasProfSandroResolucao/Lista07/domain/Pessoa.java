@@ -23,6 +23,5 @@ public abstract class Pessoa {
         this.endereco = endereco;
     }
 
-    // met add
     public abstract String apresentarse();
 }

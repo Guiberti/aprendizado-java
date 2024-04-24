@@ -20,7 +20,6 @@ public class Vendedor extends Pessoa {
         this.loja = loja;
     }
 
-    // Met add
     @Override
     public String apresentarse() {
         return ("Nome: "

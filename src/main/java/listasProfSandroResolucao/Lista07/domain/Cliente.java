@@ -6,7 +6,6 @@ public class Cliente extends Pessoa {
         super(nomePessoa, idade, endereco);
     }
 
-    // Met add
     @Override
     public String apresentarse() {
         return ("Nome: "

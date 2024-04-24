@@ -46,7 +46,6 @@ public class Endereco {
                 + ", na rua: " + rua + ", complemento: " + complemento + ".");
     }
 
-
     public static final class EnderecoBuilder {
         private String estado;
         private String cidade;
