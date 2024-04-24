@@ -13,9 +13,11 @@ public class Pedido {
     private Vendedor vendedor;
     private Loja loja;
     private List<Item> itens;
+    private String empresaParceira;
 
     public Pedido(Long id,
-                  Cliente cliente, Vendedor vendedor, LocalDate dataCriacao, Loja loja, List<Item> itens) {
+                  Cliente cliente, Vendedor vendedor, LocalDate dataCriacao, Loja loja, List<Item> itens,
+                  String empresaParceira) {
         this.id = id;
         this.cliente = cliente;
         this.vendedor = vendedor;
@@ -24,6 +26,7 @@ public class Pedido {
         this.dataCriacao = LocalDate.now();
         this.dataPagamento = dataCriacao.plusDays(1);
         this.dataVencimentoReserva = dataCriacao.plusDays(3);
+        this.empresaParceira = empresaParceira;
     }
 
     public Long getId() {
@@ -65,6 +68,9 @@ public class Pedido {
         descricao += "Cliente: " + cliente.getNomePessoa() + "\n";
         descricao += "Vendedor: " + vendedor.getNomePessoa() + "\n";
         descricao += "Loja: " + loja.getNomeFantasia() + "\n";
+        if (empresaParceira != null && !empresaParceira.isEmpty()) {
+            descricao += "Pedido realizado em parceria com a empresa: " + empresaParceira + "\n";
+        }
         descricao += "\n";
         descricao += "Itens:\n";
         for (Item item : itens) {
@@ -86,6 +92,7 @@ public class Pedido {
         private Vendedor vendedor;
         private Loja loja;
         private List<Item> itens;
+        private String empresaParceira;
 
         public PedidoBuilder() {
         }
@@ -124,11 +131,16 @@ public class Pedido {
             return this;
         }
 
+        public PedidoBuilder empresaParceira(String empresaParceira) {
+            this.empresaParceira = empresaParceira;
+            return this;
+        }
+
         public Pedido build() {
             if (dataCriacao == null) {
                 throw new IllegalStateException("Data de criação não pode ser nula");
             }
-            return new Pedido(id, cliente, vendedor, dataCriacao, loja, itens);
+            return new Pedido(id, cliente, vendedor, dataCriacao, loja, itens, empresaParceira);
         }
     }
 }

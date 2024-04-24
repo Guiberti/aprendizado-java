@@ -10,14 +10,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MainFunctions {
-    private static final Loja lojaGlobal = MenuPrincipal.LojaGlobal.loja;
-    private static final List<Cliente> clientesDaLoja = new ArrayList<>();
-    private static final List<Vendedor> vendedoresDaLoja = new ArrayList<>();
-    private static final List<Gerente> gerentesDaLoja = new ArrayList<>();
-    private static final List<Item> itensDaLoja = new ArrayList<>();
-    private static final List<Pedido> pedidosDaLoja = new ArrayList<>();
+    private static Loja lojaGlobal = MenuPrincipal.LojaGlobal.loja;
+    private static List<Cliente> clientesDaLoja = new ArrayList<>();
+    private static List<Vendedor> vendedoresDaLoja = new ArrayList<>();
+    private static List<Gerente> gerentesDaLoja = new ArrayList<>();
+    private static List<Item> itensDaLoja = new ArrayList<>();
+    private static List<Pedido> pedidosDaLoja = new ArrayList<>();
     private static long proximoIdPedido = 1;
     private static long proximoIdItem = 1;
+    private static String empresaParceira;
 
 
     public static void ficticios() {
@@ -302,11 +303,13 @@ public class MainFunctions {
             }
         }
 
-        System.out.println("Deseja fazer a venda em parceria com alguma empresa? Se sim, insira o nome da empresa," +
-                " se não, insira 'N'.");
-        String nomeEmpresaParceira = new Scanner(System.in).nextLine();
-        if (nomeEmpresaParceira == "N" || nomeEmpresaParceira == "n") {
-            return;
+        System.out.println("Deseja fazer a venda em parceria com alguma empresa? Opções a seguir: \n1. Sim.\n2. Não.");
+        Integer opcaoParceria = new Scanner(System.in).nextInt();
+        if (opcaoParceria == 2) {
+        }
+        if (opcaoParceria == 1) {
+            System.out.print("Insira o nome da empresa parceira: ");
+            empresaParceira = new Scanner(System.in).nextLine();
         }
 
         Pedido pedido = new Pedido.PedidoBuilder()
@@ -316,6 +319,7 @@ public class MainFunctions {
                 .loja(lojaGlobal)
                 .itens(itensSelecionados)
                 .dataCriacao(LocalDate.now())
+                .empresaParceira(empresaParceira)
                 .build();
 
         pedidosDaLoja.add(pedido);
