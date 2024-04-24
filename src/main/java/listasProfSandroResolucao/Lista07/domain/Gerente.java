@@ -20,6 +20,22 @@ public class Gerente extends Pessoa {
         this.loja = loja;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public Loja getLoja() {
+        return loja;
+    }
+
+    public double getSalarioBase() {
+        return salarioBase;
+    }
+
+    public List<Double> getSalarioRecebido() {
+        return salarioRecebido;
+    }
+
     @Override
     public String apresentarse() {
         return ("Nome: "
@@ -54,30 +70,37 @@ public class Gerente extends Pessoa {
         public static GerenteBuilder builder() {
             return new GerenteBuilder();
         }
+
         public GerenteBuilder nomePessoa(String nomePessoa) {
             this.nomePessoa = nomePessoa;
             return this;
         }
+
         public GerenteBuilder idade(Integer idade) {
             this.idade = idade;
             return this;
         }
+
         public GerenteBuilder endereco(Endereco endereco) {
             this.endereco = endereco;
             return this;
         }
+
         public GerenteBuilder loja(Loja loja) {
             this.loja = loja;
             return this;
         }
+
         public GerenteBuilder salarioBase(double salarioBase) {
             this.salarioBase = salarioBase;
             return this;
         }
+
         public GerenteBuilder salarioRecebido(List<Double> salarioRecebido) {
             this.salarioRecebido = salarioRecebido;
             return this;
         }
+
         public Gerente build() {
             return new Gerente(nomePessoa, idade, endereco, loja, salarioBase, salarioRecebido);
         }

@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MainFunctions {
-    private static Loja lojaGlobal = MenuPrincipal.LojaGlobal.loja;
-    private static List<Cliente> clientesDaLoja = new ArrayList<>();
-    private static List<Vendedor> vendedoresDaLoja = new ArrayList<>();
-    private static List<Gerente> gerentesDaLoja = new ArrayList<>();
-    private static List<Item> itensDaLoja = new ArrayList<>();
-    private static List<Pedido> pedidosDaLoja = new ArrayList<>();
+    private static final Loja lojaGlobal = MenuPrincipal.LojaGlobal.loja;
+    private static final List<Cliente> clientesDaLoja = new ArrayList<>();
+    private static final List<Vendedor> vendedoresDaLoja = new ArrayList<>();
+    private static final List<Gerente> gerentesDaLoja = new ArrayList<>();
+    private static final List<Item> itensDaLoja = new ArrayList<>();
+    private static final List<Pedido> pedidosDaLoja = new ArrayList<>();
     private static long proximoIdPedido = 1;
     private static long proximoIdItem = 1;
 
