@@ -264,8 +264,8 @@ public class MainFunctions {
     }
 
     public static void criarNovoPedido() {
-        listarVendedores();
         listarClientes();
+        listarVendedores();
         listarItens();
 
         System.out.println("Digite o nome do cliente: ");
@@ -332,8 +332,32 @@ public class MainFunctions {
     }
 
     public static void processarNovoPedido() {
-        System.out.println("aaaa");
+        listarPedidos();
 
+        System.out.println("Digite o ID do pedido que deseja processar (ou 0 para sair): ");
+        Long idPedido = new Scanner(System.in).nextLong();
+        if (idPedido == 0) {
+            System.out.println("Saindo do processamento de pedidos....");
+            return;
+        }
+
+        Pedido pedidoSelecionado = null;
+        for (Pedido pedido : pedidosDaLoja) {
+            if (pedido.getId() == idPedido) {
+                pedidoSelecionado = pedido;
+                break;
+            }
+        }
+
+        if (pedidoSelecionado == null) {
+            System.out.println("Pedido não encontrado. Verifique o ID e tente novamente.");
+            return;
+        }
+
+        ProcessarPedido processador = new ProcessarPedido();
+        processador.processar(pedidoSelecionado);
+
+        pedidosDaLoja.remove(pedidoSelecionado);
     }
 }
 
