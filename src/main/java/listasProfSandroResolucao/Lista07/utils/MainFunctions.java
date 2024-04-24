@@ -302,6 +302,13 @@ public class MainFunctions {
             }
         }
 
+        System.out.println("Deseja fazer a venda em parceria com alguma empresa? Se sim, insira o nome da empresa," +
+                " se não, insira 'N'.");
+        String nomeEmpresaParceira = new Scanner(System.in).nextLine();
+        if (nomeEmpresaParceira == "N" || nomeEmpresaParceira == "n") {
+            return;
+        }
+
         Pedido pedido = new Pedido.PedidoBuilder()
                 .id(proximoIdPedido++)
                 .cliente(cliente)
