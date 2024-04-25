@@ -15,9 +15,9 @@ public class Pedido {
     private List<Item> itens;
     private String empresaParceira;
 
-    public Pedido(Long id,
-                  Cliente cliente, Vendedor vendedor, LocalDate dataCriacao, Loja loja, List<Item> itens,
-                  String empresaParceira) {
+    private Pedido(Long id,
+                   Cliente cliente, Vendedor vendedor, LocalDate dataCriacao, Loja loja, List<Item> itens,
+                   String empresaParceira) {
         this.id = id;
         this.cliente = cliente;
         this.vendedor = vendedor;

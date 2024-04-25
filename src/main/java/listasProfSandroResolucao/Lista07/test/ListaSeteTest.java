@@ -12,14 +12,21 @@ public class ListaSeteTest {
         DecimalFormat df = new DecimalFormat("0.00");
         ProcessarPedido processador = new ProcessarPedido();
 
+        Endereco enderecoTest = Endereco.EnderecoBuilder.builder()
+                .estado("Paraná")
+                .cidade("Santa Lúcia")
+                .bairro("Centro")
+                .rua("Avenida Orlando Luiz Zamp")
+                .numero(1456)
+                .complemento("Esquina")
+                .build();
+
         Gerente gerente = Gerente.GerenteBuilder.builder()
                 .nomePessoa("Vânia")
                 .idade(28)
-                .endereco(new Endereco
-                        ("Paraná", "Santa Lucia", "Centro", "Avenida Brasil",
-                                345, "Casa"))
+                .endereco(enderecoTest)
                 .loja(null)
-                .salarioBase(2200)
+                .salarioBase(2200.00)
                 .salarioRecebido(Arrays.asList(2200.0, 2500.0, 2000.0))
                 .build();
 
@@ -27,9 +34,7 @@ public class ListaSeteTest {
                 .nomePessoa("Guilherme")
                 .idade(18)
                 .loja(null)
-                .endereco((new Endereco
-                        ("Paraná", "Santa Lucia", "Centro", "Avenida Brasil",
-                                35, "Casa")))
+                .endereco(enderecoTest)
                 .salarioBase(1800)
                 .salarioRecebido(Arrays.asList(1800.0, 1700.0, 1850.0))
                 .build();
@@ -38,18 +43,14 @@ public class ListaSeteTest {
                 .nomePessoa("Talita")
                 .idade(23)
                 .loja(null)
-                .endereco((new Endereco
-                        ("Paraná", "Santa Lucia", "Centro", "Avenida Brasil",
-                                895, "Casa")))
+                .endereco(enderecoTest)
                 .salarioBase(1900)
                 .salarioRecebido(Arrays.asList(1900.0, 1900.0, 2200.0))
                 .build();
         Vendedor vendedor3 = Vendedor.VendedorBuilder.builder()
                 .nomePessoa("Fran")
                 .idade(25)
-                .endereco((new Endereco
-                        ("Paraná", "Santa Lucia", "Centro", "Avenida Brasil",
-                                894, "Casa")))
+                .endereco(enderecoTest)
                 .loja(null)
                 .salarioBase(2000)
                 .salarioRecebido(Arrays.asList(2000.0, 2000.0, 2300.0))
@@ -58,25 +59,20 @@ public class ListaSeteTest {
         Cliente cliente1 = Cliente.ClienteBuilder.builder()
                 .nomePessoa("Fátima")
                 .idade(54)
-                .endereco((new Endereco
-                        ("Paraná", "Santa Lucia", "Centro", "Avenida Brasil",
-                                22, "Casa")))
+                .endereco(enderecoTest)
                 .build();
 
         Cliente cliente2 = Cliente.ClienteBuilder.builder()
                 .nomePessoa("Dalci")
                 .idade(62)
-                .endereco((new Endereco
-                        ("Paraná", "Santa Lucia", "Centro", "Avenida Brasil",
-                                123, "Casa")))
+                .endereco(enderecoTest)
                 .build();
 
         Loja loja = Loja.LojaBuilder.builder()
                 .nomeFantasia("Myy Plants")
                 .razaoSocial("mypla")
                 .cnpj("17235604000110")
-                .endereco(new Endereco("Paraná", "Santa Lúcia", "Centro", "Avenida OLZ",
-                        455, "Loja de Esquina"))
+                .endereco(enderecoTest)
                 .vendedores(Arrays.asList(vendedor1, vendedor2, vendedor3))
                 .clientes(Arrays.asList(cliente1, cliente2))
                 .build();
@@ -153,7 +149,6 @@ public class ListaSeteTest {
         System.out.println("\n==================== ITENS DISPONIVEIS =======================");
         System.out.println(item1.gerarDescricao());
         System.out.println(item2.gerarDescricao());
-        System.out.println(item3.gerarDescricao());
         System.out.println(item4.gerarDescricao());
         System.out.println(item5.gerarDescricao());
 

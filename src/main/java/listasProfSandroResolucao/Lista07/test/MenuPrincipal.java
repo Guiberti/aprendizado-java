@@ -63,10 +63,8 @@ public class MenuPrincipal {
             }
         }
     }
-
     public static class LojaGlobal {
         public static Loja loja;
     }
-
 }
 

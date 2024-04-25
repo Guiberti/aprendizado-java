@@ -8,7 +8,7 @@ public class Endereco {
     private Integer numero;
     private String complemento;
 
-    public Endereco(String estado, String cidade, String bairro, String rua, Integer numero, String complemento) {
+    private Endereco(String estado, String cidade, String bairro, String rua, Integer numero, String complemento) {
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
@@ -41,7 +41,7 @@ public class Endereco {
         return complemento;
     }
 
-    private String apresentarLogradouro() {
+    public String apresentarLogradouro() {
         return ("Moro no estado de: " + estado + " ,na cidade de: " + cidade + ", no bairro: " + bairro
                 + ", na rua: " + rua + ", complemento: " + complemento + ".");
     }
