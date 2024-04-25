@@ -19,8 +19,6 @@ public class MainFunctions {
     private static long proximoIdPedido = 1;
     private static long proximoIdItem = 1;
     private static String empresaParceira;
-
-
     public static void ficticios() {
         Endereco enderecoFicticio = Endereco.EnderecoBuilder.builder()
                 .estado("Paraná")
@@ -120,6 +118,34 @@ public class MainFunctions {
         itensDaLoja.add(item2);
         itensDaLoja.add(item3);
     }
+    private static Endereco cadastrarEndereco() {
+        System.out.println("Qual estado reside: ");
+        String estado = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual cidade reside: ");
+        String cidade = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual bairro reside: ");
+        String bairro = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual rua reside: ");
+        String rua = new Scanner(System.in).nextLine();
+
+        System.out.println("Qual o número da casa em que reside: ");
+        Integer numeroCasa = new Scanner(System.in).nextInt();
+
+        System.out.println("Passe um complemento do seu Cliente: ");
+        String complemento = new Scanner(System.in).nextLine();
+
+        return Endereco.EnderecoBuilder.builder()
+                .estado(estado)
+                .cidade(cidade)
+                .bairro(bairro)
+                .rua(rua)
+                .numero(numeroCasa)
+                .complemento(complemento)
+                .build();
+    }
 
     public static void cadastrarCliente() {
         System.out.println("Insira o nome do seu Cliente: ");
@@ -128,42 +154,17 @@ public class MainFunctions {
         System.out.println("Insira a idade do Cliente: ");
         Integer idadeCliente = new Scanner(System.in).nextInt();
 
-        System.out.println("Qual estado seu Cliente reside: ");
-        String estadoCliente = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual cidade seu Cliente reside: ");
-        String cidadeCliente = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual bairro seu Cliente reside: ");
-        String bairroCliente = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual rua seu Cliente reside: ");
-        String ruaCliente = new Scanner(System.in).nextLine();
-
-        System.out.println("Qual o número da casa em que seu Cliente reside: ");
-        Integer numeroCasaCliente = new Scanner(System.in).nextInt();
-
-        System.out.println("Passe um complemento do endereço do seu Cliente: ");
-        String complementoCliente = new Scanner(System.in).nextLine();
-
-        Endereco endereco = Endereco.EnderecoBuilder.builder()
-                .estado(estadoCliente)
-                .cidade(cidadeCliente)
-                .bairro(bairroCliente)
-                .rua(ruaCliente)
-                .numero(numeroCasaCliente)
-                .complemento(complementoCliente)
-                .build();
-
         Cliente cliente = Cliente.ClienteBuilder.builder()
                 .nomePessoa(nomeCliente)
                 .idade(idadeCliente)
-                .endereco(endereco)
+                .endereco(cadastrarEndereco())
                 .build();
 
         clientesDaLoja.add(cliente);
         System.out.println("Cliente cadastrado com sucesso...");
     }
+
+
 
     public static void cadastrarNovoItem() {
 
