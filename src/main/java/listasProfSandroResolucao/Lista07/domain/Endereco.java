@@ -41,7 +41,7 @@ public class Endereco {
         return complemento;
     }
 
-    protected String apresentarLogradouro() {
+    private String apresentarLogradouro() {
         return ("Moro no estado de: " + estado + " ,na cidade de: " + cidade + ", no bairro: " + bairro
                 + ", na rua: " + rua + ", complemento: " + complemento + ".");
     }
