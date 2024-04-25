@@ -305,7 +305,8 @@ public class MainFunctions {
         System.out.println("Deseja fazer a venda em parceria com alguma empresa? Opções a seguir: \n1. Sim.\n2. Não.");
         int opcaoParceria = new Scanner(System.in).nextInt();
         if (opcaoParceria == 2) {
-
+            System.out.println("A venda será realizada sem parceria com empresa.");
+            empresaParceira = null;
         }
         if (opcaoParceria == 1) {
             System.out.print("Insira o nome da empresa parceira: ");
