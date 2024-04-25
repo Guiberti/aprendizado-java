@@ -17,6 +17,17 @@ public class Cliente {
                 endereco.getRua() + ", " + endereco.getComplemento() + ", " + endereco.getEstado());
     }
 
+    public String getNomePessoa() {
+        return nomePessoa;
+    }
+
+    public Integer getIdadePessoa() {
+        return idadePessoa;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
 
     public static final class ClienteBuilder {
         private String nomePessoa;

@@ -16,7 +16,7 @@ public class TestHotel {
                 .bairro("Santa Cruz")
                 .rua("Av Brasil")
                 .numero(3456)
-                .complemento("Hotel de Esquina")
+                .complemento("Esquina")
                 .build();
 
         Hotel hotel = Hotel.HotelBuilder.builder()
@@ -43,24 +43,29 @@ public class TestHotel {
         hotel.setClientes(List.of(cliente1, cliente2));
 
         Quarto quarto1 = Quarto.QuartoBuilder.builder()
-                .nomeQuarto(1L)
+                .numeroQuarto(1L)
                 .hotel(hotel)
                 .build();
 
         Quarto quarto2 = Quarto.QuartoBuilder.builder()
-                .nomeQuarto(1L)
+                .numeroQuarto(2L)
                 .hotel(hotel)
                 .build();
 
         hotel.setQuartos(List.of(quarto1, quarto2));
 
         System.out.println("============== HOTEL ============");
-        hotel.apresentarHotel();
+        System.out.println(hotel.apresentarHotel());
 
-        System.out.println("============== CLIENTES ============");
-        cliente1.apresentarCliente();
-        cliente2.apresentarCliente();
+        System.out.println("\n============== CLIENTES ============");
+        System.out.println(cliente1.apresentarCliente());
+        System.out.println(cliente2.apresentarCliente());
         System.out.println("Total de CLientes: " + hotel.getClientes().size());
+
+        System.out.println("\n============== QUARTOS ============");
+        System.out.println(quarto1.apresentarQuarto());
+        System.out.println(quarto2.apresentarQuarto());
+        System.out.println("Total de Quartos: " + hotel.getQuartos().size());
 
 
     }

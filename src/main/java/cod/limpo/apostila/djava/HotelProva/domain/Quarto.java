@@ -19,8 +19,9 @@ public class Quarto {
     }
 
     public String apresentarQuarto() {
-        return ("Quarto: " + numeroQuarto + ", hotel: " + hotel + ".");
+        return ("Quarto: " + numeroQuarto + ", hotel: " + hotel.getNomeFantasia() + ".");
     }
+
 
 
     public static final class QuartoBuilder {
@@ -34,11 +35,10 @@ public class Quarto {
             return new QuartoBuilder();
         }
 
-        public QuartoBuilder nomeQuarto(Long numeroQuarto) {
+        public QuartoBuilder numeroQuarto(Long numeroQuarto) {
             this.numeroQuarto = numeroQuarto;
             return this;
         }
-
         public QuartoBuilder hotel(Hotel hotel) {
             this.hotel = hotel;
             return this;
