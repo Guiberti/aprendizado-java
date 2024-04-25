@@ -14,14 +14,9 @@ public class Quarto {
         return numeroQuarto;
     }
 
-    public Hotel getHotel() {
-        return hotel;
-    }
-
     public String apresentarQuarto() {
         return ("Quarto: " + numeroQuarto + ", hotel: " + hotel.getNomeFantasia() + ".");
     }
-
 
 
     public static final class QuartoBuilder {
@@ -39,6 +34,7 @@ public class Quarto {
             this.numeroQuarto = numeroQuarto;
             return this;
         }
+
         public QuartoBuilder hotel(Hotel hotel) {
             this.hotel = hotel;
             return this;

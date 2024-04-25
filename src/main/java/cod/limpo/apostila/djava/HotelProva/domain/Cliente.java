@@ -12,7 +12,7 @@ public class Cliente {
     }
 
     public String apresentarCliente() {
-        return ("Nome: " + nomePessoa + ", idade: " + idadePessoa + ", endereço: " +
+        return ("Nome: " + getNomePessoa() + ", idade: " + getIdadePessoa() + ", endereço: " +
                 endereco.getCidade() + ", " + endereco.getBairro() + ", " +
                 endereco.getRua() + ", " + endereco.getComplemento() + ", " + endereco.getEstado());
     }

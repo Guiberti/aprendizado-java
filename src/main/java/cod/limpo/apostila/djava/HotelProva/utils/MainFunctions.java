@@ -2,11 +2,11 @@ package cod.limpo.apostila.djava.HotelProva.utils;
 
 import cod.limpo.apostila.djava.HotelProva.domain.*;
 import cod.limpo.apostila.djava.HotelProva.test.MenuPrincipalHotel;
-import listasProfSandroResolucao.Lista07.domain.Item;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class MainFunctions {
@@ -14,12 +14,8 @@ public class MainFunctions {
     private static List<Cliente> clientesDoHotel = new ArrayList<>();
     private static List<Quarto> quartosDoHotel = new ArrayList<>();
     private static List<Reserva> reservasDoHotel = new ArrayList<>();
-    private static long proximoIdRerva = 1;
+    private static long proximoIdReserva = 1;
 
-
-    public static void ficticios() {
-
-    }
 
     public static void cadastrarCliente() {
         System.out.println("Insira o nome: ");
@@ -121,6 +117,15 @@ public class MainFunctions {
         return null;
     }
 
+    public static Reserva encontrarReservaPorId(Long id) {
+        for (Reserva reserva : reservasDoHotel) {
+            if (Objects.equals(reserva.getId(), id)) {
+                return reserva;
+            }
+        }
+        return null;
+    }
+
     public static void reservarQuarto() {
         listarClientes();
         listarQuartos();
@@ -134,21 +139,25 @@ public class MainFunctions {
         }
 
         System.out.println("Insira o número do quarto: ");
-        Long numeroQuarto = new Scanner(System.in).nextLong();
+        long numeroQuarto = new Scanner(System.in).nextLong();
         Quarto quartoEncontrado = encontrarQuartoPorNumero(numeroQuarto);
-            if (quartoEncontrado != null) {
-                System.out.println("Quarto adicionado a reserva com sucesso!");
-            } else {
-                System.out.println("Quarto não encontrado no hotel. Tente novamente.");
-                return;
-            }
+        if (quartoEncontrado != null) {
+            System.out.println("Quarto adicionado a reserva com sucesso!");
+        } else {
+            System.out.println("Quarto não encontrado no hotel. Tente novamente.");
+            return;
+        }
+
+        System.out.println("Quantos dias gostaria de reservar o quarto? (Insira somente o número) ");
+        Integer diasReserva = new Scanner(System.in).nextInt();
 
         Reserva reserva = Reserva.ReservaBuilder.builder()
-                .id(proximoIdRerva++)
+                .id(proximoIdReserva++)
                 .cliente(cliente)
                 .quarto(quartoEncontrado)
                 .dataCriacao(LocalDate.now())
                 .hotel(hotelGlobal)
+                .diasReserva(diasReserva)
                 .build();
 
         reservasDoHotel.add(reserva);
@@ -172,6 +181,33 @@ public class MainFunctions {
     }
 
     public static void realizarCheckIn() {
+        listarReservas();
+
+        System.out.println("Insira qual o ID da sua reserva: ");
+        Long idReserva = new Scanner(System.in).nextLong();
+        Reserva reservaEncontrada = encontrarReservaPorId(idReserva);
+        if (reservaEncontrada != null) {
+            System.out.println("Reserva encontrada!");
+        } else {
+            System.out.println("Reserva não encontrada no hotel. Tente novamente.");
+            return;
+        }
+
+        System.out.println("Insira a data de realização do ChekIn");
+        System.out.println("Dia: ");
+        int dia = new Scanner(System.in).nextInt();
+        System.out.println("Mês: ");
+        int mes = new Scanner(System.in).nextInt();
+        System.out.println("Ano: ");
+        int ano = new Scanner(System.in).nextInt();
+
+        CheckIn checkIn = CheckIn.CheckInBuilder.builder()
+                .idReserva(idReserva)
+                .dataCheckIn(LocalDate.of(ano, mes, dia))
+                .dataCheckOut(LocalDate.of(ano, mes, dia).plusDays(reservaEncontrada.getDiasReserva()))
+                .build();
+
+        System.out.println(checkIn.gerarCheckIn());
     }
 
 }

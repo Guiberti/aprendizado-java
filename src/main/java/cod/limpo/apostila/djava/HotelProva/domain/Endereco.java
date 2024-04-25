@@ -42,8 +42,8 @@ public class Endereco {
     }
 
     private String apresentarLogradouro() {
-        return ("Estado: " + estado + ", cidade: " + cidade + ", bairro: " + bairro + ", rua: " + rua
-                + ", número da residencia: " + numero + ", complemento: " + complemento + ".");
+        return ("Estado: " + getEstado() + ", cidade: " + getCidade() + ", bairro: " + getBairro() + ", rua: " + getRua()
+                + ", número da residencia: " + getNumero() + ", complemento: " + getComplemento() + ".");
     }
 
 
