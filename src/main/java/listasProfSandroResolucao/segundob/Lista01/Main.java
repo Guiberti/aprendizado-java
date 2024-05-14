@@ -1,8 +1,7 @@
 package listasProfSandroResolucao.segundob.Lista01;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+
+import java.util.*;
 
 public class Main {
 
@@ -32,7 +31,7 @@ public class Main {
         jogosZeradosUnicos.forEach(System.out::println);
 
         System.out.println("\nATV 4___");
-        List<String> melhoresAnimesSeries = new ArrayList<>();
+        Queue<String> melhoresAnimesSeries = new PriorityQueue<>(Comparator.naturalOrder());
         melhoresAnimesSeries.add("Naruto");
         melhoresAnimesSeries.add("Naruto Shippuden");
         melhoresAnimesSeries.add("Dragon Ball");
@@ -50,6 +49,10 @@ public class Main {
         melhoresAnimesSeries.add("O Gambito da Rainha");
         melhoresAnimesSeries.add("Nanatsu no Taizai");
         melhoresAnimesSeries.add("The 100");
+        melhoresAnimesSeries.forEach(serie -> System.out.println(serie));
+
+        System.out.println("\nATV 5___");
+
     }
 
 }
