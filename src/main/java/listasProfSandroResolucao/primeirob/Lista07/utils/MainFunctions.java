@@ -4,10 +4,7 @@ import listasProfSandroResolucao.primeirob.Lista07.domain.*;
 import listasProfSandroResolucao.primeirob.Lista07.test.MenuPrincipal;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class MainFunctions {
     private static Loja lojaGlobal = MenuPrincipal.LojaGlobal.loja;
@@ -19,6 +16,7 @@ public class MainFunctions {
     private static long proximoIdPedido = 1;
     private static long proximoIdItem = 1;
     private static String empresaParceira;
+
     public static void ficticios() {
         Endereco enderecoFicticio = Endereco.EnderecoBuilder.builder()
                 .estado("Paraná")
@@ -118,6 +116,7 @@ public class MainFunctions {
         itensDaLoja.add(item2);
         itensDaLoja.add(item3);
     }
+
     private static Endereco cadastrarEndereco() {
         System.out.println("Qual estado reside: ");
         String estado = new Scanner(System.in).nextLine();
@@ -163,7 +162,6 @@ public class MainFunctions {
         clientesDaLoja.add(cliente);
         System.out.println("Cliente cadastrado com sucesso...");
     }
-
 
 
     public static void cadastrarNovoItem() {
@@ -305,8 +303,10 @@ public class MainFunctions {
         }
 
         System.out.println("Deseja fazer a venda em parceria com alguma empresa? Opções a seguir: \n1. Sim.\n2. Não.");
-        Integer opcaoParceria = new Scanner(System.in).nextInt();
+        int opcaoParceria = new Scanner(System.in).nextInt();
         if (opcaoParceria == 2) {
+            System.out.println("A venda será realizada sem parceria com empresa.");
+            empresaParceira = null;
         }
         if (opcaoParceria == 1) {
             System.out.print("Insira o nome da empresa parceira: ");
@@ -355,7 +355,7 @@ public class MainFunctions {
 
         Pedido pedidoSelecionado = null;
         for (Pedido pedido : pedidosDaLoja) {
-            if (pedido.getId() == idPedido) {
+            if (Objects.equals(pedido.getId(), idPedido)) {
                 pedidoSelecionado = pedido;
                 break;
             }

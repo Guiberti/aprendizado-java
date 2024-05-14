@@ -29,16 +29,9 @@ public class Item {
         return valor;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public void setValor(Double valor) {

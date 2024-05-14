@@ -8,7 +8,8 @@ public class Gerente extends Pessoa {
     private double salarioBase;
     private List<Double> salarioRecebido;
 
-    private Gerente(String nomePessoa, Integer idade, Endereco endereco, Loja loja, double salarioBase, List<Double> salarioRecebido) {
+    private Gerente(String nomePessoa, Integer idade, Endereco endereco, Loja loja, double salarioBase,
+                    List<Double> salarioRecebido) {
         super(nomePessoa, idade, endereco);
         this.endereco = endereco;
         this.loja = loja;

@@ -29,7 +29,6 @@ public class ProcessarPedido {
             return;
         }
 
-        LocalDate dataAtual = LocalDate.now();
 
         if (verificarPagamento()) {
             System.out.println("Pedido processado com sucesso!");
