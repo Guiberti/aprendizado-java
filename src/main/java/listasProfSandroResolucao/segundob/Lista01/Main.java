@@ -31,25 +31,13 @@ public class Main {
         jogosZeradosUnicos.forEach(System.out::println);
 
         System.out.println("\nATV 4___");
-        Queue<String> melhoresAnimesSeries = new PriorityQueue<>(Comparator.naturalOrder());
+        Queue<String> melhoresAnimesSeries = new PriorityQueue<>();
         melhoresAnimesSeries.add("Naruto");
-        melhoresAnimesSeries.add("Naruto Shippuden");
         melhoresAnimesSeries.add("Dragon Ball");
-        melhoresAnimesSeries.add("My Hero Academia");
-        melhoresAnimesSeries.add("Death Note");
-        melhoresAnimesSeries.add("One Piece");
-        melhoresAnimesSeries.add("Captain Tsubasa");
-        melhoresAnimesSeries.add("SuperOnze");
-        melhoresAnimesSeries.add("Pokémon");
-        melhoresAnimesSeries.add("The Walking Dead");
         melhoresAnimesSeries.add("La Casa de Papel");
-        melhoresAnimesSeries.add("Reacher");
-        melhoresAnimesSeries.add("Jack Ryan");
-        melhoresAnimesSeries.add("Dark");
-        melhoresAnimesSeries.add("O Gambito da Rainha");
-        melhoresAnimesSeries.add("Nanatsu no Taizai");
-        melhoresAnimesSeries.add("The 100");
-        melhoresAnimesSeries.forEach(serie -> System.out.println(serie));
+        melhoresAnimesSeries.add("Captain Tsubasa");
+        melhoresAnimesSeries.add("Pokémon");
+        melhoresAnimesSeries.forEach(System.out::println);
 
         System.out.println("\nATV 5___");
 
