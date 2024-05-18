@@ -17,6 +17,7 @@ public class Lista02 {
             System.out.println("| [0] - Sair. -------------------------|");
             System.out.println("|--------------------------------------|");
 
+            @SuppressWarnings("resource")
             int opcao = new Scanner(System.in).nextInt();
             if (opcao == 0)
                 break;
@@ -31,6 +32,7 @@ public class Lista02 {
         }
     }
 
+    @SuppressWarnings("resource")
     private static void calcularPrecoTotal() {
         System.out.print("Quantidade de itens:");
         int quantidade = new Scanner(System.in).nextInt();
@@ -40,6 +42,7 @@ public class Lista02 {
         System.out.println("Preço total: R$" + precoTotal);
     }
 
+    @SuppressWarnings("resource")
     private static void calcularTroco() {
         System.out.print("Valor Total da Compra: ");
         double total = new Scanner(System.in).nextDouble();
@@ -49,6 +52,7 @@ public class Lista02 {
         System.out.println("Troco a ser entregue para o cliente é: R$ " + troco);
     }
 
+    @SuppressWarnings("resource")
     private static void salvar() {
         System.out.print("Insira o valor da venda: ");
         double valorDeVenda = new Scanner(System.in).nextDouble();
