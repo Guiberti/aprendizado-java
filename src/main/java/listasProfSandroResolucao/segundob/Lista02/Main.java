@@ -2,7 +2,9 @@ package listasProfSandroResolucao.segundob.Lista02;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -16,6 +18,8 @@ public class Main {
         System.out.println("\nATV4_________");
         atvQuatro();
         System.out.println("\nATV5_________");
+        System.out.println("\nATV6_________");
+        atvSeis();
     }
 
     public static void atvUm() {
@@ -38,23 +42,31 @@ public class Main {
     }
 
     public static void atvTres() {
-
-        List<String> words = new ArrayList<>();
-        words.add("se");
-        words.add("talvez");
-        words.add("hoje");
-        words.add("sábado");
-        words.add("se");
-        words.add("quarta");
-        words.add("sábado");
-
+        List<String> words = new ArrayList<>(List.of("se", "talvez", "hoje", "sábado", "se",
+                "quarta", "sábado"));
+        Map<String, Long> uniqueWords = words.stream()
+                .collect(Collectors.groupingBy(String::toString, Collectors.counting()));
+        uniqueWords.forEach((word, counter) -> System.out.println(word + " : " + counter));
     }
 
     public static void atvQuatro() {
-
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("Teclado", 80.00));
+        products.add(new Product("Micro-ondas", 600.00));
+        products.add(new Product("Mouse", 99.00));
+        products.add(new Product("Monitor 144Hz", 599.90));
+        List<Product> productExpensive = products.stream()
+                .filter(product -> product.getPrice() > 100)
+                .toList();
+        productExpensive.forEach(produto -> System.out.println("Produto: " + produto.getName() +
+                "\nPreço: " + produto.getPrice() + "\n"));
     }
 
     public static void atvCinco() {
+
+    }
+
+    private static void atvSeis() {
 
     }
 
