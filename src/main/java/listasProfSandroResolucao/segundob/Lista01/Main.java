@@ -1,6 +1,7 @@
 package listasProfSandroResolucao.segundob.Lista01;
 
 import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -23,6 +24,7 @@ public class Main {
         System.out.println("\nATV 5___");
         salvarConfig();
     }
+
     public static void unificarJogosZerados() {
         List<String> jogosZerados = new ArrayList<>();
         jogosZerados.add("GTA SA");
@@ -36,6 +38,7 @@ public class Main {
         System.out.println("Todos os jogos zerados únicos: ");
         jogosZeradosUnicos.forEach(System.out::println);
     }
+
     public static void organizarSeriesAnimes() {
         Queue<String> melhoresAnimesSeries = new PriorityQueue<>();
         melhoresAnimesSeries.add("Naruto");
@@ -45,6 +48,7 @@ public class Main {
         melhoresAnimesSeries.add("Pokémon");
         melhoresAnimesSeries.forEach(System.out::println);
     }
+
     public static void salvarConfig() {
         Map<String, String> configuracoes = new HashMap<>();
         configuracoes.put("I5 2.5GHz", "700.00");
