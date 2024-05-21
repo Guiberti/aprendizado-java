@@ -24,20 +24,20 @@ public class Main {
         atvSeis();
     }
 
-    public static void atvUm() {
+    private static void atvUm() {
         List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16));
         List<Integer> pairNumbers = numbers.stream().filter(n -> n % 2 == 0)
                 .toList();
         pairNumbers.forEach(number -> System.out.println(number));
     }
 
-    public static void atvDois() {
+    private static void atvDois() {
         List<String> names = new ArrayList<>(List.of("roberto", "josé", "caio", "vinicius"));
         List<String> capitalizedNames = names.stream().map(String::toUpperCase).toList();
         capitalizedNames.forEach(name -> System.out.println(name));
     }
 
-    public static void atvTres() {
+    private static void atvTres() {
         List<String> words = new ArrayList<>(List.of("se", "talvez", "hoje", "sábado", "se",
                 "quarta", "sábado"));
         Map<String, Long> uniqueWords = words.stream()
@@ -45,7 +45,7 @@ public class Main {
         uniqueWords.forEach((word, counter) -> System.out.println(word + " : " + counter));
     }
 
-    public static void atvQuatro() {
+    private static void atvQuatro() {
         products = new ArrayList<>();
         products.add(new Product("Teclado", 80.00));
         products.add(new Product("Micro-ondas", 600.00));
@@ -58,8 +58,8 @@ public class Main {
                 "\nPreço: " + produto.getPrice() + "\n"));
     }
 
-    public static void atvCinco() {
-        Double totalValue = products.stream().mapToDouble(Product::getPrice).sum();
+    private static void atvCinco() {
+        double totalValue = products.stream().mapToDouble(Product::getPrice).sum();
         System.out.println("Total: R$" + totalValue);
     }
 
