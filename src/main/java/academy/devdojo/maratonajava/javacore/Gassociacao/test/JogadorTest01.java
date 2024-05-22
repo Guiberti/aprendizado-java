@@ -1,6 +1,6 @@
-package academy.devdojo.maratonajava.javacore.Gassosiacao.test;
+package academy.devdojo.maratonajava.javacore.Gassociacao.test;
 
-import academy.devdojo.maratonajava.javacore.Gassosiacao.domain.Jogador;
+import academy.devdojo.maratonajava.javacore.Gassociacao.domain.Jogador;
 
 public class JogadorTest01 {
     public static void main(String[] args) {
