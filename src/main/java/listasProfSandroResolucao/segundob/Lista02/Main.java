@@ -58,7 +58,7 @@ public class Main {
                 "\nPreço: " + produto.getPrice() + "\n"));
     }
 
-    private static void atvCinco() {
+    private static void atvCinco() {    
         double totalValue = products.stream().mapToDouble(Product::getPrice).sum();
         System.out.println("Total: R$" + totalValue);
     }
