@@ -1,6 +1,5 @@
 package listasProfSandroResolucao.primeirob.Aulas.exemplosProva.HotelProva.utils;
 
-import exemplosAulasSandro.primeiroB.exemplosProva.HotelProva.domain.*;
 import listasProfSandroResolucao.primeirob.Aulas.exemplosProva.HotelProva.domain.*;
 import listasProfSandroResolucao.primeirob.Aulas.exemplosProva.HotelProva.test.MenuPrincipalHotel;
 
