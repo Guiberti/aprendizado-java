@@ -1,20 +1,25 @@
 package listasProfSandroResolucao.primeirob.Avaliacoes.Prova01.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Emprestimo {
     private Integer id;
     private Aluno aluno;
     private Livro livro;
-    private Date dataEmprestimo;
-    private Date dataDevolucao;
+    private LocalDate dataEmprestimo;
+    private LocalDate dataDevolucao;
 
-    public Emprestimo(Integer id, Aluno aluno, Livro livro, Date dataEmprestimo, Date dataDevolucao) {
+    public Emprestimo(Integer id, Aluno aluno, Livro livro, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
         this.id = id;
         this.aluno = aluno;
         this.livro = livro;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
+    }
+
+    public void imprime() {
+        System.out.println("-------EMPRÉSTIMO--------");
+        System.out.println("Aluno: " + aluno.getNome());
     }
 
     public Integer getId() {
@@ -41,19 +46,19 @@ public class Emprestimo {
         this.livro = livro;
     }
 
-    public Date getDataEmprestimo() {
+    public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
     }
 
-    public void setDataEmprestimo(Date dataEmprestimo) {
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public Date getDataDevolucao() {
+    public LocalDate getDataDevolucao() {
         return dataDevolucao;
     }
 
-    public void setDataDevolucao(Date dataDevolucao) {
+    public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
 

@@ -1,16 +1,16 @@
 package listasProfSandroResolucao.primeirob.Avaliacoes.Prova01.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Livro {
 
     private Integer id;
     private String titulo;
-    private Date dataLan;
+    private LocalDate dataLan;
     private String autor;
     private String editora;
 
-    public Livro(Integer id, String titulo, Date dataLan, String autor, String editora) {
+    public Livro(Integer id, String titulo, LocalDate dataLan, String autor, String editora) {
         this.id = id;
         this.titulo = titulo;
         this.dataLan = dataLan;
@@ -34,11 +34,11 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public Date getDataLan() {
+    public LocalDate getDataLan() {
         return dataLan;
     }
 
-    public void setDataLan(Date dataLan) {
+    public void setDataLan(LocalDate dataLan) {
         this.dataLan = dataLan;
     }
 

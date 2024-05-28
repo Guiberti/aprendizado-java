@@ -5,15 +5,15 @@ public class Aluno {
     private String nome;
     private Integer idade;
     private String curso;
-    private Long ra;
+    private Long registroAluno;
     private String turma;
 
-    public Aluno(Integer id, String nome, Integer idade, String curso, Long ra, String turma) {
+    public Aluno(Integer id, String nome, Integer idade, String curso, Long registroAluno, String turma) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.curso = curso;
-        this.ra = ra;
+        this.registroAluno = registroAluno;
         this.turma = turma;
     }
 
@@ -49,12 +49,12 @@ public class Aluno {
         this.curso = curso;
     }
 
-    public Long getRa() {
-        return ra;
+    public Long getregistroAluno() {
+        return registroAluno;
     }
 
-    public void setRa(Long ra) {
-        this.ra = ra;
+    public void setregistroAluno(Long registroAluno) {
+        this.registroAluno = registroAluno;
     }
 
     public String getTurma() {
