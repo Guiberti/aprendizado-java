@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Main {
-    public static List<Product> products;
+    public static List<Product> produtos;
 
     public static void main(String[] args) {
         System.out.println("ATV1_________");
@@ -25,47 +25,48 @@ public class Main {
     }
 
     private static void atvUm() {
-        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16));
-        List<Integer> pairNumbers = numbers.stream().filter(n -> n % 2 == 0)
+        List<Integer> numeros = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16));
+        List<Integer> numerosPares = numeros.stream().filter(n -> n % 2 == 0)
                 .toList();
-        pairNumbers.forEach(number -> System.out.println(number));
+        numerosPares.forEach(num -> System.out.println(num));
     }
 
     private static void atvDois() {
-        List<String> names = new ArrayList<>(List.of("roberto", "josé", "caio", "vinicius"));
-        List<String> capitalizedNames = names.stream().map(String::toUpperCase).toList();
-        capitalizedNames.forEach(name -> System.out.println(name));
+        List<String> nomes = new ArrayList<>(List.of("roberto", "josé", "caio", "vinicius"));
+        List<String> nomesMaiusculo = nomes.stream().map(String::toUpperCase).toList();
+        nomesMaiusculo.forEach(nome -> System.out.println(nome));
     }
 
     private static void atvTres() {
-        List<String> words = new ArrayList<>(List.of("se", "talvez", "hoje", "sábado", "se",
+        List<String> palavras = new ArrayList<>(List.of("se", "talvez", "hoje", "sábado", "se",
                 "quarta", "sábado"));
-        Map<String, Long> uniqueWords = words.stream()
-                .collect(Collectors.groupingBy(String::toString, Collectors.counting()));
-        uniqueWords.forEach((word, counter) -> System.out.println(word + " : " + counter));
+        Map<String, Long> palavrasContadas = palavras.stream()
+                .collect(Collectors.groupingBy(palavra -> palavra, Collectors.counting()));
+
+        palavrasContadas.forEach((palavra, contador) -> System.out.println(palavra + " : " + contador));
     }
 
     private static void atvQuatro() {
-        products = new ArrayList<>();
-        products.add(new Product("Teclado", 80.00));
-        products.add(new Product("Micro-ondas", 600.00));
-        products.add(new Product("Mouse", 99.00));
-        products.add(new Product("Monitor 144Hz", 599.90));
-        List<Product> productExpensive = products.stream()
-                .filter(product -> product.getPrice() > 100)
+        produtos = new ArrayList<>();
+        produtos.add(new Product("Teclado", 80.00));
+        produtos.add(new Product("Micro-ondas", 600.00));
+        produtos.add(new Product("Mouse", 99.00));
+        produtos.add(new Product("Monitor 144Hz", 599.90));
+        List<Product> produtosCaros = produtos.stream()
+                .filter(produto -> produto.getPrice() > 100)
                 .toList();
-        productExpensive.forEach(produto -> System.out.println("Produto: " + produto.getName() +
+        produtosCaros.forEach(produto -> System.out.println("Produto: " + produto.getName() +
                 "\nPreço: " + produto.getPrice() + "\n"));
     }
 
-    private static void atvCinco() {    
-        double totalValue = products.stream().mapToDouble(Product::getPrice).sum();
-        System.out.println("Total: R$" + totalValue);
+    private static void atvCinco() {
+        double valorTotal = produtos.stream().mapToDouble(Product::getPrice).sum();
+        System.out.println("Total: R$" + valorTotal);
     }
 
     private static void atvSeis() {
-        List<String> languages = new ArrayList<>(List.of("Java", "Python", "C", "JavaScript", "Ruby"));
-        List<String> languagesBySize = languages.stream().sorted(Comparator.comparing(String::length)).toList();
-        languagesBySize.forEach(System.out::println);
+        List<String> linguagens = new ArrayList<>(List.of("Java", "Python", "C", "JavaScript", "Ruby"));
+        List<String> linguagensPorTamanho = linguagens.stream().sorted(Comparator.comparing(String::length)).toList();
+        linguagensPorTamanho.forEach(System.out::println);
     }
 }

@@ -1,6 +1,11 @@
 package listasProfSandroResolucao.segundob.Lista03;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,22 +24,15 @@ public class Main {
     }
 
     private static void atv1() {
-        // Atv1 - Crie um método em Java que exiba uma mensagem simples "Olá, Mundo!"
-        // usando JOptionPane.
         JOptionPane.showMessageDialog(null, "Olá, Mundo!");
     }
 
     private static void atv2() {
-        // Atv2 - Crie um método que solicite ao usuário seu nome e exiba uma mensagem
-        // de boas-vindas.
         String nome = JOptionPane.showInputDialog("Digite seu nome: ");
         JOptionPane.showMessageDialog(null, "Olá, " + nome + "!");
     }
 
     private static void atv3() {
-        // Atv3 - Crie um método que pergunte(showConfirmDialog) ao usuário se ele
-        // deseja continuar e
-        // exiba uma mensagem conforme a resposta.
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja continuar?");
         switch (resposta) {
             case JOptionPane.YES_OPTION:
@@ -50,10 +48,41 @@ public class Main {
     }
 
     private static void atv4() {
-        // Atv4 - Crie um método que apresente uma lista de opções ao usuário e exiba
-        // uma mensagem segundo a
-        // opção escolhida. Exemplos de lista("Opção 1", "Opção 2", "Opção 3").
+        JFrame frame = new JFrame("Escolha uma Opção!");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(0);
+
         String[] opcoes = { "Opção 1", "Opção 2", "Opção 3" };
+        JComboBox<String> comboBox = new JComboBox<>(opcoes);
+        JButton button = new JButton("Escolher");
+        JLabel messageLabel = new JLabel("");
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String escolha = (String) comboBox.getSelectedItem();
+                switch (escolha) {
+                    case "Opção 1":
+                        messageLabel.setText("Escolhida opção 1.");
+                        break;
+                    case "Opção 2":
+                        messageLabel.setText("Escolhida opção 2.");
+
+                        break;
+                    case "Opção 3":
+                        messageLabel.setText("Escolhida opção 3.");
+                        break;
+                    default:
+                        messageLabel.setText("Opção Inválida.");
+                        break;
+                }
+            }
+        });
+        frame.setLayout(new FlowLayout());
+        frame.add(comboBox);
+        frame.add(button);
+        frame.add(messageLabel);
+        frame.setVisible(true);
     }
 
     private static void atv5() {

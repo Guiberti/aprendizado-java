@@ -13,14 +13,6 @@ public class Main {
         while (true) {
             imprimirConsole();
             int opcao = input.nextInt();
-            switch (opcao) {
-                case 1 -> cadastroAlunos();
-                case 2 -> 
-                case 3 -> 
-
-                default:
-                    break;
-            }
         }
 
     }
