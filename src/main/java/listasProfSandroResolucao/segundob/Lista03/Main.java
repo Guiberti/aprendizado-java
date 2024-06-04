@@ -1,11 +1,7 @@
 package listasProfSandroResolucao.segundob.Lista03;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -54,33 +50,31 @@ public class Main {
 
         String[] opcoes = { "Opção 1", "Opção 2", "Opção 3" };
         JComboBox<String> comboBox = new JComboBox<>(opcoes);
-        JButton button = new JButton("Escolher");
+        JButton btn = new JButton("Escolher");
         JLabel messageLabel = new JLabel("");
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String escolha = (String) comboBox.getSelectedItem();
-                switch (escolha) {
-                    case "Opção 1":
-                        messageLabel.setText("Escolhida opção 1.");
-                        break;
-                    case "Opção 2":
-                        messageLabel.setText("Escolhida opção 2.");
-
-                        break;
-                    case "Opção 3":
-                        messageLabel.setText("Escolhida opção 3.");
-                        break;
-                    default:
-                        messageLabel.setText("Opção Inválida.");
-                        break;
-                }
+        btn.addActionListener(e -> {
+            String escolha = (String) comboBox.getSelectedItem();
+            switch (escolha) {
+                case "Opção 1":
+                    messageLabel.setText("Escolhida opção 1.");
+                    break;
+                case "Opção 2":
+                    messageLabel.setText("Escolhida opção 2.");
+                    break;
+                case "Opção 3":
+                    messageLabel.setText("Escolhida opção 3.");
+                    break;
+                case null:
+                    break;
+                default:
+                    messageLabel.setText("Opção Inválida.");
+                    break;
             }
         });
         frame.setLayout(new FlowLayout());
         frame.add(comboBox);
-        frame.add(button);
+        frame.add(btn);
         frame.add(messageLabel);
         frame.setVisible(true);
     }
