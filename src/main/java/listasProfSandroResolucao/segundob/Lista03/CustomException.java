@@ -5,9 +5,13 @@ import javax.swing.JOptionPane;
 public class CustomException extends Exception {
 
     public CustomException(String errorMsg) {
+        super(errorMsg);
+        mensagemErro(errorMsg);
+    }
+    private void mensagemErro(String errorMsg) {
         JOptionPane.showMessageDialog(null,
                 errorMsg,
-                "ERRO!",
+                "Erro",
                 JOptionPane.ERROR_MESSAGE);
     }
 }

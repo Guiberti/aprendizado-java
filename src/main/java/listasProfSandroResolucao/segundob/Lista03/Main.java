@@ -54,25 +54,72 @@ public class Main {
                 null,
                 opcoes.toArray(),
                 opcoes.toArray()[0]);
-
         JOptionPane.showMessageDialog(frame, "A opção selecionada é: " + opcao);
     }
 
     private static void atv5() {
         try {
             throw new CustomException("ERRO!");
-        } catch (CustomException ignored) {
+        } catch (CustomException e) {
+            System.err.println(e.getMessage());
         }
     }
 
     private static void atv6() {
-        // Atv6 - Crie uma calculadora utilizando JOptionPane, apresente as quatro
-        // opções matemáticas ao
-        // usuário, após selecionada a opção e avançar, requisite os dois números para
-        // realizar o cálculo,
-        // apresente o resultado em um dialog(INFORMATION_MESSAGE) e em caso de erro
-        // lance sua exceção
-        // personalizada da atividade 5.
-    }
+        JFrame frame = new JFrame("Escolha uma Opção para Calcularmos!");
+        List<String> operacoes = List.of("Adição", "Subtração", "Multiplicação", "Divisão");
 
+        String operacao = (String) JOptionPane.showInputDialog(frame,
+                "Qual operação deseja realizar? ",
+                "Calculadora",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                operacoes.toArray(),
+                operacoes.toArray()[0]);
+
+        try {
+            double num1 = getDoubleNumber("Insira o primeiro número: ");
+            double num2 = getDoubleNumber("Insira o segundo número: ");
+            double result = switch (operacao) {
+                case "Adição" -> num1 + num2;
+                case "Subtração" -> num1 - num2;
+                case "Multiplicação" -> num1 * num2;
+                case "Divisão" -> {
+                    if (num2 == 0) {
+                        throw new CustomException("ERRO! Divisão por 0 não é permitida!");
+                    }
+                    yield num1 / num2;
+                }
+                default -> throw new CustomException("Erro: Operação não encontrada!");
+            };
+            JOptionPane.showMessageDialog(null,
+                    "O resultado é: " + result,
+                    "Resultado",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (CustomException e) {
+            JOptionPane.showMessageDialog(null,
+                    e.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    private static double getDoubleNumber(String msg) throws CustomException {
+        while (true) {
+            try {
+                String input = JOptionPane.showInputDialog(null,
+                        msg,
+                        "Entrada de Número",
+                        JOptionPane.ERROR_MESSAGE);
+                if (input == null) {
+                    throw new CustomException("CANCELADO...");
+                }
+                return Double.parseDouble(input);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null,
+                        "Entrada Inválida!",
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
 }
