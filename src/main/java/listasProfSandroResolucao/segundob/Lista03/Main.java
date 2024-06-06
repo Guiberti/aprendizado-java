@@ -1,7 +1,7 @@
 package listasProfSandroResolucao.segundob.Lista03;
 
 import javax.swing.*;
-import java.awt.*;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -45,44 +45,24 @@ public class Main {
 
     private static void atv4() {
         JFrame frame = new JFrame("Escolha uma Opção!");
-        frame.setSize(400, 300);
-        frame.setDefaultCloseOperation(0);
+        List<String> opcoes = List.of("Opcão 1", "Opcão 2", "Opcão 3");
 
-        String[] opcoes = { "Opção 1", "Opção 2", "Opção 3" };
-        JComboBox<String> comboBox = new JComboBox<>(opcoes);
-        JButton btn = new JButton("Escolher");
-        JLabel messageLabel = new JLabel("");
+        String opcao = (String) JOptionPane.showInputDialog(frame,
+                "Qual opção deseja selecionar? ",
+                "Sua opção",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes.toArray(),
+                opcoes.toArray()[0]);
 
-        btn.addActionListener(e -> {
-            String escolha = (String) comboBox.getSelectedItem();
-            switch (escolha) {
-                case "Opção 1":
-                    messageLabel.setText("Escolhida opção 1.");
-                    break;
-                case "Opção 2":
-                    messageLabel.setText("Escolhida opção 2.");
-                    break;
-                case "Opção 3":
-                    messageLabel.setText("Escolhida opção 3.");
-                    break;
-                case null:
-                    break;
-                default:
-                    messageLabel.setText("Opção Inválida.");
-                    break;
-            }
-        });
-        frame.setLayout(new FlowLayout());
-        frame.add(comboBox);
-        frame.add(btn);
-        frame.add(messageLabel);
-        frame.setVisible(true);
+        JOptionPane.showMessageDialog(frame, "A opção selecionada é: " + opcao);
     }
 
     private static void atv5() {
-        // Atv5 - Crie uma exceção personalizada que apresente um dialog(ERROR_MESSAGE)
-        // com a mensagem do erro que ocorreu.
-
+        try {
+            throw new CustomException("ERRO!");
+        } catch (CustomException ignored) {
+        }
     }
 
     private static void atv6() {
