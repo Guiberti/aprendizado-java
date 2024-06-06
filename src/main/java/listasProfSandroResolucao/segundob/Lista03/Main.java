@@ -92,17 +92,18 @@ public class Main {
                 }
                 default -> throw new CustomException("Erro: Operação não encontrada!");
             };
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(frame,
                     "O resultado é: " + result,
                     "Resultado",
                     JOptionPane.INFORMATION_MESSAGE);
         } catch (CustomException e) {
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(frame,
                     e.getMessage(),
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
         }
     }
+
     private static double getDoubleNumber(String msg) throws CustomException {
         while (true) {
             try {
