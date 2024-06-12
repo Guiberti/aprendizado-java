@@ -8,13 +8,9 @@ public class Seminario {
     private List<Aluno> alunos;
     private Local local;
 
-    public Seminario(String titulo) {
+    public Seminario(String titulo, Local local) {
         this.titulo = titulo;
-    }
-
-    public Seminario(String titulo, List<Aluno> alunos) {
-        this.titulo = titulo;
-        this.alunos = alunos;
+        this.local = local;
     }
 
     public Seminario(String titulo, List<Aluno> alunos, Local local) {
