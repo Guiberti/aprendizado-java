@@ -1,12 +1,12 @@
 package listasProfSandroResolucao.segundob.Aulas.Aula05;
+    public class SrpMain {
 
-public class SrpMain {
-    public static void main(String[] args) {
+        public static void main(String[] args) {
 
-        ProcessaPedido processaPedido = new ProcessaPedido();
-        Pedido pedido = new Pedido();
+            ProcessaPedido processaPedido = new ProcessaPedido();
+            Pedido pedido = new Pedido();
 
-        processaPedido.processa(pedido);
+            processaPedido.processa(pedido);
+        }
 
     }
-}

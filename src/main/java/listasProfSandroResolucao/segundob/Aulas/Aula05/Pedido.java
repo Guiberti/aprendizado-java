@@ -15,5 +15,4 @@ public class Pedido {
     public boolean isValido() {
         return true;
     }
-
 }

@@ -1,14 +1,15 @@
 package listasProfSandroResolucao.segundob.Aulas.Aula05;
 
-public class FinanceiroService implements IGerarRelatorio {
+public class FinanceiroService implements IGerarRelatorioExcel, IGerarRelatorioPDF {
 
     @Override
     public void gerarPdf() {
-        return;
+        System.out.println("Gerando PDF no financeiro!");
     }
 
+    @Override
     public void gerarExcel() {
-        System.out.println("Gerando relatório para DS");
+        System.out.println("Gerando Excel no financeiro!");
     }
 
 }
