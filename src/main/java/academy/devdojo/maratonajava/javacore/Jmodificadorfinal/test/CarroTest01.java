@@ -1,7 +1,6 @@
 package academy.devdojo.maratonajava.javacore.Jmodificadorfinal.test;
 
 import academy.devdojo.maratonajava.javacore.Jmodificadorfinal.domain.Carro;
-import academy.devdojo.maratonajava.javacore.Jmodificadorfinal.domain.Comprador;
 
 public class CarroTest01 {
     public static void main(String[] args) {
@@ -14,3 +13,5 @@ public class CarroTest01 {
 
     }
 }
+
+// PROX AULA: 79 - Orientação Objetos - Modificador final pt 03 - Classes e métodos
