@@ -24,4 +24,5 @@ public class IngressoRepository {
     public void deleteById(int id) {
         ingressos.removeIf(ingresso -> ingresso.getId() == id);
     }
+
 }
