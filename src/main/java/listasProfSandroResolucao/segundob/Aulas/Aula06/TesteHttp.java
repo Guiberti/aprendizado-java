@@ -5,21 +5,28 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import javax.swing.JOptionPane;
-
-public class HttpSample {
-
+public class TesteHttp {
     public static void main(String[] args) {
-
         try {
+            getJsonData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getJsonData() {
+        try {
+            //URL alvo da request
             URL url = new URL("https://economia.awesomeapi.com.br/json/last/USD");
 
+            //criando conexão HTTP para a URL especificada
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
+            //config método da requisição(GET)
             connection.setRequestMethod("GET");
 
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream()));
+            //lendo response
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder response = new StringBuilder();
             String line;
 
@@ -29,14 +36,14 @@ public class HttpSample {
 
             reader.close();
 
+            //fechando a conexão
             connection.disconnect();
 
-            JOptionPane.showMessageDialog(null, response, "Cotação USD", 1);
-
+            return response.toString();
         } catch (Exception e) {
             e.printStackTrace();
+
+            return null;
         }
-
     }
-
 }
