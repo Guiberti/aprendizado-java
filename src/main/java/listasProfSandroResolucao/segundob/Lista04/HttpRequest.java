@@ -1,20 +1,34 @@
-package listasProfSandroResolucao.segundob.Aulas.Aula06;
+package listasProfSandroResolucao.segundob.Lista04;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class TesteHttp {
+public class HttpRequest {
+    ConsultarBoleto consultarBoleto = new ConsultarBoleto();
+    ConsultarConvenio consultarConvenio = new ConsultarConvenio();
+
     public static void main(String[] args) {
-        try {
-            System.out.println(getJsonData());
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        String[] opcoes = {"Consultar Convênio", "Consultar Boleto"};
+        int selecionar = JOptionPane.showOptionDialog(null, "Selecione a opção  desejada",
+                "Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
+
+        switch (selecionar) {
+            case 0 -> System.out.println(consultarConvenio());
+            case 1 -> consultarBoleto();
+            default -> JOptionPane.showMessageDialog(null, "Nenhuma Opção selecionada", "Erro",
+                    JOptionPane.ERROR_MESSAGE);
         }
+
     }
 
-    public static String getJsonData() {
+    private static void consultarBoleto() {
+    }
+
+    private static String consultarConvenio() {
         try {
             //URL alvo da request
             URL url = new URL("https://sandbox.openfinance.celcoin.dev/v5/transactions/institutions");

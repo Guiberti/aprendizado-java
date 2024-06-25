@@ -5,15 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class TesteHttp {
-    public static void main(String[] args) {
-        try {
-            getJsonData();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+public class ConsultarConvenio {
     public static String getJsonData() {
         try {
             //URL alvo da request
