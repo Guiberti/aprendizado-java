@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 
 public class QRCodeSample {
     public static void main(String[] args) {
-        System.out.println(genQRCode(null, null));
+        System.out.println(genQRCode(null, 20d));
 
     }
 

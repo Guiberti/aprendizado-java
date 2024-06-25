@@ -6,21 +6,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ConsultarConvenio {
+    private static final String CONVENIO_URL = "https://sandbox.openfinance.celcoin.dev/v5/transactions/institutions";
+    private static final String TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiJiMk14VjJCMFVqd2hvRDZrSnJ6SXhXNEkzWElDdS9mMmMwd2lJR20wWnlzaC9XMG5MUzhIekpneHFYb0ttb1hZRVdjQW5yUVJNRzNyMUEwSzdQMXJldHUwa29hSFZDKzAwZ2tZVE1ITDc2aFIydVFHUmhNNHFpM1owcXZFZjQ4enNzR0ludldHaHhUQkRLZjdvaDFLNVNFektOZmxtSThlSytCVW1UUnlDVHpZZnBJSzdFN0FhK2RTQzBMK1VDV00xdHNIWEZScEJ0N3BwWVpOUjZ1anJoOVk1UzIwQkc3YjVPMDhoVlRoaTJFdjhaZGIrQkJHODhsS2REQTBYOHUzT2xEZ2F6UHN2LzlWTzI4d3N1L256SHU3SVBDVlhwVUNBcFBzU0dpZVZ0TE1URTdKalE4ZjlsRThBZmgrLzd2R1pnSHlobGZEb0w3WTNTNE84UEFadUp1dGpBc3RGNnQvbEFtNEtIdm5wKzdyYkFsQUF6TEFKTDBQQ1NtUW54bVRPWUZIS3k4cVlWckxXUHMrWlFyRGdoNWZENXFRcFI1RGFTM3FMWmMvWWtqZHh6VFpsMDNUVEhxZUYzQk5td2tQTDF6cTFtTFFrNmhKeUs2K0Q5T0wwdTJ6NGhtOEdWcENMYVlRUUdMNEJNaGxTZlhScFdtNWlRNEN1NmpVWFFGMm1wcDBSWG5sdHl6NGR0d2M3SCt6aVg0S1pZVW5Nemc4Q3JKNVB4KzhnSHZlRm5jVWJSZlZXN3Y0MzhlVGxSSFFGMFVEVG9MUlFmRzVaYVlDTVNEc1FnPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiMmJiMDNiNmI2NDc1NGU4ZGI4ZjkiLCJleHAiOjE3MTkzNDUzMTAsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.UZAu3l2cvKSbe2Omf89UJWiF-G_2kol2u3Vr_xbR6pQ";
+
     public static String getJsonData() {
         try {
-            //URL alvo da request
-            URL url = new URL("https://sandbox.openfinance.celcoin.dev/v5/transactions/institutions");
 
-            //criando conexão HTTP para a URL especificada
+            URL url = new URL(CONVENIO_URL);
+
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            //config método da requisição(GET)
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiJuR3lOeDVQd3Vpc3RvT2Rzckw1MitWZ0J2bkhpbDFvdTlQMExWQXRXV21BRld2UGJ1cHJCSnlIUDJ5eEJyR3JKTVJicTZQYkYzWHlmWm9BVUhHL1ErRU1TQ3V0NTYrQnZVOGVtL1Q4ZS84QmdVTFBEdHVxY3ZQMHkzQVdHRmE2MVVjY0xyVGs4NzNiWmJBUVRFRGFaT0svaUF6SkFxWDYwTU5sYWpkQUIzS2VGV0ZpZnJJeFloYW5vQ1lGQ015cytZU0tkRkNTV1dqOEQ2RXpCVUNrMFpmdUE3VG4wRTR0NWgzbmtlOFg3ait4MWxhTjJ2UDU0dmlVaUxYUzB1a1VTcG1LaTQ4N1lFZW5CcmVsc0JnNmoyY0dSa0JZU1B5amZuQnFmUms5cEoySWFTcUZXRHBBcVpQaEhENFVpNVcvdzJEdURZVVcxYTZRbXZFeXRpbVJCUU16ajBPYVpUM3FMSXZJUDhvby9zOUdDdGVHdTFpemVHUm8rRUR3Q2JvRWszbW9jSTh1YUFWRlhFWTBQQmxrSklSSzBYQ2FMN3dxQ0h4QTFsRENheWQ2L1BxbkNTVkNHMkZOc2thcjh4eUVOWmoydDdDYUw0R3NHM1dtcStmV0RNY2NNUHNLenF1RVRENElpS05kUHRxL2RQZGxlczBZK1M3R3o5cjVsOXhLaXpKZzdyNjdsTzBpaTZJVGpXUlNXM1d0Ylpja3NISitnb01YN3p0L3NIcUo1UmQvcE1oby9xanpIaHY5WXpGc3JRd0xCdGVpVnpQYlU5QWtBcytBQkhBPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiNjE4ZDNlMzlkZTdiNGNiZTk4Y2UiLCJleHAiOjE3MTkzMzExNTcsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.TvImCeePd5VTeGuNVt0WOwZyCTCFY4xAFv9pzqC9y8g");
+            connection.setRequestProperty("Authorization", "Bearer " + TOKEN);
             connection.setDoOutput(true);
 
-            //lendo response
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder response = new StringBuilder();
             String line;
@@ -30,15 +30,12 @@ public class ConsultarConvenio {
             }
 
             reader.close();
-
-            //fechando a conexão
             connection.disconnect();
-
             return response.toString();
+
         } catch (Exception e) {
             e.printStackTrace();
-
-            return null;
         }
+        return null;
     }
 }
