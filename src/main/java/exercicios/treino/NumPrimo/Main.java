@@ -1,4 +1,4 @@
-package exerciciosTreino.NumPrimo;
+package exercicios.treino.NumPrimo;
 
 import java.util.Scanner;
 
