@@ -3,7 +3,7 @@ package tcc.desenvolvimento.diagramaDeClasses;
 import java.util.List;
 
 public class Receita {
-  private String nome;
+  private String nome;  
   private List<Ingrediente> ingredientes;
   private List<Passo> passos;
   private String tempoDePreparo;
