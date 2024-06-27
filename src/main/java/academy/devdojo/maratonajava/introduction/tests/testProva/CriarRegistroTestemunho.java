@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CriarRegistroAluno {
+public class CriarRegistroTestemunho {
 
     public static String getJsonData(String urlAluno, String raAluno, String testemunhoAluno) {
         try {
@@ -77,9 +77,9 @@ public class CriarRegistroAluno {
         JPanel panel = new JPanel();
         panel.setBackground(Color.WHITE);
 
-        panel.add(new JLabel("Aluno: " + jsonData.get("assignor")));
-        panel.add(new JLabel("Data de Pagamento: " + jsonData.get("payDueDate")));
-        panel.add(new JLabel("Data de Vencimento: " + jsonData.get("dueDate")));
+        panel.add(new JLabel("Aluno: " + jsonData.get("key")));
+        panel.add(new JLabel("Registro de Aluno: " + jsonData.get("key")));
+        panel.add(new JLabel("Testemunho: " + jsonData.get("key")));
 
 
         frame.add(panel);

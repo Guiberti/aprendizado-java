@@ -11,7 +11,14 @@ public class Main {
             String selecionar = (String) JOptionPane.showInputDialog(null, "Selecione a opção desejada: ",
                     "Menu", JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
             switch (selecionar) {
-                case "Consultar Convênio" -> consultarConvenio();
+                case "Consultar Convênio" -> {
+                    try {
+                        consultarConvenio();
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null,
+                                "Erro ao verificar os convênios.", "ERRO", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
                 case "Consultar Boleto" -> consultarBoleto();
                 case "Sair" -> {
                     return;
@@ -36,6 +43,6 @@ public class Main {
                 null,
                 null,
                 null);
-            ConsultarBoleto.getJsonData(linhaDigitavel);
+        ConsultarBoleto.getJsonData(linhaDigitavel);
     }
 }

@@ -51,6 +51,6 @@ public class Main {
                 null,
                 null);
 
-        CriarRegistroAluno.getJsonData(urlAluno, raAluno, testemunhoAluno);
+        CriarRegistroTestemunho.getJsonData(urlAluno, raAluno, testemunhoAluno);
     }
 }
