@@ -1,4 +1,4 @@
-package listasProfSandroResolucao.segundob.testProva;
+package academy.devdojo.maratonajava.introduction.tests.testProva;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class Main {
     }
 
     private static void listarAlunos() {
-
+        System.out.println(ListarAlunos.getJsonData());
     }
 
     private static void criarRegistroTestemunho() {

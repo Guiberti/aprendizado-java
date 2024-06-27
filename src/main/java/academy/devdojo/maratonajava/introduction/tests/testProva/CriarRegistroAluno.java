@@ -1,4 +1,4 @@
-package listasProfSandroResolucao.segundob.testProva;
+package academy.devdojo.maratonajava.introduction.tests.testProva;
 
 import javax.swing.*;
 import java.awt.*;
