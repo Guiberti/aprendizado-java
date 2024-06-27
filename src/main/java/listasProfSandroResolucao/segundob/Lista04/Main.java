@@ -36,7 +36,6 @@ public class Main {
                 null,
                 null,
                 null);
-        ConsultarBoleto.getJsonData(linhaDigitavel);
-
+            ConsultarBoleto.getJsonData(linhaDigitavel);
     }
 }
